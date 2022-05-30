@@ -14,9 +14,10 @@ export default function CreateClientModal({ setShowCreateClientModal, showCreate
 
 
   const [users,setUsers]=useState([])
-  const [errorMessage,setErrorMessage]=useState("")
+  const [errorMessage, setErrorMessage]=useState("")
   const [saving,setSaving] = useState(false)
   const [emptyFields,setEmptyFields]=useState(false)
+  const [errorsInFields,setErrorsInFields]=useState(false)
 
   const [clientData,setClientData]= useState({
     clientFirstName:"",
@@ -47,8 +48,10 @@ export default function CreateClientModal({ setShowCreateClientModal, showCreate
     .catch(err=>console.log("err",err))
 }
 
-  const showErrors =(message)=>{
-    setErrorMessage(message)
+  const checkErrorsFields =()=>{
+    // setErrorMessage('');
+    setErrorsInFields(prevSelected => {return !prevSelected })
+    setSaving(prevSelected => {return !prevSelected })
   }
 
   const changeSaving=(error)=>{
@@ -58,7 +61,7 @@ export default function CreateClientModal({ setShowCreateClientModal, showCreate
   }
 
   const checkEmtpyFields=()=>{
-    showErrors("")
+    setErrorMessage("")
     setEmptyFields(prevState=> {return !prevState})
     setSaving(prevSelected => {return !prevSelected })
   }
@@ -72,7 +75,10 @@ if(clientData.clientFirstName==""
 || clientData.clientLastName=="" 
 ||clientData.clientSSN==""|| 
 clientData.clientID=="") {checkEmtpyFields()}
-else{
+else if(clientData.clientFirstName.match(/[^a-zA-Z]/) 
+|| clientData.clientLastName.match(/[^a-zA-Z]/)
+|| clientData.clientSSN.length <= 3 ||clientData.clientSSN.length >4 ){checkErrorsFields()}
+ else{
   axios(`${process.env.NEXT_PUBLIC_SERVER_URL}/clients/create`,{
     method:'POST',
     headers: {
@@ -101,7 +107,7 @@ else{
   useEffect(()=>{
     getUsers()
     createClientId()
-},[clientData.clientFirstName,clientData.clientLastname,clientData.clientSSN,saving])
+},[clientData.clientFirstName,clientData.clientLastName,clientData.clientSSN,saving])
 
 
   return (
@@ -146,7 +152,9 @@ else{
                   </button>
             </div>
            
-            {emptyFields  && <span className="text-red-600 bg-gray-100 text-center text-xs py-2 rounded-xl">Please Complete all the fields</span>} 
+            {emptyFields  && <span className="text-red-600 bg-gray-100 text-center text-xs py-2 rounded-xl">Please complete all the fields</span>} 
+            {errorsInFields  && <span className="text-red-600 bg-gray-100 text-center text-xs py-2 rounded-xl">Some information is not correct</span>} 
+
             <label className="block">
               <span className="">First name</span>
               <input
@@ -157,6 +165,7 @@ else{
                   setClientData({ ...clientData, clientFirstName: e.target.value })
                 }
               />
+              {clientData.clientFirstName.match(/[^a-zA-Z]/)  && <p className="text-red-500 text-xs mt-2">Only letters allowed</p>}
             </label>
             <label className="block">
               <span className="">Last name</span>
@@ -168,7 +177,8 @@ else{
                   setClientData({ ...clientData, clientLastName: e.target.value })
                 }
               />
-              
+            {clientData.clientLastName.match(/[^a-zA-Z]/)  && <p className="text-red-500 text-xs mt-2">Only letters allowed</p>}
+
             </label>
             <label className="block">
               <span className="">Last 4 digits of social security number </span>
@@ -187,7 +197,9 @@ else{
               />
               
               </div>
-              {clientData.clientSSN.length >4 && <p className="text-red-500 text-xs mt-2">Only 4 numbers allowed</p>}
+             
+               {(clientData.clientSSN.length ==0 || clientData.clientSSN.length ==4 ) ? null :
+               clientData.clientSSN.length >4 ? <p className="text-red-500 text-xs mt-2">Only 4 numbers allowed</p> : <p className="text-red-500 text-xs mt-2">Must be 4 numbers </p>}
             </label>
             {/*  <label className="block">
             <span className="text-gray-700">When is your event?</span>

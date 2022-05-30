@@ -260,7 +260,9 @@ background-color: var(--blue);
   border: 1px solid var(--darkBlue);
 }
 
-
+.border-l-dark-blue {
+border-left:2px solid var(--darkBlue);
+}
 
 /*Client profile style */
 #user-box-container {

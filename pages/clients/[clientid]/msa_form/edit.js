@@ -144,7 +144,7 @@ const crearFecha=()=>{
                   <h3 className="font-black mb-5">Date</h3>
                   <label className="block">
                     <span className="text-xs">Todays date</span>
-                    <p>{todaysDate.toLocaleDateString()}</p>
+                    <p>{new Date().toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
                   </label>
                 </div>
 
@@ -315,10 +315,12 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       AIRSIntakeForm: !clientData.AIRSIntakeForm,
+                      AIRSIntakeFormDate: ''
                     })
                   }
                 }
                   checked={clientData.AIRSIntakeForm ? 'checked' : false}
+                  disabled={clientData.AIRSIntakeFormDate ? true : false} 
                 />
               </div>
               <div>
@@ -339,6 +341,7 @@ const crearFecha=()=>{
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
+                      AIRSIntakeForm: !clientData.AIRSIntakeForm,
                       AIRSIntakeFormDate: e.target.value,
                     });
                   }}
@@ -379,15 +382,17 @@ const crearFecha=()=>{
                       ...clientData,
                       ComprehensiveRiskBehaviorAssessment:
                         !clientData.ComprehensiveRiskBehaviorAssessment,
-                        omprehensiveRiskBehaviorAssessmentDate:crearFecha()
+                        ComprehensiveRiskBehaviorAssessmentDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       ComprehensiveRiskBehaviorAssessment:
                         !clientData.ComprehensiveRiskBehaviorAssessment,
+                        ComprehensiveRiskBehaviorAssessmentDate: '',
                     })
                   }
                 }
-                  checked={clientData.ComprehensiveRiskBehaviorAssessment ? 'checked' : ''}
+                  checked={clientData.ComprehensiveRiskBehaviorAssessment ? 'checked' : false}
+                  disabled={clientData.ComprehensiveRiskBehaviorAssessment ? true : false}
                 />
               </div>
               <div>
@@ -406,6 +411,8 @@ const crearFecha=()=>{
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
+                      ComprehensiveRiskBehaviorAssessment:
+                        !clientData.ComprehensiveRiskBehaviorAssessment,
                       ComprehensiveRiskBehaviorAssessmentDate: e.target.value,
                     });
                   }}
@@ -450,9 +457,11 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate: ''
                     })
                   }}
                   checked={clientData.ServiceActionPlan ? 'checked' : ''}
+                  disabled={clientData.ServiceActionPlan ? true : false}
                 />
               </div>
               <div>
@@ -472,6 +481,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       ServiceActionPlanDate: e.target.value,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
                     });
                   }}
                 />
@@ -516,11 +526,12 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSCollateralInformation:
                         !clientData.AIRSCollateralInformation,
+                        AIRSCollateralInformationDate: ''
                     })
                     }
                   }
-                  /* checked={clientData.AIRSCollateralInformation ? true : false} */
-                 /*  value={clientData.AIRSCollateralInformation ? true : false} */
+                   checked={clientData.AIRSCollateralInformation ? true : false} 
+                  disabled={clientData.AIRSCollateralInformation ? true : false}
                 />
               </div>
               <div>
@@ -540,6 +551,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSCollateralInformationDate: e.target.value,
+                      AIRSCollateralInformation:
+                        !clientData.AIRSCollateralInformation,
                     });
                   }}
                 />
@@ -584,9 +597,11 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSFinancialInformation:
                         !clientData.AIRSFinancialInformation,
+                      AIRSFinancialInformationDate: ''
                     })
                   }}
                   checked={clientData.AIRSFinancialInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSFinancialInformation ? true : false}
                 />
               </div>
               <div>
@@ -606,6 +621,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSFinancialInformationDate: e.target.value,
+                      AIRSFinancialInformation:
+                        !clientData.AIRSFinancialInformation,
                     });
                   }}
                 />
@@ -650,9 +667,11 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSHIVAIDSRiskHistory:
                         !clientData.AIRSHIVAIDSRiskHistory,
+                      AIRSHIVAIDSRiskHistoryDate: ''
                     })
                   }}
                   checked={clientData.AIRSHIVAIDSRiskHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSHIVAIDSRiskHistory ? true : false}
                 />
               </div>
               <div>
@@ -672,6 +691,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSHIVAIDSRiskHistoryDate: e.target.value,
+                      AIRSHIVAIDSRiskHistory:
+                        !clientData.AIRSHIVAIDSRiskHistory,
                     });
                   }}
                 />
@@ -714,10 +735,12 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      AIRSHCVHistoryDate: '',
                     })
                   }
                 }
                   checked={clientData.AIRSHCVHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSHCVHistory ? true : false}
                 />
               </div>
               <div>
@@ -737,6 +760,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSHCVHistoryDate: e.target.value,
+                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
                     });
                   }}
                 />
@@ -782,10 +806,12 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSHousingInformation:
                         !clientData.AIRSHousingInformation,
+                      AIRSHousingInformationDate: '',
                     })
                   }
                 }
                   checked={clientData.AIRSHousingInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSHousingInformation ? true : false}
                 />
               </div>
               <div>
@@ -805,6 +831,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSHousingInformationDate: e.target.value,
+                      AIRSHousingInformation:
+                        !clientData.AIRSHousingInformation,
                     });
                   }}
                 />
@@ -849,9 +877,11 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSInsuranceInformation:
                         !clientData.AIRSInsuranceInformation,
+                      AIRSInsuranceInformationDate: ''
                     })
                   }}
                   checked={clientData.AIRSInsuranceInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSInsuranceInformation ? true : false}
                 />
               </div>
               <div>
@@ -871,6 +901,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSInsuranceInformationDate: e.target.value,
+                      AIRSInsuranceInformation:
+                        !clientData.AIRSInsuranceInformation,
                     });
                   }}
                 />
@@ -915,9 +947,11 @@ const crearFecha=()=>{
                       ...clientData,
                       AIRSSubstanceUseHistory:
                         !clientData.AIRSSubstanceUseHistory,
+                        AIRSSubstanceUseHistoryDate: ''
                     })
                   }}
                   checked={clientData.AIRSSubstanceUseHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSSubstanceUseHistory ? true : false}
                 />
               </div>
               <div>
@@ -937,6 +971,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       AIRSSubstanceUseHistoryDate: e.target.value,
+                      AIRSSubstanceUseHistory:
+                        !clientData.AIRSSubstanceUseHistory,
                     });
                   }}
                 />
@@ -979,10 +1015,12 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       LNEClientRights: !clientData.LNEClientRights,
+                      LNEClientRightsDate: ''
                      
                     })
                   }}
                   checked={clientData.LNEClientRights ? 'checked' : ''}
+                  disabled={clientData.LNEClientRights ? true : false}
                 />
               </div>
               <div>
@@ -1002,6 +1040,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEClientRightsDate: e.target.value,
+                      LNEClientRights: !clientData.LNEClientRights,
                     });
                   }}
                 />
@@ -1041,14 +1080,16 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEClientGrievancePolicyProcedure:
                         !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate:crearFecha()
+                      LNEClientGrievancePolicyProcedureDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEClientGrievancePolicyProcedure:
                         !clientData.LNEClientGrievancePolicyProcedure,
+                      LNEClientGrievancePolicyProcedureDate: '',
                     })
                   }}
                   checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : ''}
+                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false}
                 />
               </div>
               <div>
@@ -1068,6 +1109,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEClientGrievancePolicyProcedureDate: e.target.value,
+                      LNEClientGrievancePolicyProcedure:
+                        !clientData.LNEClientGrievancePolicyProcedure,
                     });
                   }}
                 />
@@ -1110,10 +1153,12 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       LNEProgramRules: !clientData.LNEProgramRules,
+                      LNEProgramRulesDate: '',
                     })
                   }
                 }
                   checked={clientData.LNEProgramRules ? 'checked' : ''}
+                  disabled={clientData.LNEProgramRules ? true : false}
                 />
               </div>
               <div>
@@ -1133,6 +1178,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEProgramRulesDate: e.target.value,
+                      LNEProgramRules: !clientData.LNEProgramRules,
                     });
                   }}
                 />
@@ -1177,9 +1223,11 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEEmergencyContactConsent:
                         !clientData.LNEEmergencyContactConsent,
+                      LNEEmergencyContactConsentDate: '',  
                     })
                   }}
                   checked={clientData.LNEEmergencyContactConsent ? 'checked' : ''}
+                  disabled={clientData.LNEEmergencyContactConsent ? true : false}
                 />
               </div>
               <div>
@@ -1199,6 +1247,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEEmergencyContactConsentDate: e.target.value,
+                      LNEEmergencyContactConsent:
+                        !clientData.LNEEmergencyContactConsent,
                     });
                   }}
                 />
@@ -1244,11 +1294,13 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEConsentForReleaseOfConfidentialInformation:
                         !clientData.LNEConsentForReleaseOfConfidentialInformation,
+                      LNEConsentForReleaseOfConfidentialInformationDate: '',
                     })
                     
                   }
                   }
                   checked={clientData.LNEConsentForReleaseOfConfidentialInformation ? 'checked' : ''}
+                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformation ? true : false}
                 />
               </div>
               <div>
@@ -1269,6 +1321,8 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEConsentForReleaseOfConfidentialInformationDate:
                         e.target.value,
+                      LNEConsentForReleaseOfConfidentialInformation:
+                      !clientData.LNEConsentForReleaseOfConfidentialInformation,
                     });
                   }}
                 />
@@ -1311,10 +1365,12 @@ const crearFecha=()=>{
                     })):setClientData({
                       ...clientData,
                       HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      HIPPAConsentFormDate: '',
                     })
                   }
                   }
                   checked={clientData.HIPPAConsentForm ? 'checked' : ''}
+                  disabled={clientData.HIPPAConsentForm ? true : false}
                 />
               </div>
               <div>
@@ -1334,6 +1390,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       HIPPAConsentFormDate: e.target.value,
+                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
                     });
                   }}
                 />
@@ -1378,10 +1435,12 @@ const crearFecha=()=>{
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPractices:
                         !clientData.NYCDOHMHNoticeOfPrivacyPractices,
+                      NYCDOHMHNoticeOfPrivacyPracticesDate: '',
                     })
                   }
                   }
                   checked={clientData.NYCDOHMHNoticeOfPrivacyPractices ? 'checked' : ''}
+                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPractices ? true : false}
                 />
               </div>
               <div>
@@ -1404,6 +1463,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPracticesDate: e.target.value,
+                      NYCDOHMHNoticeOfPrivacyPractices:
+                        !clientData.NYCDOHMHNoticeOfPrivacyPractices,
                     });
                   }}
                 />
@@ -1448,10 +1509,12 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEOutreachRetentionTrackingForm:
                         !clientData.LNEOutreachRetentionTrackingForm,
+                      LNEOutreachRetentionTrackingFormDate: '',
                     })
                   }
                   }
                   checked={clientData.LNEOutreachRetentionTrackingForm ? 'checked' : ''}
+                  disabled={clientData.LNEOutreachRetentionTrackingForm ? true : false}
                 />
               </div>
               <div>
@@ -1471,6 +1534,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEOutreachRetentionTrackingFormDate: e.target.value,
+                      LNEOutreachRetentionTrackingForm:
+                        !clientData.LNEOutreachRetentionTrackingForm,
                     });
                   }}
                 />
@@ -1516,10 +1581,12 @@ const crearFecha=()=>{
                       ...clientData,
                       LNEReferralInformation:
                         !clientData.LNEReferralInformation,
+                      LNEReferralInformationDate: ''
                     })
                   }
                 }
                   checked={clientData.LNEReferralInformation ? 'checked' : ''}
+                  disabled={clientData.LNEReferralInformation ? true : false}
                 />
               </div>
               <div>
@@ -1539,6 +1606,8 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEReferralInformationDate: e.target.value,
+                      LNEReferralInformation:
+                        !clientData.LNEReferralInformation,
                     });
                   }}
                 />
@@ -1580,10 +1649,12 @@ const crearFecha=()=>{
                       LNEClientReferralFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
-                      LNEClientReferralForm: !clientData.LNEClientReferralForm
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
+                      LNEClientReferralFormDate: '',
                     })
                   }
                   checked={clientData.LNEClientReferralForm ? 'checked' : ''}
+                  disabled={clientData.LNEClientReferralForm ? true : false}
                 />
               </div>
               <div>
@@ -1603,6 +1674,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEClientReferralFormDate: e.target.value,
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
                     });
                   }}
                 />
@@ -1644,10 +1716,12 @@ const crearFecha=()=>{
                       LNEHNSEligibilityFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
-                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm
+                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
+                      LNEHNSEligibilityFormDate: ''
                     })
                   }}
                   checked={clientData.LNEHNSEligibilityForm ? 'checked' : ''}
+                  disabled={clientData.LNEHNSEligibilityForm ? true : false}
                 />
               </div>
               <div>
@@ -1668,6 +1742,7 @@ const crearFecha=()=>{
                     setClientData({
                       ...clientData,
                       LNEHNSEligibilityFormDate: e.target.value,
+                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
                     });
                   }}
                 />

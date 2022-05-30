@@ -17,6 +17,8 @@ export default function EditServiceActionPlan({ data }) {
   const router = useRouter()
   let componentRef = useRef();
 
+  console.log("data",data)
+
   const notifyMessage = () => {
     toast.success("Service Action Plan updated!", {
       position: toast.POSITION.TOP_CENTER,
@@ -57,13 +59,14 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
     goal3ActionStep2:data[0].goal3actionstep2,
     goal3ActionStep3:data[0].goal3actionstep3,
     comments:data[0].comments,
-    HCWSignature:data[0].HCWSignature===0 ? false : true,
-    HCWSignatureDate:data[0].HCWSignatureDate===0 ? false: true,
-    supervisorSignature:data[0].supervisorSignature===0 ? false : true,
-    clientSignature:data[0].clientSignature===0 ? false : true
+    HCWSignature:data[0].hcwsignature==="0" ? false : true,
+    HCWSignatureDate:data[0].HCWSignatureDate==="0" ? false: true,
+    supervisorSignature:data[0].supervisorsignature==="0" ? false : true,
+    clientSignature:data[0].clientsignature===0 ? false : true
   });
 
-  
+  console.log("clientData",clientData)
+  console.log("siganut", clientData.supervisorSignature)
 
   const genericGoals = [
   "Attend all health appointments",
@@ -150,7 +153,17 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
   }
 
 
-  
+const getDate=(date)=>{
+const fecha =  Date.parse(date)
+const newDate= new Date(fecha).toLocaleDateString()
+const separatedDate=newDate.split('/')
+const prefinalDate=separatedDate.reverse() 
+//const orderedDate=prefinalDate[0]+prefinalDate[2]+prefinalDate[1]
+const finalDate=prefinalDate.join('-')
+console.log("finalDate",finalDate)
+/* console.log(finalDate) */
+return finalDate
+}  
 
   return (
     <><ToastContainer autoClose={2000} />
@@ -175,12 +188,12 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
         Back to client profile
         </button>
 
-
+<input type="date" format="mm-dd-yyyy" value={getDate(clientData.planStartDate)}/>
         </section>
         <section id="info" className="my-5 px-5">
           <div className="container mx-auto">
             <h6 className="font-black my-5 text-dark-blue">
-              Client Information
+              Client Information  <br />
             </h6>
             <div
               className={`${Styles.serviceActionPlanPageInfoContainer} gap-x-5 border-dark-blue rounded-xl p-5`}
@@ -190,13 +203,14 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
                 <h3 className="font-black mb-5">Date</h3>
                 <label className="block">
                   <span className="text-xs">Plan start date</span>
-                  <input
+                  <p>{new Date(clientData.planStartDate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
+                  {/* <input
                     type="date"
                     className="block w-full rounded-md border p-2  shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-xs"
-                    value={setLocaleDateString(clientData.planStartDate)}
+                    value={getDate(clientData.planStartDate)}
                     disabled={disableUserIfNotSupervisor()}
                     onChange={(e)=>setClientData({...clientData,planStartDate:e.target.value})}
-                   /*  pattern="\d{4}-\d{2}-\d{2}" */ />
+                    /> */}
                 </label>
               </div>
 
@@ -388,7 +402,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
                   <label className="block">
                     <h6 className="font-black">Target Date</h6>
                     <input type="date" className="border-black w-full rounded p-2 text-xs"
-                    value={setLocaleDateString(clientData.goal1TargetDate)}
+                    value={clientData.goal1TargetDate && clientData.goal1TargetDate.split('T')[0]}
                     disabled={disableUserIfNotSupervisor()}
                     onChange={(e)=>setClientData({...clientData,goal1TargetDate:e.target.value})}/>
                   </label>
@@ -470,7 +484,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
                     <h6 className="font-black">Target Date</h6>
                     <input type="date" className="border-black w-full rounded p-2 text-xs"
                     onChange={(e)=>setClientData({...clientData,goal2TargetDate:e.target.value})}
-                    value={setLocaleDateString(clientData.goal2TargetDate)}
+                    value={clientData.goal2TargetDate && clientData.goal2TargetDate.split('T')[0]}
                     disabled={disableUserIfNotSupervisor()}
                     />
                   </label>
@@ -555,7 +569,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
                     <h6 className="font-black">Target Date</h6>
                     <input type="date" className="border-black w-full rounded p-2 text-xs"
                     onChange={(e)=>setClientData({...clientData,goal3TargetDate:e.target.value})}
-                    value={setLocaleDateString(clientData.goal3TargetDate)}
+                    value={clientData.goal1TargetDate && clientData.goal1TargetDate.split('T')[0]}
                     disabled={disableUserIfNotSupervisor()}
                     />
                   </label>
@@ -613,6 +627,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
               <input type="checkbox" className="border-dark-blue" 
               onClick={(e)=>{setClientData({...clientData,clientSignature:!clientData.clientSignature})}}
               disabled={disableUserIfNotSupervisor()}
+              checked={clientData?.clientSignature? true:false}
               />
             </div>
             <div className="others-container-box flex gap-2 justify-center items-center">
@@ -620,6 +635,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
               <input type="checkbox" className="border-dark-blue" 
               onClick={(e)=>{setClientData({...clientData,HCWSignature:!clientData.HCWSignature})}}
               disabled={disableUserIfNotSupervisor()}
+              checked={clientData?.HCWSignature? true:false}
               />
             </div>
             <div className="others-container-box flex gap-2 justify-center items-center">
@@ -627,6 +643,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
               <input type="checkbox" className="border-dark-blue" 
               onClick={(e)=>{setClientData({...clientData,supervisorSignature:!clientData.supervisorSignature})}}
               disabled={disableUserIfNotSupervisor()}
+              checked={clientData?.supervisorSignature ? true:false}
               />
             </div>
           </div>

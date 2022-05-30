@@ -11,7 +11,7 @@ import ImpactTrackerModal from "../../../../components/ImpactTrackerModal";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const ProgressNotesIndex = ({ data }) => {
+const ProgressNotesEditPage = ({ data }) => {
 
     console.log("data",data)
    const router = useRouter()
@@ -76,41 +76,23 @@ const ProgressNotesIndex = ({ data }) => {
     goal3Completed:false,
     goal3CompletedDate:"",
     AIRSCollateralInformation:data[0]?.airscollateralinformation ==="0" ? false: true,
-    AIRSCollateralInformationDate:data[0]?.airscollateralinformationdate,
     AIRSFinancialInformation:data[0]?.airsfinancialinformation ==="0" ? false: true,
-    AIRSFinancialInformationDate:data[0]?.airsfinancialinformationdate,
     AIRSHIVAIDSRiskHistory:data[0]?.airshivaidsriskhistory ==="0" ? false: true,
-    AIRSHIVAIDSRiskHistoryDate:data[0]?.airshivaidsriskhistorydate,
     AIRSHCVHistory:data[0]?.airshcvhistory ==="0" ? false: true,
-    AIRSHCVHistoryDate:data[0]?.airshcvhistorydate,
     AIRSHousingInformation:data[0]?.airshousinginformation ==="0" ? false: true,
-    AIRSHousingInformationDate:data[0]?.airshousinginformationdate,
     AIRSInsuranceInformation:data[0]?.airsinsuranceinformation ==="0" ? false: true,
-    AIRSInsuranceInformationDate:data[0]?.airsinsuranceinformationdate,
     AIRSSubstanceUseHistory :data[0]?.airssubstanceusehistory ==="0" ? false: true,
-    AIRSSubstanceUseHistoryDate :data[0]?.airssubstanceusehistorydate,
-    LNEClientRights:data[0]?.lneclientrights ==="0" ? false: true,
-    LNEClientRightsDate:data[0]?.lneclientrightsdate,
+    LNEClientRights :data[0]?.lneclientrights ==="0" ? false: true,
     LNEClientGrievancePolicyProcedure :data[0]?.lneclientgrievancepolicyprocedure ==="0" ? false: true,
-    LNEClientGrievancePolicyProcedureDate :data[0]?.lneclientgrievancepolicyproceduredate,
-    LNEProgramRules:data[0]?.lneprogramrules ==="0" ? false: true,
-    LNEProgramRulesDate:data[0]?.lneprogramrulesdate,
+    LNEProgramRules :data[0]?.lneprogramrules ==="0" ? false: true,
     LNEEmergencyContactConsent :data[0]?.lneemergencycontactconsent ==="0" ? false: true,
-    LNEEmergencyContactConsentDate :data[0]?.lneemergencycontactconsentdate,
     LNEConsentForReleaseOfConfidentialInformation :data[0]?.lneconsentforreleaseofconfidentialinformation ==="0" ? false: true,
-    LNEConsentForReleaseOfConfidentialInformationDate :data[0]?.lneconsentforreleaseofconfidentialinformationdate,
-    HIPPAConsentForm :data[0]?.hippaconsentform ==="0" ? false: true,
-    HIPPAConsentFormDate:data[0]?.hippaconsentformdate,
+    HIPAAConsentForm :data[0]?.hippaconsentform ==="0" ? false: true,
     NYCDOHMHNoticeOfPrivacyPractices :data[0]?.nycdohmhnoticeofprivacypractices ==="0" ? false: true,
-    NYCDOHMHNoticeOfPrivacyPracticesDate :data[0]?.nycdohmhnoticeofprivacypracticesdate,
     LNEOutreachRetentionTrackingForm :data[0]?.lneoutreachretentiontrackingform ==="0" ? false: true,
-    LNEOutreachRetentionTrackingFormDate :data[0]?.lneoutreachretentiontrackingformdate,
     LNEReferralInformation :data[0]?.lnereferralinformation ==="0" ? false: true,
-    LNEReferralInformationDate :data[0]?.lnereferralinformationdate,
     LNEClientReferralForm :data[0]?.lneclientreferralform ==="0" ? false: true,
-    LNEClientReferralFormDate :data[0]?.lneclientreferralformdate,
     LNEHNSEligibilityForm:data[0]?.lnehnseligibilityform ==="0" ? false: true,
-    LNEHNSEligibilityFormDate:data[0]?.lnehnseligibilityformdate,
 
   });
 
@@ -128,59 +110,62 @@ const [serviceActionData,setServiceActionData]=useState({
 })
 
 
-const handleMsaformUpdate = ()=> {
+const handleMsaform = ()=> {
 
-    axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/msa_forms/${clientData.clientId}/update_msa_form_from_progress_note`, {
+    axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/msa_forms/create_msa_form`, {
         clientData
       })
       .then(function (response) {
         if(response.status===200 || response.statusText==='Ok'){
-          console.log(response)
-          console.log("msa form updated successfully")
-        } 
-      })
-      .catch(function (error) {
-            console.log("an error ocurred while trying to update msa form", error)
-      });
-}
-
-const handleProgressNote=()=>{
-
-    axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/progress_notes/`, {
-        clientData
-      })
-      .then(function (response) {
-        if(response.status===200 || response.statusText==='Ok'){
-          handleMsaformUpdate()
           notifyMessage()
-          setShowImpactTrackerModal(!showImpactTrackerModal)
+          setTimeout(()=>{
+            router.push(`/clients/${clientData.clientId}/profile`)
+          },2300)
         } 
       })
       .catch(function (error) {
             console.log(error)
       });
+}
+
+
+const checkSelectedServices =(e)=>{
+
+}
+
+const handleProgressNote=()=>{
+ /*    setShowImpactTrackerModal(!showImpactTrackerModal)
+    notifyMessage() */
+    axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/progress_notes`, {
+        clientData
+      })
+      .then(function (response) {
+        if(response.status===200 || response.statusText==='Ok'){
+          notifyMessage()
+          console.log(response)
+          /* setTimeout(()=>{
+            router.push(`/clients/${clientData.clientId}/profile`)
+          },2300) */
+        } 
+      })
+      .catch(function (error) {
+            console.log("progress note error",error)
+      });
+
    
 }
 
 
-console.log("clientData",clientData)
 
   return (
     <>
       <ToastContainer autoClose={2000} />
       <Layout>
         <div className="container mx-auto">
-          <h3 className="font-black text-center my-5">Progress Notes</h3>
+          <h3 className="font-black text-center my-5">View Progress Note</h3>
         </div>
 
         <main className="container mx-auto">
-{/*         <button
-            onClick={() => handleMsaformUpdate()}
-            className="bg-black hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5 flex items-center"
-          >
-
-            msa
-          </button> */}
           <button
             onClick={() => router.back()}
             className="bg-black hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5 flex items-center"
@@ -221,7 +206,7 @@ console.log("clientData",clientData)
                   <h3 className="font-black mb-5">Date</h3>
                   <label className="block">
                     <span className="text-xs">Today&apos;s date</span>
-                    <p>{todaysDate.toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
+                    <p>{todaysDate.toLocaleDateString()}</p>
                   </label>
                 </div>
 
@@ -370,7 +355,8 @@ console.log("clientData",clientData)
                   >
                     Development of Action Plan with Client
                     <input type="checkbox" 
-                    onChange={()=>setClientData({...clientData,developmentActionPlan:!clientData.developmentActionPlan})}
+                    name="development"
+                    checked={(e)=>checkSelectedServices(e.target.name)}
                     />
                     <span
                       className={`${ProgressNotesStyles.checkmark} `}
@@ -545,7 +531,7 @@ console.log("clientData",clientData)
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
-                    {new Date(serviceActionData?.goal1targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
+                    {setLocaleDateString(serviceActionData?.goal1targetdate)}
                     </p>
                   </div>
                 </div>
@@ -572,7 +558,7 @@ console.log("clientData",clientData)
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
-                    {new Date(serviceActionData?.goal2targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
+                    {serviceActionData?.goal2targetdate?.split('T')[0]}
                     </p>
                   </div>
                 </div>
@@ -588,7 +574,7 @@ console.log("clientData",clientData)
 
               <div className="goal-box">
                 <div className="goal-top flex my-2">
-                  <h3 className="font-black">Goal 01</h3>
+                  <h3 className="font-black">Goal 03</h3>
                   <div className="w-2/4 border-b px-5"></div>
                 </div>
                 <div className="goal-service grid grid-cols-2 my-2">
@@ -601,7 +587,7 @@ console.log("clientData",clientData)
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
-                    {new Date(serviceActionData?.goal3targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
+                    {serviceActionData?.goal3targetdate?.split('T')[0]}
                     </p>
                   </div>
                 </div>
@@ -628,12 +614,12 @@ console.log("clientData",clientData)
                         <div className="workedGoals-box flex gap-5 ">
                             <p className="">Goal 01</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
-                            <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1progress:true})}/>
+                            <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
 
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>No
-                            <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1progress:false})}/>
+                            <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1Progress:false})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
                         </div>
@@ -654,12 +640,12 @@ console.log("clientData",clientData)
                         <div className="workedGoals-box flex gap-5 ">
                             <p className="">Goal 02</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
-                            <input type="radio"  name="workedGoals2"onChange={(e)=>setClientData({...clientData,goal2progress:true})} />
+                            <input type="radio"  name="workedGoals2"onChange={(e)=>setClientData({...clientData,goal2Progress:true})} />
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
 
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>No
-                            <input type="radio"  name="workedGoals2" onChange={(e)=>setClientData({...clientData,goal2progress:true})} />
+                            <input type="radio"  name="workedGoals2" onChange={(e)=>setClientData({...clientData,goal2Progress:true})} />
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
                         </div>
@@ -681,12 +667,12 @@ console.log("clientData",clientData)
                         <div className="workedGoals-box flex gap-5 ">
                             <p className="">Goal 03</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
-                            <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3progress:true})}/>
+                            <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
 
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>No
-                            <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3progress:true})}/>
+                            <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
                             </label>
                         </div>
@@ -815,14 +801,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSCollateralInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSCollateralInformation ? true : false}
                   onChange={(e) =>{
                     clientData.AIRSCollateralInformationDate==="" || clientData.AIRSCollateralInformationDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSCollateralInformation:
                         !clientData.AIRSCollateralInformation,
-                        AIRSCollateralInformationDate:new Date()
+                        AIRSCollateralInformationDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSCollateralInformation:
@@ -846,14 +831,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSFinancialInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSFinancialInformation ? true : false}
                   onChange={() => {
                     clientData.AIRSFinancialInformationDate ==="" || clientData.AIRSFinancialInformationDate === null ? (
                     setClientData({
                       ...clientData,
                       AIRSFinancialInformation:
                         !clientData.AIRSFinancialInformation,
-                        AIRSFinancialInformationDate:new Date()
+                        AIRSFinancialInformationDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSFinancialInformation:
@@ -877,14 +861,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSHIVAIDSRiskHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSHIVAIDSRiskHistory ? true : false}
                   onChange={() => {
                     clientData.AIRSHIVAIDSRiskHistoryDate==="" || clientData.AIRSHIVAIDSRiskHistoryDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSHIVAIDSRiskHistory:
                         !clientData.AIRSHIVAIDSRiskHistory,
-                        AIRSHIVAIDSRiskHistoryDate:new Date()
+                        AIRSHIVAIDSRiskHistoryDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSHIVAIDSRiskHistory:
@@ -908,13 +891,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSHCVHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSHCVHistory ? true : false}
                   onChange={() => {
                     clientData.AIRSHCVHistoryDate==="" || clientData.AIRSHCVHistoryDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSHCVHistory: !clientData.AIRSHCVHistory,
-                      AIRSHCVHistoryDate:new Date()
+                      AIRSHCVHistoryDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSHCVHistory: !clientData.AIRSHCVHistory,
@@ -939,7 +921,6 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSHousingInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSHousingInformation ? true : false}
                   onChange={() => {
                  
                     clientData.AIRSHousingInformationDate==="" || clientData.AIRSHousingInformationDate=== null ? (
@@ -947,7 +928,7 @@ console.log("clientData",clientData)
                       ...clientData,
                       AIRSHousingInformation:
                         !clientData.AIRSHousingInformation,
-                        AIRSHousingInformationDate:new Date()
+                        AIRSHousingInformationDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSHousingInformation:
@@ -972,14 +953,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSInsuranceInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSInsuranceInformation ? true : false}
                   onChange={() => {
                     clientData.AIRSInsuranceInformationDate==="" || clientData.AIRSInsuranceInformationDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSInsuranceInformation:
                         !clientData.AIRSInsuranceInformation,
-                        AIRSInsuranceInformationDate:new Date()
+                        AIRSInsuranceInformationDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSInsuranceInformation:
@@ -1002,14 +982,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.AIRSSubstanceUseHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSSubstanceUseHistory ? true : false}
                   onChange={() => {
                     clientData.AIRSSubstanceUseHistoryDate==="" || clientData.AIRSSubstanceUseHistoryDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSSubstanceUseHistory:
                         !clientData.AIRSSubstanceUseHistory,
-                        AIRSSubstanceUseHistoryDate:new Date()
+                        AIRSSubstanceUseHistoryDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       AIRSSubstanceUseHistory:
@@ -1032,13 +1011,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEClientRights ? 'checked' : ''}
-                  disabled={clientData.LNEClientRights ? true : false}
                   onChange={() => {
                     clientData.LNEClientRightsDate==="" || clientData.LNEClientRightsDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEClientRights: !clientData.LNEClientRights,
-                      LNEClientRightsDate:new Date()
+                      LNEClientRightsDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEClientRights: !clientData.LNEClientRights,
@@ -1061,14 +1039,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : ''}
-                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false}
                   onChange={() => {
                     clientData.LNEClientGrievancePolicyProcedureDate==="" || clientData.LNEClientGrievancePolicyProcedureDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEClientGrievancePolicyProcedure:
                         !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate:new Date()
+                        LNEClientGrievancePolicyProcedureDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEClientGrievancePolicyProcedure:
@@ -1096,13 +1073,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEProgramRules ? 'checked' : ''}
-                  disabled={clientData.LNEProgramRules ? true : false}
                   onChange={() => {
                     clientData.LNEProgramRulesDate==="" || clientData.LNEProgramRulesDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEProgramRules: !clientData.LNEProgramRules,
-                      LNEProgramRulesDate:new Date()
+                      LNEProgramRulesDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEProgramRules: !clientData.LNEProgramRules,
@@ -1125,14 +1101,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEEmergencyContactConsent ? 'checked' : ''}
-                  disabled={clientData.LNEEmergencyContactConsent ? true : false}
                   onChange={() =>{
                     clientData.LNEEmergencyContactConsentDate==="" || clientData.LNEEmergencyContactConsentDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEEmergencyContactConsent:
                         !clientData.LNEEmergencyContactConsent,
-                        LNEEmergencyContactConsentDate:new Date()
+                        LNEEmergencyContactConsentDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEEmergencyContactConsent:
@@ -1155,14 +1130,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEConsentForReleaseOfConfidentialInformation ? 'checked' : ''}
-                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformation ? true : false}
                   onChange={() =>{
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate==="" || clientData.LNEConsentForReleaseOfConfidentialInformationDate===null ? (
                       setClientData({
                         ...clientData,
                         LNEConsentForReleaseOfConfidentialInformation:
                           !clientData.LNEConsentForReleaseOfConfidentialInformation,
-                          LNEConsentForReleaseOfConfidentialInformationDate:new Date()
+                          LNEConsentForReleaseOfConfidentialInformationDate:crearFecha()
                       })
                     ):setClientData({
                       ...clientData,
@@ -1188,13 +1162,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.HIPPAConsentForm ? 'checked' : ''}
-                  disabled={clientData.HIPPAConsentForm ? true : false}
                   onChange={() =>{
                     clientData.HIPPAConsentFormDate==="" || clientData.HIPPAConsentFormDate===null ? (
                     setClientData({
                       ...clientData,
                       HIPPAConsentForm: !clientData.HIPPAConsentForm,
-                      HIPPAConsentFormDate:new Date()
+                      HIPPAConsentFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       HIPPAConsentForm: !clientData.HIPPAConsentForm,
@@ -1219,14 +1192,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.NYCDOHMHNoticeOfPrivacyPractices ? 'checked' : ''}
-                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPractices ? true : false}
                   onChange={() =>{
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate==="" || clientData.NYCDOHMHNoticeOfPrivacyPracticesDate===null ? (
                     setClientData({
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPractices:
                         !clientData.NYCDOHMHNoticeOfPrivacyPractices,
-                        NYCDOHMHNoticeOfPrivacyPracticesDate:new Date()
+                        NYCDOHMHNoticeOfPrivacyPracticesDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPractices:
@@ -1254,14 +1226,13 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEOutreachRetentionTrackingForm ? 'checked' : ''}
-                  disabled={clientData.LNEOutreachRetentionTrackingForm ? true : false}
                   onChange={() =>{
                     clientData.LNEOutreachRetentionTrackingFormDate==="" || clientData.LNEOutreachRetentionTrackingFormDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEOutreachRetentionTrackingForm:
                         !clientData.LNEOutreachRetentionTrackingForm,
-                        LNEOutreachRetentionTrackingFormDate:new Date()
+                        LNEOutreachRetentionTrackingFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEOutreachRetentionTrackingForm:
@@ -1286,8 +1257,7 @@ console.log("clientData",clientData)
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEReferralInformation ? 'checked' : ''}
-                  disabled={clientData.LNEReferralInformation ? true : false}
+                  checked={clientData.LNEClientReferralForm ? 'checked' : ''}
                   onChange={() => {
                     
                     clientData.LNEReferralInformationDate==="" || clientData.LNEReferralInformationDate===null ? (
@@ -1295,7 +1265,7 @@ console.log("clientData",clientData)
                       ...clientData,
                       LNEReferralInformation:
                         !clientData.LNEReferralInformation,
-                        LNEReferralInformationDate:new Date()
+                        LNEReferralInformationDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEReferralInformation:
@@ -1321,13 +1291,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEClientReferralForm ? 'checked' : ''}
-                  disabled={clientData.LNEClientReferralForm ? true : false}
                   onChange={() =>
                     clientData.LNEClientReferralFormDate ==="" || clientData.LNEClientReferralFormDate===null ? (
                     setClientData({
                       ...clientData,
                       LNEClientReferralForm: !clientData.LNEClientReferralForm,
-                      LNEClientReferralFormDate:new Date()
+                      LNEClientReferralFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEClientReferralForm: !clientData.LNEClientReferralForm
@@ -1351,13 +1320,12 @@ console.log("clientData",clientData)
                   name=""
                   id=""
                   checked={clientData.LNEHNSEligibilityForm ? 'checked' : ''}
-                  disabled={clientData.LNEHNSEligibilityForm ? true : false}
                   onChange={() =>{
                     clientData.LNEHNSEligibilityFormDate==="" || clientData.LNEHNSEligibilityFormDate ===null ? (
                     setClientData({
                       ...clientData,
                       LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
-                      LNEHNSEligibilityFormDate:new Date()
+                      LNEHNSEligibilityFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
                       LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm
@@ -1378,12 +1346,12 @@ console.log("clientData",clientData)
 
           <section id="save" className="my-5">
             <div className="container mx-auto flex justify-center">
-              <button
+              {/* <button
                 className="bg-blue-500 hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5"
                onClick={()=>handleProgressNote()}
               >
                 Save and Finish
-              </button>
+              </button> */}
             </div>
           </section>
         </main>
@@ -1398,7 +1366,7 @@ console.log("clientData",clientData)
   );
 };
 
-export default ProgressNotesIndex;
+export default ProgressNotesEditPage;
 
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(ctx) {

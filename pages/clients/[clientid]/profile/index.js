@@ -6,11 +6,11 @@ import Image from "next/image";
 
 import infoIcon from "../../../../public/client/info-icon.svg"
 import userIcon from "../../../../public/client/user-icon.svg"
-import ImpactTrackerModal from '../../../../components/impactTrackerModal'
+import ImpactTrackerModal from '../../../../components/ImpactTrackerModal'
 
 import { useRouter } from "next/router";
 
-export function getDate (string) {
+export function getDatex (string) {
     const date = new Date(string)
     const month = date.getMonth() + 1
     const day = date.getDate()
@@ -26,6 +26,14 @@ export function setLocaleDateString (date) {
   return finalDate
 }
 
+const getDate=(date)=>{
+  const fecha =  Date.parse(date)
+  const newDate= new Date(fecha).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})
+  const separatedDate=newDate.split('/')
+  const finalDate=separatedDate.join('-')
+  return newDate
+  }  
+
 export default function ClientProfilePage({ data }) {
 
 console.log("data",data)
@@ -36,6 +44,27 @@ console.log("data",data)
   const loggedUserRole = user && user["https://lanuevatest.herokuapp.com/roles"];
 
   const router = useRouter()
+
+  const checkForms=()=>{
+  
+    let result 
+
+    if(data[0]?.msaformid==="" || data[0]?.msaformid===null && data[0]?.servicesactionplanid ==="" || data[0]?.servicesactionplanid ===null){
+      result="Please create an MSA Form & A Service Action Pan"
+    } 
+    
+    if(data[0]?.msaformid !==""  &&  data[0]?.servicesactionplanid===null || data[0]?.servicesactionplanid==="") {
+      result="Please create a Service Action Plan"
+    }
+   
+    
+    if(data[0]?.msaformid!=="" &&  data[0]?.servicesactionplanid!==null){ 
+       result = "All forms are up to date"
+    }
+    
+    return result
+
+  }
 
   return (<>
     <Layout>
@@ -53,7 +82,7 @@ console.log("data",data)
 
         <div id="user-box-container" className='p-3 flex justify-around items-center  font-bold'>
               <Image src={userIcon} className="mr-4"></Image>
-              <p className='text-blue-600'>{data[0].clientid}</p>
+              <p className='text-blue-600'>{data[0]?.clientid}</p>
         </div>
         <article className='container mx-auto border-2 border-blue-600 rounded-xl rounded-tl-none text-black md:grid md:grid-cols-2 font-bold shadow-xl'>
         
@@ -62,13 +91,13 @@ console.log("data",data)
                     
                 <div className='grid mt-4 grid-rows-2 md:flex md:items-center md:justify-between'>
                 <p className="">Date Client Joined LNE</p>
-                <p className='justify-self-end'>{new Date().toLocaleDateString()}</p>
+                <p className='justify-self-end'>{getDate(data[0]?.clientdatecreated)}</p>
                 </div>
                 <hr className='border-blue-600'></hr>
                 
                 <div className='grid grid-rows-2 md:flex md:items-center md:justify-between'>
                 <p  className="">Date Of Last Action</p>
-                <p className='justify-self-end'>{new Date().toLocaleDateString()}</p>
+                <p className='justify-self-end'>{new Date().toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
                 </div>
                 <hr className='border-blue-600 hidden md:block'></hr>
 
@@ -77,7 +106,7 @@ console.log("data",data)
             <div className='py-10 pl-4 md:pl-10  grid grid-rows-3 gap-5 items-center justify-items-start'>
                 <div className='flex'>
                     <Image src={infoIcon} ></Image>
-                    <p className='px-4 '>You need to complete x form</p>
+                    <p className='px-4 '>{checkForms()}</p>
                 </div>
                 <div className='flex'>
                     <Image src={infoIcon} ></Image>
@@ -131,7 +160,7 @@ console.log("data",data)
               </svg>
               </div>
               <h4 className="text-center">
-                {data[0]?.msaformid ===undefined || data[0]?.msaformid==="" || data[0]?.msaformid===null ? (`Create MSA Form`) : 'Edit MSA Form' }
+                {data[0]?.msaformid ===undefined || data[0]?.msaformid==="" || data[0]?.msaformid===null ? (`Add MSA Form`) : 'MSA Form' }
               </h4>
               </div>
               </Link>
@@ -242,7 +271,7 @@ console.log("data",data)
   </svg>
   </div>
   <h4 className="text-center">
-  Create Progress Note
+ {`Create Progress Note`}
   </h4>
 </div>
 </Link>  

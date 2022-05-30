@@ -168,7 +168,7 @@ useEffect(()=>{
                   <h3 className="font-black mb-5">Date</h3>
                   <label className="block">
                     <span className="text-xs">Today&apos;s date</span>
-                    <p>{todaysDate.toLocaleDateString()}</p>
+                    <p>{new Date().toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
                   </label>
                 </div>
 
@@ -339,9 +339,12 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       AIRSIntakeForm: !clientData.AIRSIntakeForm,
+                      AIRSIntakeFormDate: '',
                     })
                   }
                 }
+                checked={clientData.AIRSIntakeFormDate ? true : false} 
+                disabled={clientData.AIRSIntakeFormDate ? true : false} 
                 />
               </div>
               <div>
@@ -356,11 +359,13 @@ useEffect(()=>{
                     clientData.AIRSIntakeFormDate &&
                     clientData.AIRSIntakeFormDate
                   }
+                  /* disabled={clientData.AIRSIntakeFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSIntakeFormDate: e.target.value,
+                      AIRSIntakeForm: !clientData.AIRSIntakeForm,
                     });
                   }}
                 />
@@ -405,9 +410,11 @@ useEffect(()=>{
                       ...clientData,
                       ComprehensiveRiskBehaviorAssessment:
                         !clientData.ComprehensiveRiskBehaviorAssessment,
+                      ComprehensiveRiskBehaviorAssessmentDate:'',
                     })
                   }
                 }
+                checked={clientData.ComprehensiveRiskBehaviorAssessment? true : false}
                 />
               </div>
               <div>
@@ -421,11 +428,14 @@ useEffect(()=>{
                     clientData.ComprehensiveRiskBehaviorAssessmentDate &&
                     clientData.ComprehensiveRiskBehaviorAssessmentDate
                   }
+                  /* disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       ComprehensiveRiskBehaviorAssessmentDate: e.target.value,
+                      ComprehensiveRiskBehaviorAssessment:
+                        !clientData.ComprehensiveRiskBehaviorAssessment,
                     });
                   }}
                 />
@@ -468,8 +478,10 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate: ''
                     })
                   }}
+                  checked={clientData.ServiceActionPlan? true : false}
                 />
               </div>
               <div>
@@ -483,11 +495,13 @@ useEffect(()=>{
                     clientData.ServiceActionPlanDate &&
                     clientData.ServiceActionPlanDate
                   }
+                  /* disabled={clientData.ServiceActionPlanDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       ServiceActionPlanDate: e.target.value,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
                     });
                   }}
                 />
@@ -532,9 +546,11 @@ useEffect(()=>{
                       ...clientData,
                       AIRSCollateralInformation:
                         !clientData.AIRSCollateralInformation,
+                      AIRSCollateralInformationDate: '',
                     })
                     }
                   }
+                  checked={clientData.AIRSCollateralInformation? true : false}
                 />
               </div>
               <div>
@@ -548,11 +564,14 @@ useEffect(()=>{
                     clientData.AIRSCollateralInformationDate &&
                     clientData.AIRSCollateralInformationDate
                   }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSCollateralInformationDate: e.target.value,
+                      AIRSCollateralInformation:
+                        !clientData.AIRSCollateralInformation,
                     });
                   }}
                 />
@@ -597,8 +616,10 @@ useEffect(()=>{
                       ...clientData,
                       AIRSFinancialInformation:
                         !clientData.AIRSFinancialInformation,
+                      AIRSFinancialInformationDate: '',
                     })
                   }}
+                  checked={clientData.AIRSFinancialInformation? true : false}
                 />
               </div>
               <div>
@@ -612,11 +633,14 @@ useEffect(()=>{
                     clientData.AIRSFinancialInformationDate &&
                     clientData.AIRSFinancialInformationDate
                   }
+                 /*  disabled={clientData.AIRSFinancialInformation ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSFinancialInformationDate: e.target.value,
+                      AIRSFinancialInformation:
+                        !clientData.AIRSFinancialInformation,
                     });
                   }}
                 />
@@ -661,8 +685,10 @@ useEffect(()=>{
                       ...clientData,
                       AIRSHIVAIDSRiskHistory:
                         !clientData.AIRSHIVAIDSRiskHistory,
+                      AIRSHIVAIDSRiskHistoryDate: ''
                     })
                   }}
+                  checked={clientData.AIRSHIVAIDSRiskHistory? true : false}
                 />
               </div>
               <div>
@@ -676,11 +702,14 @@ useEffect(()=>{
                     clientData.AIRSHIVAIDSRiskHistoryDate &&
                     clientData.AIRSHIVAIDSRiskHistoryDate
                   }
+                  /* disabled={clientData.AIRSHIVAIDSRiskHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSHIVAIDSRiskHistoryDate: e.target.value,
+                      AIRSHIVAIDSRiskHistory:
+                        !clientData.AIRSHIVAIDSRiskHistory,
                     });
                   }}
                 />
@@ -723,9 +752,11 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      AIRSHCVHistoryDate: ''
                     })
                   }
                 }
+                checked={clientData.AIRSHCVHistory? true : false}
                 />
               </div>
               <div>
@@ -739,11 +770,13 @@ useEffect(()=>{
                     clientData.AIRSHCVHistoryDate &&
                     clientData.AIRSHCVHistoryDate
                   }
+                  /* disabled={clientData.AIRSHCVHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSHCVHistoryDate: e.target.value,
+                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
                     });
                   }}
                 />
@@ -789,9 +822,11 @@ useEffect(()=>{
                       ...clientData,
                       AIRSHousingInformation:
                         !clientData.AIRSHousingInformation,
+                      AIRSHousingInformationDate: '',
                     })
                   }
                 }
+                checked={clientData.AIRSHousingInformation? true : false}
                 />
               </div>
               <div>
@@ -805,11 +840,14 @@ useEffect(()=>{
                     clientData.AIRSHousingInformationDate &&
                     clientData.AIRSHousingInformationDate
                   }
+                  /* disabled={clientData.AIRSHousingInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSHousingInformationDate: e.target.value,
+                      AIRSHousingInformation:
+                        !clientData.AIRSHousingInformation,
                     });
                   }}
                 />
@@ -854,8 +892,10 @@ useEffect(()=>{
                       ...clientData,
                       AIRSInsuranceInformation:
                         !clientData.AIRSInsuranceInformation,
+                      AIRSInsuranceInformationDate: '',
                     })
                   }}
+                  checked={clientData.AIRSInsuranceInformation? true : false}
                 />
               </div>
               <div>
@@ -869,11 +909,14 @@ useEffect(()=>{
                     clientData.AIRSInsuranceInformationDate &&
                     clientData.AIRSInsuranceInformationDate
                   }
+                  /* disabled={clientData.AIRSInsuranceInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSInsuranceInformationDate: e.target.value,
+                      AIRSInsuranceInformation:
+                        !clientData.AIRSInsuranceInformation,
                     });
                   }}
                 />
@@ -918,8 +961,10 @@ useEffect(()=>{
                       ...clientData,
                       AIRSSubstanceUseHistory:
                         !clientData.AIRSSubstanceUseHistory,
+                      AIRSSubstanceUseHistoryDate: ''
                     })
                   }}
+                  checked={clientData.AIRSSubstanceUseHistory? true : false}
                 />
               </div>
               <div>
@@ -933,11 +978,14 @@ useEffect(()=>{
                     clientData.AIRSSubstanceUseHistoryDate &&
                     clientData.AIRSSubstanceUseHistoryDate
                   }
+                  /* disabled={clientData.AIRSSubstanceUseHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       AIRSSubstanceUseHistoryDate: e.target.value,
+                      AIRSSubstanceUseHistory:
+                        !clientData.AIRSSubstanceUseHistory,
                     });
                   }}
                 />
@@ -980,9 +1028,10 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       LNEClientRights: !clientData.LNEClientRights,
-                     
+                      LNEClientRightsDate: '',
                     })
                   }}
+                  checked={clientData.LNEClientRights? true : false}
                 />
               </div>
               <div>
@@ -996,11 +1045,13 @@ useEffect(()=>{
                     clientData.LNEClientRightsDate &&
                     clientData.LNEClientRightsDate
                   }
+                  /* disabled={clientData.LNEClientRightsDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEClientRightsDate: e.target.value,
+                      LNEClientRights: !clientData.LNEClientRights,
                     });
                   }}
                 />
@@ -1045,8 +1096,10 @@ useEffect(()=>{
                       ...clientData,
                       LNEClientGrievancePolicyProcedure:
                         !clientData.LNEClientGrievancePolicyProcedure,
+                      LNEClientGrievancePolicyProcedureDate: '',
                     })
                   }}
+                  checked={clientData.LNEClientGrievancePolicyProcedure? true : false}
                 />
               </div>
               <div>
@@ -1060,11 +1113,14 @@ useEffect(()=>{
                     clientData.LNEClientGrievancePolicyProcedureDate &&
                     clientData.LNEClientGrievancePolicyProcedureDate
                   }
+                  /* disabled={clientData.LNEClientGrievancePolicyProcedureDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEClientGrievancePolicyProcedureDate: e.target.value,
+                      LNEClientGrievancePolicyProcedure:
+                        !clientData.LNEClientGrievancePolicyProcedure,
                     });
                   }}
                 />
@@ -1107,9 +1163,11 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       LNEProgramRules: !clientData.LNEProgramRules,
+                      LNEProgramRulesDate: ''
                     })
                   }
                 }
+                checked={clientData.LNEProgramRules? true : false}
                 />
               </div>
               <div>
@@ -1123,11 +1181,13 @@ useEffect(()=>{
                     clientData.LNEProgramRulesDate &&
                     clientData.LNEProgramRulesDate
                   }
+                  /* disabled={clientData.LNEProgramRulesDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEProgramRulesDate: e.target.value,
+                      LNEProgramRules: !clientData.LNEProgramRules,
                     });
                   }}
                 />
@@ -1172,8 +1232,10 @@ useEffect(()=>{
                       ...clientData,
                       LNEEmergencyContactConsent:
                         !clientData.LNEEmergencyContactConsent,
+                      LNEEmergencyContactConsentDate: ''
                     })
                   }}
+                  checked={clientData.LNEEmergencyContactConsent? true : false}
                 />
               </div>
               <div>
@@ -1187,11 +1249,14 @@ useEffect(()=>{
                     clientData.LNEEmergencyContactConsentDate &&
                     clientData.LNEEmergencyContactConsentDate
                   }
+                  /* disabled={clientData.LNEEmergencyContactConsentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEEmergencyContactConsentDate: e.target.value,
+                      LNEEmergencyContactConsent:
+                        !clientData.LNEEmergencyContactConsent,
                     });
                   }}
                 />
@@ -1237,9 +1302,11 @@ useEffect(()=>{
                       ...clientData,
                       LNEConsentForReleaseOfConfidentialInformation:
                         !clientData.LNEConsentForReleaseOfConfidentialInformation,
+                      LNEConsentForReleaseOfConfidentialInformationDate: '',
                     })
                   }
                   }
+                  checked={clientData.LNEConsentForReleaseOfConfidentialInformation? true : false}
                 />
               </div>
               <div>
@@ -1253,12 +1320,15 @@ useEffect(()=>{
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate &&
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate
                   }
+                  /* disabled={clientData.LNEConsentForReleaseOfConfidentialInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEConsentForReleaseOfConfidentialInformationDate:
                         e.target.value,
+                      LNEConsentForReleaseOfConfidentialInformation:
+                        !clientData.LNEConsentForReleaseOfConfidentialInformation,
                     });
                   }}
                 />
@@ -1301,9 +1371,11 @@ useEffect(()=>{
                     })):setClientData({
                       ...clientData,
                       HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      HIPPAConsentFormDate: ''
                     })
                   }
                   }
+                  checked={clientData.HIPPAConsentForm? true : false}
                 />
               </div>
               <div>
@@ -1317,11 +1389,13 @@ useEffect(()=>{
                     clientData.HIPPAConsentFormDate &&
                     clientData.HIPPAConsentFormDate
                   }
+                  disabled={clientData.HIPPAConsentFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       HIPPAConsentFormDate: e.target.value,
+                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
                     });
                   }}
                 />
@@ -1366,9 +1440,11 @@ useEffect(()=>{
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPractices:
                         !clientData.NYCDOHMHNoticeOfPrivacyPractices,
+                      NYCDOHMHNoticeOfPrivacyPracticesDate: ''
                     })
                   }
                   }
+                  checked={clientData.NYCDOHMHNoticeOfPrivacyPractices? true : false}
                 />
               </div>
               <div>
@@ -1385,11 +1461,14 @@ useEffect(()=>{
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate &&
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate
                   }
+                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPracticesDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       NYCDOHMHNoticeOfPrivacyPracticesDate: e.target.value,
+                      NYCDOHMHNoticeOfPrivacyPractices:
+                        !clientData.NYCDOHMHNoticeOfPrivacyPractices,
                     });
                   }}
                 />
@@ -1432,9 +1511,11 @@ useEffect(()=>{
                       ...clientData,
                       LNEOutreachRetentionTrackingForm:
                         !clientData.LNEOutreachRetentionTrackingForm,
+                      LNEOutreachRetentionTrackingFormDate: ''
                     })
                   }
                   }
+                  checked={clientData.LNEOutreachRetentionTrackingForm? true: false}
                 />
               </div>
               <div>
@@ -1448,11 +1529,14 @@ useEffect(()=>{
                     clientData.LNEOutreachRetentionTrackingFormDate &&
                     clientData.LNEOutreachRetentionTrackingFormDate
                   }
+                  disabled={clientData.LNEOutreachRetentionTrackingFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEOutreachRetentionTrackingFormDate: e.target.value,
+                      LNEOutreachRetentionTrackingForm:
+                        !clientData.LNEOutreachRetentionTrackingForm,
                     });
                   }}
                 />
@@ -1498,9 +1582,11 @@ useEffect(()=>{
                       ...clientData,
                       LNEReferralInformation:
                         !clientData.LNEReferralInformation,
+                      LNEReferralInformationDate: ''
                     })
                   }
                 }
+                checked={clientData.LNEReferralInformation? true: false}
                 />
               </div>
               <div>
@@ -1514,11 +1600,14 @@ useEffect(()=>{
                     clientData.LNEReferralInformationDate &&
                     clientData.LNEReferralInformationDate
                   }
+                  disabled={clientData.LNEReferralInformationDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEReferralInformationDate: e.target.value,
+                      LNEReferralInformation:
+                        !clientData.LNEReferralInformation,
                     });
                   }}
                 />
@@ -1560,9 +1649,11 @@ useEffect(()=>{
                       LNEClientReferralFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
-                      LNEClientReferralForm: !clientData.LNEClientReferralForm
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
+                      LNEClientReferralFormDate: ''
                     })
                   }
+                  checked={clientData.LNEClientReferralForm?  true : false}
                 />
               </div>
               <div>
@@ -1576,11 +1667,13 @@ useEffect(()=>{
                     clientData.LNEClientReferralFormDate &&
                     clientData.LNEClientReferralFormDate
                   }
+                  disabled={clientData.LNEClientReferralFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEClientReferralFormDate: e.target.value,
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
                     });
                   }}
                 />
@@ -1622,9 +1715,11 @@ useEffect(()=>{
                       LNEHNSEligibilityFormDate:crearFecha()
                     })):setClientData({
                       ...clientData,
-                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm
+                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
+                      LNEHNSEligibilityFormDate: ''
                     })
                   }}
+                  checked={clientData.LNEHNSEligibilityForm? true : false}
                 />
               </div>
               <div>
@@ -1638,11 +1733,13 @@ useEffect(()=>{
                     clientData.LNEHNSEligibilityFormDate &&
                     clientData.LNEHNSEligibilityFormDate
                   }
+                  disabled={clientData.LNEHNSEligibilityFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
                       ...clientData,
                       LNEHNSEligibilityFormDate: e.target.value,
+                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
                     });
                   }}
                 />

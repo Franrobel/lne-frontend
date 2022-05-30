@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const EditMsaFormPage = ({ data }) => {
 
+  console.log("data",data)
+
   const router = useRouter()
 
   const notifyMessage = () => {
@@ -34,127 +36,127 @@ const EditMsaFormPage = ({ data }) => {
     planStartDate: "",
     userFirstName: data[0].userfirstname,
     userLastName: data[0].userlastname,
-    AIRSIntakeForm:  data[0].AIRSIntakeForm === "0" ? false : true,
+    AIRSIntakeForm:  data[0].AIRSIntakeForm === "0" || data[0].AIRSIntakeForm === null ? false : true,
     AIRSIntakeFormDate: data[0].airsintakeformdate,
-    AIRSIntakeFormPDF: false ,
-    AIRSIntakeFormScan: false ,
+    AIRSIntakeFormPDF: data[0].airsintakeformpdf=== "0" || data[0].airsintakeformpdf=== null ? false : true,
+    AIRSIntakeFormScan: data[0].airsintakeformscan=== "0" || data[0].airsintakeformscan=== null ? false : true,
     AIRSIntakeFormUploadDate: data[0].airsintakeformuploaddate || null,
-    ComprehensiveRiskBehaviorAssessment: data[0].comprehensiveriskbehaviorassessment === "0" ? false : true,
+    ComprehensiveRiskBehaviorAssessment: data[0].comprehensiveriskbehaviorassessment === "0" || data[0].comprehensiveriskbehaviorassessment === null ? false : true,
     ComprehensiveRiskBehaviorAssessmentDate: data[0].comprehensiveriskbehaviorassessmentdate,
-    ComprehensiveRiskBehaviorAssessmentPDF: false,
-    ComprehensiveRiskBehaviorAssessmentScan: false,
+    ComprehensiveRiskBehaviorAssessmentPDF: data[0].comprehensiveriskbehaviorassessmentpdf=== "0" || data[0].comprehensiveriskbehaviorassessmentpdf=== null ? false : true,
+    ComprehensiveRiskBehaviorAssessmentScan: data[0].comprehensiveriskbehaviorassessmentscan=== "0" || data[0].comprehensiveriskbehaviorassessmentscan=== null ? false : true,
     ComprehensiveRiskBehaviorAssessmentUploadDate: data[0].comprehensiveriskbehaviorassessmentuploaddate || null,
-    ServiceActionPlan: data[0].serviceactionplan === "0" ? false : true,
+    ServiceActionPlan: data[0].serviceactionplan === "0" || data[0].serviceactionplan === null ? false : true,
     ServiceActionPlanDate: data[0].serviceactionplandate,
     // ServiceActionPlanPDF: data[0].serviceactionplanpdf === "0" ? true : false,
-    ServiceActionPlanScan :  false,
+    ServiceActionPlanScan :  data[0].serviceactionplanscan=== "0" || data[0].serviceactionplanscan=== null ? false : true,
     ServiceActionPlanUploadDate: data[0].serviceactionplanuploaddate || null,
-    AIRSCollateralInformation: data[0].airscollateralinformation === "0" ? false : true,
+    AIRSCollateralInformation: data[0].airscollateralinformation === "0" || data[0].airscollateralinformation === null ? false : true,
     AIRSCollateralInformationDate: data[0].airscollateralinformationdate,
-    AIRSCollateralInformationPDF: false,
-    AIRSCollateralInformationScan: false,
+    AIRSCollateralInformationPDF: data[0].airscollateralinformationpdf=== "0" || data[0].airscollateralinformationpdf=== null ? false : true,
+    AIRSCollateralInformationScan: data[0].airscollateralinformationscan=== "0" || data[0].airscollateralinformationscan=== null ? false : true,
     AIRSCollateralInformationUploadDate: data[0].airsCollateralInformationuploaddate || null,
 
-    AIRSFinancialInformation: data[0].airsfinancialinformation === "0" ? false : true,
+    AIRSFinancialInformation: data[0].airsfinancialinformation === "0" || data[0].airsfinancialinformation === null ? false : true,
     AIRSFinancialInformationDate: data[0].airsfinancialinformationdate,
-    AIRSFinancialInformationPDF: false,
-    AIRSFinancialInformationScan: false,
+    AIRSFinancialInformationPDF: data[0].airsfinancialinformationpdf=== "0" || data[0].airsfinancialinformationpdf=== null ? false : true,
+    AIRSFinancialInformationScan: data[0].airsfinancialinformationscan=== "0" || data[0].airsfinancialinformationscan===null ? false : true,
     AIRSFinancialInformationUploadDate: data[0].airsFinancialInformationuploaddate || null,
 
-    AIRSHIVAIDSRiskHistory: data[0].airshivaidsriskhistory === "0" ? false : true,
+    AIRSHIVAIDSRiskHistory: data[0].airshivaidsriskhistory === "0" || data[0].airshivaidsriskhistory === null ? false : true,
     AIRSHIVAIDSRiskHistoryDate: data[0].airshivaidsriskhistorydate,
-    AIRSHIVAIDSRiskHistoryPDF: false, 
-    AIRSHIVAIDSRiskHistoryScan: false, 
+    AIRSHIVAIDSRiskHistoryPDF: data[0].airshivaidsriskhistorypdf==="0" || data[0].airshivaidsriskhistorypdf===null ? false: true, 
+    AIRSHIVAIDSRiskHistoryScan: data[0].airshivaidsriskhistoryscan==="0" || data[0].airshivaidsriskhistoryscan===null ? false: true, 
     AIRSHIVAIDSRiskHistoryUploadDate: data[0].airshivaidsriskhistoryuploaddate || null,
 
-    AIRSHCVHistory: data[0].airshcvhistory === "0" ? false : true,
+    AIRSHCVHistory: data[0].airshcvhistory === "0" || data[0].airshcvhistory === null ? false : true,
     AIRSHCVHistoryDate: data[0].airshcvhistorydate,
-    AIRSHCVHistoryPDF: false, 
-    AIRSHCVHistoryScan: false, 
+    AIRSHCVHistoryPDF: data[0].airshcvhistorypdf=== "0" || data[0].airshcvhistorypdf=== null  ? false : true, 
+    AIRSHCVHistoryScan: data[0].airshcvhistoryscan=== "0"  || data[0].airshcvhistoryscan=== null ? false : true, 
     AIRSHCVHistoryUploadDate: data[0].airshcvhistoryuploaddate || null,
 
-    AIRSHousingInformation: data[0].airshousinginformation === "0" ? false : true,
+    AIRSHousingInformation: data[0].airshousinginformation === "0" || data[0].airshousinginformation === null ? false : true,
     AIRSHousingInformationDate: data[0].airshousinginformationdate,
-    AIRSHousingInformationPDF: false, 
-    AIRSHousingInformationScan: false, 
+    AIRSHousingInformationPDF: data[0].airshousinginformationpdf=== "0" || data[0].airshousinginformationpdf=== null ? false: true, 
+    AIRSHousingInformationScan: data[0].airshousinginformationscan=== "0" || data[0].airshousinginformationscan=== null ? false: true, 
     AIRSHousingInformationUploadDate: data[0].airshousinginformationuploaddate || null,
 
-    AIRSInsuranceInformation: data[0].airsinsuranceinformation === "0" ? false : true,
+    AIRSInsuranceInformation: data[0].airsinsuranceinformation === "0" || data[0].airsinsuranceinformation === null ? false : true,
     AIRSInsuranceInformationDate: data[0].airsinsuranceinformationdate,
-    AIRSInsuranceInformationPDF: false, 
-    AIRSInsuranceInformationScan : false, 
+    AIRSInsuranceInformationPDF: data[0].airsinsuranceinformationpdf=== "0" || data[0].airsinsuranceinformationpdf=== null ? false : true, 
+    AIRSInsuranceInformationScan : data[0].airsinsuranceinformationscan=== "0" || data[0].airsinsuranceinformationscan=== null ? false : true, 
     AIRSInsuranceInformationUploadDate: data[0].airsinsuranceinformationuploaddate || null,
 
-    AIRSSubstanceUseHistory: data[0].airssubstanceusehistory === "0" ? false : true,
+    AIRSSubstanceUseHistory: data[0].airssubstanceusehistory === "0" || data[0].airssubstanceusehistory === null ? false : true,
     AIRSSubstanceUseHistoryDate: data[0].airssubstanceusehistorydate,
-    AIRSSubstanceUseHistoryPDF: false, 
-    AIRSSubstanceUseHistoryScan : false, 
+    AIRSSubstanceUseHistoryPDF: data[0].airssubstanceusehistorypdf==="0" || data[0].airssubstanceusehistorypdf===null ? false : true, 
+    AIRSSubstanceUseHistoryScan : data[0].airssubstanceusehistoryscan==="0" || data[0].airssubstanceusehistoryscan===null ? false : true, 
     AIRSSubstanceUseHistoryUploadDate: data[0].airssubstanceusehistoryuploaddate || null,
 
-    LNEClientRights: data[0].lneclientrights === "0" ? false : true,
+    LNEClientRights: data[0].lneclientrights === "0" || data[0].lneclientrights === null ? false : true,
     LNEClientRightsDate: data[0].lneclientrightsdate,
-    LNEClientRightsPDF: false, 
-    LNEClientRightsScan: false, 
+    LNEClientRightsPDF: data[0].lneclientrightspdf=== "0" || data[0].lneclientrightspdf=== null ? false : true, 
+    LNEClientRightsScan: data[0].lneclientrightsscan=== "0" || data[0].lneclientrightsscan=== null ? false : true, 
     LNEClientRightsUploadDate: data[0].lneclientrightsuploaddate || null,
 
-    LNEClientGrievancePolicyProcedure: data[0].lneclientgrievancepolicyprocedure === "0" ? false : true,
+    LNEClientGrievancePolicyProcedure: data[0].lneclientgrievancepolicyprocedure === "0" || data[0].lneclientgrievancepolicyprocedure === null ? false : true,
     LNEClientGrievancePolicyProcedureDate: data[0].lneclientgrievancepolicyproceduredate,
-    LNEClientGrievancePolicyProcedurePDF: false, 
-    LNEClientGrievancePolicyProcedureScan : false, 
+    LNEClientGrievancePolicyProcedurePDF: data[0].lneclientgrievancepolicyprocedurepdf=== "0" || data[0].lneclientgrievancepolicyprocedurepdf=== null ? false : true, 
+    LNEClientGrievancePolicyProcedureScan : data[0].lneclientgrievancepolicyprocedurescan=== "0" || data[0].lneclientgrievancepolicyprocedurescan=== null ? false : true, 
     LNEClientGrievancePolicyProcedureUploadDate: data[0].lneclientgrievancepolicyprocedureuploaddate || null,
 
-    LNEProgramRules: data[0].lneprogramrules === "0" ? false : true,
+    LNEProgramRules: data[0].lneprogramrules === "0" || data[0].lneprogramrules === null ? false : true,
     LNEProgramRulesDate: data[0].lneprogramrulesdate,
-    LNEProgramRulesPDF: false, 
-    LNEProgramRulesScan: false, 
+    LNEProgramRulesPDF: data[0].lneprogramrulespdf=== "0" || data[0].lneprogramrulespdf=== null  ? false : true, 
+    LNEProgramRulesScan: data[0].lneprogramrulesscan=== "0"  || data[0].lneprogramrulesscan=== null ? false : true, 
     LNEProgramRulesUploadDate: data[0].lneprogramrulesuploaddate || null,
 
-    LNEEmergencyContactConsent: data[0].lneemergencycontactconsent === "0" ? false : true,
+    LNEEmergencyContactConsent: data[0].lneemergencycontactconsent === "0" || data[0].lneemergencycontactconsent === null ? false : true,
     LNEEmergencyContactConsentDate: data[0].lneemergencycontactconsentdate,
-    LNEEmergencyContactConsentPDF: false,
-    LNEEmergencyContactConsentScan: false,
+    LNEEmergencyContactConsentPDF: data[0].lneemergencycontactconsentpdf=== "0"  || data[0].lneemergencycontactconsentpdf=== null ? false : true,
+    LNEEmergencyContactConsentScan: data[0].lneemergencycontactconsentscan=== "0" || data[0].lneemergencycontactconsentscan=== null ? false : true,
     LNEEmergencyContactConsentUploadDate: data[0].lneemergencycontactconsentuploaddate || null,
 
-    LNEConsentForReleaseOfConfidentialInformation: data[0].lneconsentforreleaseofconfidentialinformation === "0" ? false : true,
+    LNEConsentForReleaseOfConfidentialInformation: data[0].lneconsentforreleaseofconfidentialinformation === "0" || data[0].lneconsentforreleaseofconfidentialinformation === null ? false : true,
     LNEConsentForReleaseOfConfidentialInformationDate: data[0].lneconsentforreleaseofconfidentialinformationdate,
-    LNEConsentForReleaseOfConfidentialInformationPDF: false,
-    LNEConsentForReleaseOfConfidentialInformationScan: false,
+    LNEConsentForReleaseOfConfidentialInformationPDF: data[0].lneconsentforreleaseofconfidentialinformationpdf=== "0" || data[0].lneconsentforreleaseofconfidentialinformationpdf=== null ? false : true,
+    LNEConsentForReleaseOfConfidentialInformationScan: data[0].lneconsentforreleaseofconfidentialinformationscan=== "0" || data[0].lneconsentforreleaseofconfidentialinformationscan=== null ? false : true,
     LNEConsentForReleaseOfConfidentialInformationUploadDate: data[0].lneconsentforreleaseofconfidentialinformationuploaddate || null,
 
-    HIPPAConsentForm: data[0].hippaconsentform === "0" ? false : true,
+    HIPPAConsentForm: data[0].hippaconsentform === "0" || data[0].hippaconsentform === null ? false : true,
     HIPPAConsentFormDate: data[0].hippaconsentformdate,
-    HIPPAConsentFormPDF: false,
-    HIPPAConsentFormScan : false,
+    HIPPAConsentFormPDF: data[0].hippaconsentformpdf=== "0" || data[0].hippaconsentformpdf=== null ? false : true,
+    HIPPAConsentFormScan : data[0].hippaconsentformscan=== "0" || data[0].hippaconsentformscan=== null ? false : true,
     HIPPAConsentFormUploadDate: data[0].hippaconsentformuploaddate || null,
 
-    NYCDOHMHNoticeOfPrivacyPractices: data[0].nycdohmhnoticeofprivacypractices === "0" ? false : true,
+    NYCDOHMHNoticeOfPrivacyPractices: data[0].nycdohmhnoticeofprivacypractices === "0" || data[0].nycdohmhnoticeofprivacypractices === null ? false : true,
     NYCDOHMHNoticeOfPrivacyPracticesDate: data[0].nycdohmhnoticeofprivacypracticesdate,
-    NYCDOHMHNoticeOfPrivacyPracticesPDF: false,
-    NYCDOHMHNoticeOfPrivacyPracticesScan : false,
+    NYCDOHMHNoticeOfPrivacyPracticesPDF: data[0].nycdohmhnoticeofprivacypracticespdf=== "0" || data[0].nycdohmhnoticeofprivacypracticespdf=== null ? false : true,
+    NYCDOHMHNoticeOfPrivacyPracticesScan : data[0].nycdohmhnoticeofprivacypracticesscan=== "0" || data[0].nycdohmhnoticeofprivacypracticesscan=== null ? false : true,
     NYCDOHMHNoticeOfPrivacyPracticesUploadDate: data[0].nycdohmhnoticeofprivacypracticesuploaddate || null,
 
-    LNEOutreachRetentionTrackingForm: data[0].lneoutreachretentiontrackingform === "0" ? false : true,
+    LNEOutreachRetentionTrackingForm: data[0].lneoutreachretentiontrackingform === "0" || data[0].lneoutreachretentiontrackingform === null ? false : true,
     LNEOutreachRetentionTrackingFormDate: data[0].lneoutreachretentiontrackingformdate,
-    LNEOutreachRetentionTrackingFormPDF: false,
-    LNEOutreachRetentionTrackingFormScan: false,
+    LNEOutreachRetentionTrackingFormPDF: data[0].lneoutreachretentiontrackingformpdf=== "0" || data[0].lneoutreachretentiontrackingformpdf=== null ? false : true,
+    LNEOutreachRetentionTrackingFormScan: data[0].lneoutreachretentiontrackingformscan=== "0" || data[0].lneoutreachretentiontrackingformscan=== null ? false : true,
     LNEOutreachRetentionTrackingFormUploadDate: data[0].lneoutreachretentiontrackingformuploaddate || null,
 
-    LNEReferralInformation: data[0].lnereferralinformation === "0" ? false : true,
+    LNEReferralInformation: data[0].lnereferralinformation === "0" || data[0].lnereferralinformation === null ? false : true,
     LNEReferralInformationDate: data[0].lnereferralinformationdate,
-    LNEReferralInformationPDF: false,
-    LNEReferralInformationScan: false,
-    LNEReferralInformationUploadDate: data[0].LNEReferralInformationUploadDate || null,
+    LNEReferralInformationPDF:  data[0].lnereferralinformationpdf=== "0" || data[0].lnereferralinformationpdf=== null ? false : true,
+    LNEReferralInformationScan:  data[0].lnereferralinformationscan=== "0" || data[0].lnereferralinformationscan=== null ? false : true,
+    LNEReferralInformationUploadDate: data[0].lnereferralinformationuploaddate || null,
 
-    LNEClientReferralForm: data[0].lneclientreferralform === "0" ? false : true,
+    LNEClientReferralForm: data[0].lneclientreferralform === "0" || data[0].lneclientreferralform === null ? false : true,
     LNEClientReferralFormDate: data[0].lneclientreferralformdate,
-    LNEClientReferralFormPDF: false,
-    LNEClientReferralFormScan: false,
+    LNEClientReferralFormPDF: data[0].lneclientreferralformpdf=== "0" || data[0].lneclientreferralformpdf=== null ? false : true,
+    LNEClientReferralFormScan: data[0].lneclientreferralformscan=== "0" || data[0].lneclientreferralformscan=== null ? false : true,
     LNEClientReferralFormUploadDate: data[0].lnereferralinformationuploaddate || null,
 
-    LNEHNSEligibilityForm: data[0].lnehnseligibilityform === "0" ? false : true,
+    LNEHNSEligibilityForm: data[0].lnehnseligibilityform === "0" || data[0].lnehnseligibilityform === null ? false : true,
     LNEHNSEligibilityFormDate: data[0].lnehnseligibilityformdate,
-    LNEHNSEligibilityFormPDF: false,
-    LNEHNSEligibilityFormScan: false,
+    LNEHNSEligibilityFormPDF: data[0].lnehnseligibilityformpdf=== "0" || data[0].lnehnseligibilityformpdf=== null ? false : true,
+    LNEHNSEligibilityFormScan: data[0].lnehnseligibilityformscan=== "0" || data[0].lnehnseligibilityformscan=== null ? false : true,
     LNEHNSEligibilityFormUploadDate: data[0].lnehnseligibilityformuploaddate || null
   });
   const todaysDate = new Date();
@@ -169,29 +171,31 @@ const EditMsaFormPage = ({ data }) => {
   const CompRiskBehASS = `${FormTitles[1][0].slice(0, 13)} ${FormTitles[1][0].slice(13, 17)} ${FormTitles[1][0].slice(17, 25)} ${FormTitles[2][0].slice(25)}`;
   const ServActioPla = `${FormTitles[2][0].slice(0, 7)} ${FormTitles[2][0].slice(7, 13)} ${FormTitles[2][0].slice(13, 17)}`
 
-console.log(FormTitles);
+console.log("clientData",clientData);
   const handleMsaform = () => {
 
-    notifyMessage()
+/*     notifyMessage()
           setTimeout(() => {
             router.push(`/clients/${clientData.clientId}/profile`)
-          }, 2300)
+          }, 2300) */
 
-   /*  axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/msa_forms/${clientData.clientId}/update`, {
+    axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/msa_forms/${clientData.clientId}/update_des_msa_form`, {
       clientData
     })
       .then(function (response) {
-
+        console.log(response)
         if (response.status === 200 || response.statusText === 'Ok') {
           notifyMessage()
           setTimeout(() => {
-            router.push(`/clients/${clientData.clientId}/profile`)
+            router.push(`/dashboard`)
           }, 2300)
-        } 1
+        
+        } 
       })
       .catch(function (error) {
+        console.log(error)
         res.send(error)
-      }); */
+      });
   }
 
   const crearFecha = () => {
@@ -502,9 +506,9 @@ console.log(FormTitles);
             {/* {TABLE HEAD} */}
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSIntakeForm? '' :'pointer-events-none'}`}
             >
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSIntakeForm? 'pointer-events-none' :""}`}
                        onClick={() => {
                         clientData.AIRSIntakeForm ?
                           setClientData(formState => ({
@@ -521,6 +525,7 @@ console.log(FormTitles);
                       } >
                
                 <svg xmlns="http://www.w3.org/2000/svg"
+               
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   strokeWidth={clientData.AIRSIntakeForm ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -531,6 +536,7 @@ console.log(FormTitles);
                   type="checkbox"
                   name=""
                   id=""
+                  
                   onChange={() => {
                     clientData.AIRSIntakeFormDate === "" || clientData.AIRSIntakeFormDate === null ? (
                       setClientData({
@@ -545,8 +551,12 @@ console.log(FormTitles);
                   }
                   }
                   checked={clientData.AIRSIntakeForm ? 'checked' : false}
+                  disabled={clientData.AIRSIntakeForm ? true : false}
                 />
+                
               </div>
+              
+            
               <div>
                 <p>AIRS Intake Form <span className="text-red-500">*</span></p>
               </div>
@@ -569,7 +579,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames}  text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   className="mr-2"
@@ -589,7 +599,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Intake</p>
+               {/*  <p className="text-dark-blue underline">Intake</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -611,7 +621,8 @@ console.log(FormTitles);
                 />
 
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSIntakeFormPDF? 'pointer-events-none' :""}`}
+
             
                 onClick={() => {
                   clientData.AIRSIntakeFormPDF ?
@@ -658,7 +669,8 @@ console.log(FormTitles);
                 checked={clientData.AIRSIntakeFormPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center " 
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSIntakeFormScan? 'pointer-events-none' :""}`}
+
                 onClick={() => {
                   clientData.AIRSIntakeFormScan ?
                     setClientData(formState => ({
@@ -708,9 +720,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.ComprehensiveRiskBehaviorAssessment? '' :'pointer-events-none'}`}
             >
-              <div className="ml-1 text-center flex justify-center items-center " 
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessment? 'pointer-events-none' :""}`}
                 onClick={() => {
                   clientData.ComprehensiveRiskBehaviorAssessment ?
                     setClientData(formState => ({
@@ -776,7 +788,7 @@ console.log(FormTitles);
                 />
 
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.cbra_folder_url ? data[0]?.cbra_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -795,7 +807,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">CRBA</p>
+          {/*       <p className="text-dark-blue underline">CRBA</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -815,7 +827,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessmentPDF? 'pointer-events-none' :""}`}
+
                 onClick={() => {
                   clientData.ComprehensiveRiskBehaviorAssessmentPDF ?
                     setClientData(formState => ({
@@ -862,7 +875,8 @@ console.log(FormTitles);
                   checked={clientData.ComprehensiveRiskBehaviorAssessmentPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center " 
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessmentScan? 'pointer-events-none' :""}`}
+
                onClick={() => {
                 clientData.ComprehensiveRiskBehaviorAssessmentScan ?
                   setClientData(formState => ({
@@ -912,9 +926,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.ServiceActionPlan? '' :'pointer-events-none'}`}
             >
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ServiceActionPlan? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.ServiceActionPlan ?
                   setClientData(formState => ({
@@ -977,7 +991,7 @@ console.log(FormTitles);
                 />
               </div>
 
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.action_plans_folder_url ? data[0]?.action_plans_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   className="mr-2"
@@ -997,7 +1011,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Action Plans</p>
+                {/* <p className="text-dark-blue underline">Action Plans</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1018,7 +1032,7 @@ console.log(FormTitles);
                 />
               </div>
               <div className="ml-1 text-center flex justify-center items-center ">
-                {/* <svg xmlns="http://www.w3.org/2000/svg"
+                <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   strokeWidth={clientData.ServiceActionPlanPDF ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -1041,9 +1055,10 @@ console.log(FormTitles);
                   }
                   }
                   checked={clientData.ServiceActionPlan ? 'checked' : false}
-                /> */}
+                />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ServiceActionPlanScan? 'pointer-events-none' :""}`}
+
                 onClick={() => {
                   clientData.ServiceActionPlanScan ?
                     setClientData(formState => ({
@@ -1084,10 +1099,10 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSCollateralInformation? '' :'pointer-events-none'}`}
             >
               <div className="ml-1 text-center flex justify-center items-center ">
-                <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSCollateralInformation? 'pointer-events-none' :""}`}
                   onClick={() => {
                     clientData.AIRSCollateralInformation ?
                       setClientData(formState => ({
@@ -1100,7 +1115,8 @@ console.log(FormTitles);
                         AIRSCollateralInformation: !formState.AIRSCollateralInformation,
                         AIRSCollateralInformationDate: crearFecha()
                       }))
-                  }}>
+                  }}
+                  disabled={clientData.AIRSCollateralInformation ? true : false}>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                     strokeWidth={clientData.AIRSCollateralInformation ? "3" : "0"}>
@@ -1125,6 +1141,7 @@ console.log(FormTitles);
                     }
                     }
                     checked={clientData.AIRSCollateralInformation ? 'checked' : false}
+                    disabled={clientData.AIRSCollateralInformation ? true : false}
                    
                   />
                 </div>
@@ -1151,7 +1168,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   className="mr-2"
@@ -1171,7 +1188,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Miscellaneous</p>
+                {/* <p className="text-dark-blue underline">Miscellaneous</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1191,7 +1208,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSCollateralInformationPDF? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.AIRSCollateralInformationPDF ?
                   setClientData(formState => ({
@@ -1239,7 +1256,8 @@ console.log(FormTitles);
                   disabled={clientData.AIRSCollateralInformation ? true : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSCollateralInformationScan? 'pointer-events-none' :""}`}
+
                  onClick={() => {
                   clientData.AIRSCollateralInformationScan ?
                     setClientData(formState => ({
@@ -1288,9 +1306,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSFinancialInformation? '' :'pointer-events-none'}`}
             >
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSFinancialInformation? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.AIRSFinancialInformation ?
                   setClientData(formState => ({
@@ -1351,7 +1369,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -1369,7 +1387,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Miscellaneous</p>
+               {/*  <p className="text-dark-blue underline">Miscellaneous</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1389,7 +1407,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSFinancialInformationPDF? 'pointer-events-none' :""}`}
+
              onClick={() => {
               clientData.AIRSFinancialInformationPDF ?
                 setClientData(formState => ({
@@ -1435,7 +1454,8 @@ console.log(FormTitles);
                   checked={clientData.AIRSFinancialInformationPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSFinancialInformationScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSFinancialInformationScan ?
                   setClientData(formState => ({
@@ -1484,8 +1504,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSHIVAIDSRiskHistory? '' :'pointer-events-none'}`}>
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHIVAIDSRiskHistory? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.AIRSHIVAIDSRiskHistory ?
                   setClientData(formState => ({
@@ -1546,7 +1566,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11  text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.medical_folder_url ? data[0]?.medical_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -1564,7 +1584,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1584,7 +1604,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHIVAIDSRiskHistoryPDF? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSHIVAIDSRiskHistoryPDF ?
                   setClientData(formState => ({
@@ -1630,7 +1651,7 @@ console.log(FormTitles);
                   checked={clientData.AIRSHIVAIDSRiskHistoryPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHIVAIDSRiskHistoryScan? 'pointer-events-none' :""}`}
              onClick={() => {
               clientData.AIRSHIVAIDSRiskHistoryScan ?
                 setClientData(formState => ({
@@ -1679,8 +1700,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSHCVHistory? '' :'pointer-events-none'}`} >
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHCVHistory? 'pointer-events-none' :""}`}
              onClick={() => {
               clientData.AIRSHCVHistory ?
                 setClientData(formState => ({
@@ -1741,7 +1762,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11  text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.medical_folder_url ? data[0]?.medical_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -1759,7 +1780,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1779,7 +1800,8 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHCVHistoryPDF? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSHCVHistoryPDF ?
                   setClientData(formState => ({
@@ -1825,7 +1847,8 @@ console.log(FormTitles);
                   checked={clientData.AIRSHCVHistoryPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHCVHistoryScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSHCVHistoryScan ?
                   setClientData(formState => ({
@@ -1874,8 +1897,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSHousingInformation? '' :'pointer-events-none'}`} >
+
+<div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHousingInformation? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.AIRSHousingInformation ?
                   setClientData(formState => ({
@@ -1936,7 +1960,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -1954,7 +1978,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Miscellaneous</p>
+               {/*  <p className="text-dark-blue underline">Miscellaneous</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -1974,7 +1998,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHousingInformationPDF? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSHousingInformationPDF ?
                   setClientData(formState => ({
@@ -2020,7 +2045,8 @@ console.log(FormTitles);
                   checked={clientData.AIRSHousingInformationPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHousingInformationScan? 'pointer-events-none' :""}`}
+
                onClick={() => {
                 clientData.AIRSHousingInformationScan ?
                   setClientData(formState => ({
@@ -2069,8 +2095,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSInsuranceInformation? '' :'pointer-events-none'}`} >
+
+<div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSInsuranceInformation? 'pointer-events-none' :""}`}
              onClick={() => {
               clientData.AIRSInsuranceInformation ?
                 setClientData(formState => ({
@@ -2132,7 +2159,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -2150,7 +2177,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Miscellaneous</p>
+                {/* <p className="text-dark-blue underline">Miscellaneous</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -2170,7 +2197,8 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSInsuranceInformationPDF? 'pointer-events-none' :""}`}
+
                 onClick={() => {
                   clientData.AIRSInsuranceInformationPDF ?
                     setClientData(formState => ({
@@ -2216,7 +2244,8 @@ console.log(FormTitles);
                   checked={clientData.AIRSInsuranceInformationPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSInsuranceInformationScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSInsuranceInformationScan ?
                   setClientData(formState => ({
@@ -2265,8 +2294,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSSubstanceUseHistory? '' :'pointer-events-none'}`} >
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSSubstanceUseHistory? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.AIRSSubstanceUseHistory ?
                   setClientData(formState => ({
@@ -2327,7 +2356,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.medical_folder_url ? data[0]?.medical_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -2345,7 +2374,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -2365,7 +2394,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSSubstanceUseHistoryPDF? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSSubstanceUseHistoryPDF ?
                   setClientData(formState => ({
@@ -2411,7 +2441,8 @@ console.log(FormTitles);
                   checked={clientData.AIRSSubstanceUseHistoryPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSSubstanceUseHistoryScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.AIRSSubstanceUseHistoryScan ?
                   setClientData(formState => ({
@@ -2460,8 +2491,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+             className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEClientRights? '' :'pointer-events-none'}`} >
+
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientRights? 'pointer-events-none' :""}`}
                 onClick={() => {
                   clientData.LNEClientRights ?
                     setClientData(formState => ({
@@ -2522,7 +2554,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -2540,7 +2572,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+                {/* <p className="text-dark-blue underline">Consents</p> */}
 
               </div>
               <div className="text-center">
@@ -2587,7 +2619,8 @@ console.log(FormTitles);
                   checked={clientData.LNEClientRights ? 'checked' : false}
                 /> */}
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientRightsScan? 'pointer-events-none' :""}`}
+
                onClick={() => {
                 clientData.LNEClientRightsScan ?
                   setClientData(formState => ({
@@ -2629,8 +2662,9 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEClientGrievancePolicyProcedure? '' :'pointer-events-none'}`} >
+
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientGrievancePolicyProcedure? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.LNEClientGrievancePolicyProcedure ?
                   setClientData(formState => ({
@@ -2691,7 +2725,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -2709,7 +2743,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+                {/* <p className="text-dark-blue underline">Consents</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -2755,7 +2789,8 @@ console.log(FormTitles);
                   checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : false}
                 /> */}
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientGrievancePolicyProcedureScan? 'pointer-events-none' :""}`}
+
                    onClick={() => {
                     clientData.LNEClientGrievancePolicyProcedureScan ?
                       setClientData(formState => ({
@@ -2798,8 +2833,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEProgramRules? '' :'pointer-events-none'}`} >
+            <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEProgramRules? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEProgramRules ?
                   setClientData(formState => ({
@@ -2860,7 +2895,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -2878,7 +2913,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Miscellaneous</p>
+               {/*  <p className="text-dark-blue underline">Miscellaneous</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -2924,7 +2959,8 @@ console.log(FormTitles);
                   checked={clientData.LNEProgramRules ? 'checked' : false}
                 /> */}
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEProgramRulesScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.LNEProgramRulesScan ?
                   setClientData(formState => ({
@@ -2966,8 +3002,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEEmergencyContactConsent? '' :'pointer-events-none'}`} >
+           <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEEmergencyContactConsent? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.LNEEmergencyContactConsent ?
                   setClientData(formState => ({
@@ -3029,7 +3065,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3047,7 +3083,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+               {/*  <p className="text-dark-blue underline">Consents</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3093,7 +3129,8 @@ console.log(FormTitles);
                   checked={clientData.LNEEmergencyContactConsent ? 'checked' : false}
                 /> */}
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEEmergencyContactConsentScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.LNEEmergencyContactConsentScan ?
                   setClientData(formState => ({
@@ -3135,8 +3172,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2  ${clientData.LNEConsentForReleaseOfConfidentialInformation? '' :'pointer-events-none'}`} >
+               <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEConsentForReleaseOfConfidentialInformation? 'pointer-events-none' :""}`}
                 onClick={() => {
                   clientData.LNEConsentForReleaseOfConfidentialInformation ?
                     setClientData(formState => ({
@@ -3197,7 +3234,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
                <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3215,7 +3252,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+                {/* <p className="text-dark-blue underline">Consents</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3235,7 +3272,8 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center ">
+              {/* REVIEW HERE */}
+              <div className="ml-1 text-center flex justify-center items-center "> 
                 {/* <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   strokeWidth={clientData.LNEConsentForReleaseOfConfidentialInformationPDF ? "3" : "0"}>
@@ -3303,8 +3341,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.HIPPAConsentForm? '' :'pointer-events-none'}`} >
+             <div className={`ml-1 text-center flex justify-center items-center ${clientData.HIPPAConsentForm? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.HIPPAConsentForm ?
                   setClientData(formState => ({
@@ -3365,7 +3403,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3383,7 +3421,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+                {/* <p className="text-dark-blue underline">Consents</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3403,7 +3441,8 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.HIPPAConsentFormPDF? 'pointer-events-none' :""}`}
+
                 onClick={() => {
                   clientData.HIPPAConsentFormPDF ?
                     setClientData(formState => ({
@@ -3449,7 +3488,8 @@ console.log(FormTitles);
                   checked={clientData.HIPPAConsentFormPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.HIPPAConsentFormScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.HIPPAConsentFormScan ?
                   setClientData(formState => ({
@@ -3498,8 +3538,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-green grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.NYCDOHMHNoticeOfPrivacyPractices? '' :'pointer-events-none'} `} >
+             <div className={`ml-1 text-center flex justify-center items-center ${clientData.NYCDOHMHNoticeOfPrivacyPractices? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.NYCDOHMHNoticeOfPrivacyPractices ?
                   setClientData(formState => ({
@@ -3563,7 +3603,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.consents_folder_url ? data[0]?.consents_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3581,7 +3621,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Consents</p>
+                {/* <p className="text-dark-blue underline">Consents</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3601,7 +3641,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.NYCDOHMHNoticeOfPrivacyPracticesPDF? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.NYCDOHMHNoticeOfPrivacyPracticesPDF ?
                   setClientData(formState => ({
@@ -3647,7 +3687,8 @@ console.log(FormTitles);
                   checked={clientData.NYCDOHMHNoticeOfPrivacyPracticesPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.NYCDOHMHNoticeOfPrivacyPracticesScan? 'pointer-events-none' :""}`}
+
               onClick={() => {
                 clientData.NYCDOHMHNoticeOfPrivacyPracticesScan ?
                   setClientData(formState => ({
@@ -3696,8 +3737,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-pink grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEOutreachRetentionTrackingForm? '' :'pointer-events-none'} `} >
+            <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEOutreachRetentionTrackingForm? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEOutreachRetentionTrackingForm ?
                   setClientData(formState => ({
@@ -3758,7 +3799,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.linkage_navigation_folder_url ? data[0]?.linkage_navigation_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3776,7 +3817,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3796,7 +3837,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEOutreachRetentionTrackingFormPDF? 'pointer-events-none' :""}`}
              onClick={() => {
               clientData.LNEOutreachRetentionTrackingFormPDF ?
                 setClientData(formState => ({
@@ -3842,7 +3883,7 @@ console.log(FormTitles);
                   checked={clientData.LNEOutreachRetentionTrackingFormPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEOutreachRetentionTrackingFormScan? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.LNEOutreachRetentionTrackingFormScan ?
                   setClientData(formState => ({
@@ -3891,8 +3932,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-pink grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEReferralInformation? '' :'pointer-events-none'}`} >
+             <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEReferralInformation? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEReferralInformation ?
                   setClientData(formState => ({
@@ -3953,7 +3994,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.linkage_navigation_folder_url ? data[0]?.linkage_navigation_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -3971,7 +4012,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -3991,7 +4032,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEReferralInformationPDF? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.LNEReferralInformationPDF ?
                   setClientData(formState => ({
@@ -4037,7 +4078,7 @@ console.log(FormTitles);
                   checked={clientData.LNEReferralInformationPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEReferralInformationScan? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEReferralInformationScan ?
                   setClientData(formState => ({
@@ -4086,8 +4127,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-pink grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEClientReferralForm? '' :'pointer-events-none'}`} >
+             <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientReferralForm? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEClientReferralForm ?
                   setClientData(formState => ({
@@ -4148,7 +4189,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.linkage_navigation_folder_url ? data[0]?.linkage_navigation_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -4166,7 +4207,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -4186,7 +4227,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientReferralFormPDF? 'pointer-events-none' :""}`}
              onClick={() => {
               clientData.LNEClientReferralFormPDF ?
                 setClientData(formState => ({
@@ -4233,7 +4274,7 @@ console.log(FormTitles);
                   checked={clientData.LNEClientReferralFormPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientReferralFormScan? 'pointer-events-none' :""}`}
               onClick={() => {
                 clientData.LNEClientReferralFormScan ?
                   setClientData(formState => ({
@@ -4282,8 +4323,8 @@ console.log(FormTitles);
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-purple grid gap-5 py-2 rounded-lg my-2`}            >
-              <div className="ml-1 text-center flex justify-center items-center "
+            className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.LNEHNSEligibilityForm? '' :'pointer-events-none'}`} >
+            <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEHNSEligibilityForm? 'pointer-events-none' :""}`}
                  onClick={() => {
                 clientData.LNEHNSEligibilityForm ?
                   setClientData(formState => ({
@@ -4344,7 +4385,7 @@ console.log(FormTitles);
                   }}
                 />
               </div>
-              <div className={`${MSAStyles.dropboxFolderNames} ml-11 text-center flex justify-start items-center`}>
+              <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
                 <svg
                   width="18"
@@ -4362,7 +4403,7 @@ console.log(FormTitles);
                   />
                 </svg>
                 </a>
-                <p className="text-dark-blue underline">Medical</p>
+                {/* <p className="text-dark-blue underline">Medical</p> */}
               </div>
               <div className="text-center">
                 <input
@@ -4382,7 +4423,7 @@ console.log(FormTitles);
                 }}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEHNSEligibilityFormPDF? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.LNEHNSEligibilityFormPDF ?
                   setClientData(formState => ({
@@ -4428,7 +4469,7 @@ console.log(FormTitles);
                   checked={clientData.LNEHNSEligibilityFormPDF ? 'checked' : false}
                 />
               </div>
-              <div className="ml-1 text-center flex justify-center items-center "
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEHNSEligibilityFormScan? 'pointer-events-none' :""}`}
                 onClick={() => {
                   clientData.LNEHNSEligibilityFormScan ?
                     setClientData(formState => ({

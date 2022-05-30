@@ -2,6 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 
 export default function DashboardClientCard({client,index,loggedUserRole}) {
+
+  const getDate=(date)=>{
+    const fecha =  Date.parse(date)
+    const newDate= new Date(fecha).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})
+    const separatedDate=newDate.split('/')
+    const finalDate=separatedDate.join('-')
+    return newDate
+    }  
+
+
+
   return (
     <div className="dashboard-clients-box" key={index}>
     <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm ">
@@ -58,7 +69,7 @@ export default function DashboardClientCard({client,index,loggedUserRole}) {
       <div className="flex dashboard-card-name-box  items-center pl-2 justify-between">
       <h6 className="font-black text-xs">Last Updated</h6>
       {/* <p className="font-black ">{new Date().toLocaleDateString()}</p> */}
-      <p className="font-black ">16-05-2022</p>
+      <p className="font-black ">{getDate(client.clientdatecreated)}</p>
       </div>
       <div className="grid dashboard-card-name-box  items-center pl-2">
       
