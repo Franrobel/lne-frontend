@@ -336,7 +336,7 @@ const crearFecha=()=>{
                     clientData.AIRSIntakeFormDate &&
                     clientData.AIRSIntakeFormDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSIntakeFormDate ? true: false}
+                  /* disabled={clientData.AIRSIntakeFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -406,7 +406,7 @@ const crearFecha=()=>{
                     clientData.ComprehensiveRiskBehaviorAssessmentDate &&
                     clientData.ComprehensiveRiskBehaviorAssessmentDate.split('T')[0]
                   }
-                  disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false}
+                  /* disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -475,7 +475,7 @@ const crearFecha=()=>{
                     clientData.ServiceActionPlanDate &&
                     clientData.ServiceActionPlanDate.split('T')[0]
                   }
-                  disabled={clientData.ServiceActionPlanDate ? true: false}
+                  /* disabled={clientData.ServiceActionPlanDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -545,7 +545,7 @@ const crearFecha=()=>{
                     clientData.AIRSCollateralInformationDate &&
                     clientData.AIRSCollateralInformationDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSCollateralInformationDate ? true: false}
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -685,7 +685,7 @@ const crearFecha=()=>{
                     clientData.AIRSHIVAIDSRiskHistoryDate &&
                     clientData.AIRSHIVAIDSRiskHistoryDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSHIVAIDSRiskHistoryDate ? true: false}
+                  /* disabled={clientData.AIRSHIVAIDSRiskHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -754,7 +754,7 @@ const crearFecha=()=>{
                     clientData.AIRSHCVHistoryDate &&
                     clientData.AIRSHCVHistoryDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSHCVHistoryDate ? true: false}
+                  /* disabled={clientData.AIRSHCVHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -825,7 +825,7 @@ const crearFecha=()=>{
                     clientData.AIRSHousingInformationDate &&
                     clientData.AIRSHousingInformationDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSHousingInformationDate ? true: false}
+                  /* disabled={clientData.AIRSHousingInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -895,7 +895,7 @@ const crearFecha=()=>{
                     clientData.AIRSInsuranceInformationDate &&
                     clientData.AIRSInsuranceInformationDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSInsuranceInformationDate ? true: false}
+                  /* disabled={clientData.AIRSInsuranceInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -965,7 +965,7 @@ const crearFecha=()=>{
                     clientData.AIRSSubstanceUseHistoryDate &&
                     clientData.AIRSSubstanceUseHistoryDate.split('T')[0]
                   }
-                  disabled={clientData.AIRSSubstanceUseHistoryDate ? true: false}
+                  /* disabled={clientData.AIRSSubstanceUseHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1034,7 +1034,7 @@ const crearFecha=()=>{
                     clientData.LNEClientRightsDate &&
                     clientData.LNEClientRightsDate.split('T')[0]
                   }
-                  disabled={clientData.LNEClientRightsDate ? true: false}
+                  /* disabled={clientData.LNEClientRightsDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1103,7 +1103,7 @@ const crearFecha=()=>{
                     clientData.LNEClientGrievancePolicyProcedureDate &&
                     clientData.LNEClientGrievancePolicyProcedureDate.split('T')[0]
                   }
-                  disabled={clientData.LNEClientGrievancePolicyProcedureDate ? true: false}
+                  /* disabled={clientData.LNEClientGrievancePolicyProcedureDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1172,7 +1172,7 @@ const crearFecha=()=>{
                     clientData.LNEProgramRulesDate &&
                     clientData.LNEProgramRulesDate.split('T')[0]
                   }
-                  disabled={clientData.LNEProgramRulesDate ? true: false}
+                  /* disabled={clientData.LNEProgramRulesDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1241,7 +1241,7 @@ const crearFecha=()=>{
                     clientData.LNEEmergencyContactConsentDate &&
                     clientData.LNEEmergencyContactConsentDate.split('T')[0]
                   }
-                  disabled={clientData.LNEEmergencyContactConsentDate ? true: false}
+                  /* disabled={clientData.LNEEmergencyContactConsentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1314,7 +1314,7 @@ const crearFecha=()=>{
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate &&
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate.split('T')[0]
                   }
-                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformationDate ? true: false}
+                  /* disabled={clientData.LNEConsentForReleaseOfConfidentialInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1384,7 +1384,7 @@ const crearFecha=()=>{
                     clientData.HIPPAConsentFormDate &&
                     clientData.HIPPAConsentFormDate.split('T')[0]
                   }
-                  disabled={clientData.HIPPAConsentFormDate ? true: false}
+                  /* disabled={clientData.HIPPAConsentFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1457,7 +1457,7 @@ const crearFecha=()=>{
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate &&
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate.split('T')[0]
                   }
-                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPracticesDate ? true: false}
+                  /* disabled={clientData.NYCDOHMHNoticeOfPrivacyPracticesDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1528,7 +1528,7 @@ const crearFecha=()=>{
                     clientData.LNEOutreachRetentionTrackingFormDate &&
                     clientData.LNEOutreachRetentionTrackingFormDate.split('T')[0]
                   }
-                  disabled={clientData.LNEOutreachRetentionTrackingFormDate ? true: false}
+                  /* disabled={clientData.LNEOutreachRetentionTrackingFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1600,7 +1600,7 @@ const crearFecha=()=>{
                     clientData.LNEReferralInformationDate &&
                     clientData.LNEReferralInformationDate.split('T')[0]
                   }
-                  disabled={clientData.LNEReferralInformationDate ? true: false}
+                  /* disabled={clientData.LNEReferralInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1668,7 +1668,7 @@ const crearFecha=()=>{
                     clientData.LNEClientReferralFormDate &&
                     clientData.LNEClientReferralFormDate.split('T')[0]
                   }
-                  disabled={clientData.LNEClientReferralFormDate ? true: false}
+                  /* disabled={clientData.LNEClientReferralFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     setClientData({
@@ -1735,7 +1735,7 @@ const crearFecha=()=>{
                     clientData.LNEHNSEligibilityFormDate &&
                     clientData.LNEHNSEligibilityFormDate.split('T')[0]
                   }
-                  disabled={clientData.LNEHNSEligibilityFormDate ? true: false}
+                  /* disabled={clientData.LNEHNSEligibilityFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
             
