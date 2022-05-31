@@ -202,7 +202,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                         </div>      
                                     </div>  
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
-                                        <p className='font-bold text-xs'>Uninformed about PrEP</p>
+                                        <p className='font-bold text-xs'>Not knowing about PrEP or how to access it</p>
                                         <div className='text-xs flex justify-between'>
                                             <span className='mx-2 md:mx-3 lg:mx-4'>
                                                 <input className="mr-1 md:mr-3" type="radio" 
@@ -220,7 +220,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                             </div>
 
                             
-                            <div id="risky-behaviors-substance-abuse-section" className='grid grid-cols-1 gap-2'>
+                            <div id="risky-behaviors-substance-use-section" className='grid grid-cols-1 gap-2'>
                                 <div className='flex pl-5 items-center'>
                                 <svg width="24" height="24" strokeWidth="1.5" viewBox="0 0 24 24" fill="#62A6E5" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.0429 21H3.95705C2.41902 21 1.45658 19.3364 2.22324 18.0031L10.2662 4.01533C11.0352 2.67792 12.9648 2.67791 13.7338 4.01532L21.7768 18.0031C22.5434 19.3364 21.581 21 20.0429 21Z" stroke="#62A6E5" strokeLinecap="round"/>
@@ -228,7 +228,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                 <path d="M12 17.01L12.01 16.9989" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
 
-                                    <h5 className='font-bold pl-1'>Risky Behaviors and Substance Abuse</h5>
+                                    <h5 className='font-bold pl-1'>Risky Behaviors and Substance Use</h5>
                                 </div>
                                 <div className='w-full grid grid-cols-1 gap-1'>
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
@@ -247,7 +247,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                         </div>      
                                     </div>
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
-                                        <p className='font-bold text-xs'>Substance abuse</p>
+                                        <p className='font-bold text-xs'>Problems with substance use</p>
                                         <div className='text-xs flex justify-between'>
                                             <span className='mx-2 md:mx-3 lg:mx-4'>
                                                 <input className="mr-1 md:mr-3" type="radio" 
@@ -262,7 +262,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                         </div>      
                                     </div>    
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
-                                        <p className='font-bold text-xs'>Fear or overdosing</p>
+                                        <p className='font-bold text-xs'>Fear of overdosing</p>
                                         <div className='text-xs flex justify-between'>
                                             <span className='mx-2 md:mx-3 lg:mx-4'>
                                                 <input className="mr-1 md:mr-3" type="radio" 
@@ -296,7 +296,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                 </div>
                                 <div className='w-full grid grid-cols-1 gap-1'>
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
-                                        <p className='font-bold text-xs'>Legal Issues</p>
+                                        <p className='font-bold text-xs'>Legal issues</p>
                                         <div className='text-xs flex justify-between'>
                                             <span className='mx-2 md:mx-3 lg:mx-4'>
                                                 <input className="mr-1 md:mr-3" type="radio" 
@@ -311,7 +311,7 @@ const ImpactBaselineModal = ({setShowImpactBaselineModal, showImpactBaselineModa
                                         </div>      
                                     </div> 
                                     <div className="flex bg-light-blue justify-between py-1 pl-12 pr-5">
-                                        <p className='font-bold text-xs'>Unestable employment situation</p>
+                                        <p className='font-bold text-xs'>Unstable employment or unemployed</p>
                                         <div className='text-xs flex justify-between'>
                                             <span className='mx-2 md:mx-3 lg:mx-4'>
                                                 <input className="mr-1 md:mr-3" type="radio" 

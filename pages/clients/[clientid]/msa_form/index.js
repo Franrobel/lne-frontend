@@ -20,12 +20,26 @@ console.log("data",data)
     });
   };
 
-  const crearFecha=()=>{
+/*   const crearFecha=()=>{
     const initialDate= new Date().toLocaleDateString()
     const newDate=initialDate.split('/')
     const fixedDate=`${newDate[2]}-${newDate[1].length===1? `0${newDate[1]}`:`${newDate[1]}`}-${newDate[0].length===1 ? `0${newDate[0]}`: `${newDate[0]}`}`
     return fixedDate
   
+  } */
+
+
+  const crearFecha=()=>{
+
+    const initialDate= new Date().toLocaleDateString()
+    const newDate=initialDate.split('/')
+    let fixedDate;
+    if(typeof window !== 'undefined'){
+      const userLocale=window.navigator.language
+      userLocale==='en-US' ? fixedDate=`${newDate[2]}-${newDate[0].length===1? `0${newDate[0]}`:`${newDate[0]}`}-${newDate[1].length===1 ? `0${newDate[1]}`: `${newDate[1]}`}`
+      :fixedDate=`${newDate[2]}-${newDate[1].length===1? `0${newDate[1]}`:`${newDate[1]}`}-${newDate[0].length===1 ? `0${newDate[0]}`: `${newDate[0]}`}`
+    }
+    return fixedDate
   }
 
   const [clientData, setClientData] = useState({
@@ -362,11 +376,20 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSIntakeFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSIntakeFormDate: e.target.value,
-                      AIRSIntakeForm: !clientData.AIRSIntakeForm,
-                    });
+                    if(clientData.AIRSIntakeForm){
+                      setClientData({
+                        ...clientData,
+               
+                        AIRSIntakeFormDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSIntakeForm: !clientData.AIRSIntakeForm,
+                        AIRSIntakeFormDate: e.target.value,
+                      });
+                    }
+                   
                   }}
                 />
               </div>
@@ -431,12 +454,19 @@ useEffect(()=>{
                   /* disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      ComprehensiveRiskBehaviorAssessmentDate: e.target.value,
-                      ComprehensiveRiskBehaviorAssessment:
-                        !clientData.ComprehensiveRiskBehaviorAssessment,
-                    });
+                    if(clientData){
+                      setClientData({
+                        ...clientData,
+                        ComprehensiveRiskBehaviorAssessmentDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        ComprehensiveRiskBehaviorAssessment:
+                          !clientData.ComprehensiveRiskBehaviorAssessment,
+                        ComprehensiveRiskBehaviorAssessmentDate: e.target.value,
+                      });
+                    }
                   }}
                 />
               </div>
@@ -485,7 +515,7 @@ useEffect(()=>{
                 />
               </div>
               <div>
-                <p>Service Action Plan <span className="text-red-500">*</span> </p>
+                <p>Service Action Plan  </p>
               </div>
               <div className="text-center">
                 <input
@@ -498,11 +528,19 @@ useEffect(()=>{
                   /* disabled={clientData.ServiceActionPlanDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      ServiceActionPlanDate: e.target.value,
-                      ServiceActionPlan: !clientData.ServiceActionPlan,
-                    });
+                    if(clientData){
+                      setClientData({
+                        ...clientData,
+                        ServiceActionPlanDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        ServiceActionPlanDate: e.target.value,
+                        ServiceActionPlan: !clientData.ServiceActionPlan,
+                      });
+                    }
+                   
                   }}
                 />
               </div>
@@ -567,12 +605,20 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSCollateralInformationDate: e.target.value,
-                      AIRSCollateralInformation:
-                        !clientData.AIRSCollateralInformation,
-                    });
+                    if(clientData.AIRSCollateralInformation){
+                      setClientData({
+                        ...clientData,
+                        AIRSCollateralInformationDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSCollateralInformationDate: e.target.value,
+                        AIRSCollateralInformation:
+                          !clientData.AIRSCollateralInformation,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -636,12 +682,19 @@ useEffect(()=>{
                  /*  disabled={clientData.AIRSFinancialInformation ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSFinancialInformationDate: e.target.value,
-                      AIRSFinancialInformation:
-                        !clientData.AIRSFinancialInformation,
-                    });
+                    if (clientData.AIRSFinancialInformation){
+                      setClientData({
+                        ...clientData,
+                        AIRSFinancialInformationDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSFinancialInformationDate: e.target.value,
+                        AIRSFinancialInformation:
+                          !clientData.AIRSFinancialInformation,
+                      });
+                    }
                   }}
                 />
               </div>
@@ -705,12 +758,21 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSHIVAIDSRiskHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSHIVAIDSRiskHistoryDate: e.target.value,
-                      AIRSHIVAIDSRiskHistory:
-                        !clientData.AIRSHIVAIDSRiskHistory,
-                    });
+                    if(clientData.AIRSHIVAIDSRiskHistory){
+                      setClientData({
+                        ...clientData,
+                        AIRSHIVAIDSRiskHistoryDate: e.target.value,
+
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSHIVAIDSRiskHistoryDate: e.target.value,
+                        AIRSHIVAIDSRiskHistory:
+                          !clientData.AIRSHIVAIDSRiskHistory,
+                      });
+                    }
+                   
                   }}
                 />
               </div>
@@ -773,11 +835,19 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSHCVHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSHCVHistoryDate: e.target.value,
-                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
-                    });
+                    if(clientData.AIRSHCVHistory){
+                      setClientData({
+                        ...clientData,
+                        AIRSHCVHistoryDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSHCVHistoryDate: e.target.value,
+                        AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      });
+                    }
+                   
                   }}
                 />
               </div>
@@ -843,12 +913,21 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSHousingInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSHousingInformationDate: e.target.value,
-                      AIRSHousingInformation:
-                        !clientData.AIRSHousingInformation,
-                    });
+                    if(clientData.AIRSHousingInformation){
+                      setClientData({
+                        ...clientData,
+                        AIRSHousingInformationDate: e.target.value,
+
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSHousingInformationDate: e.target.value,
+                        AIRSHousingInformation:
+                          !clientData.AIRSHousingInformation,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -912,12 +991,20 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSInsuranceInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSInsuranceInformationDate: e.target.value,
-                      AIRSInsuranceInformation:
-                        !clientData.AIRSInsuranceInformation,
-                    });
+                    if (clientData.AIRSInsuranceInformation){
+                      setClientData({
+                        ...clientData,
+                        AIRSInsuranceInformationDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSInsuranceInformationDate: e.target.value,
+                        AIRSInsuranceInformation:
+                          !clientData.AIRSInsuranceInformation,
+                      });
+                    }
+                   
                   }}
                 />
               </div>
@@ -981,12 +1068,19 @@ useEffect(()=>{
                   /* disabled={clientData.AIRSSubstanceUseHistoryDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      AIRSSubstanceUseHistoryDate: e.target.value,
-                      AIRSSubstanceUseHistory:
-                        !clientData.AIRSSubstanceUseHistory,
-                    });
+                    if(clientData.AIRSSubstanceUseHistory){
+                      setClientData({
+                        ...clientData,
+                        AIRSSubstanceUseHistoryDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSSubstanceUseHistoryDate: e.target.value,
+                        AIRSSubstanceUseHistory:
+                          !clientData.AIRSSubstanceUseHistory,
+                      });
+                    }
                   }}
                 />
               </div>
@@ -1048,11 +1142,19 @@ useEffect(()=>{
                   /* disabled={clientData.LNEClientRightsDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEClientRightsDate: e.target.value,
-                      LNEClientRights: !clientData.LNEClientRights,
-                    });
+                    if(clientData.LNEClientRights){
+                      setClientData({
+                        ...clientData,
+                        LNEClientRightsDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEClientRightsDate: e.target.value,
+                        LNEClientRights: !clientData.LNEClientRights,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1116,12 +1218,20 @@ useEffect(()=>{
                   /* disabled={clientData.LNEClientGrievancePolicyProcedureDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEClientGrievancePolicyProcedureDate: e.target.value,
-                      LNEClientGrievancePolicyProcedure:
-                        !clientData.LNEClientGrievancePolicyProcedure,
-                    });
+                    if(clientData.LNEClientGrievancePolicyProcedure){
+                      setClientData({
+                        ...clientData,
+                        LNEClientGrievancePolicyProcedureDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEClientGrievancePolicyProcedureDate: e.target.value,
+                        LNEClientGrievancePolicyProcedure:
+                          !clientData.LNEClientGrievancePolicyProcedure,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1184,11 +1294,19 @@ useEffect(()=>{
                   /* disabled={clientData.LNEProgramRulesDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEProgramRulesDate: e.target.value,
-                      LNEProgramRules: !clientData.LNEProgramRules,
-                    });
+                    if(clientData.LNEProgramRules){
+                      setClientData({
+                        ...clientData,
+                        LNEProgramRulesDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEProgramRulesDate: e.target.value,
+                        LNEProgramRules: !clientData.LNEProgramRules,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1252,12 +1370,20 @@ useEffect(()=>{
                   /* disabled={clientData.LNEEmergencyContactConsentDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEEmergencyContactConsentDate: e.target.value,
-                      LNEEmergencyContactConsent:
-                        !clientData.LNEEmergencyContactConsent,
-                    });
+                    if(clientData.LNEEmergencyContactConsent){
+                      setClientData({
+                        ...clientData,
+                        LNEEmergencyContactConsentDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEEmergencyContactConsentDate: e.target.value,
+                        LNEEmergencyContactConsent:
+                          !clientData.LNEEmergencyContactConsent,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1323,13 +1449,22 @@ useEffect(()=>{
                   /* disabled={clientData.LNEConsentForReleaseOfConfidentialInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEConsentForReleaseOfConfidentialInformationDate:
-                        e.target.value,
-                      LNEConsentForReleaseOfConfidentialInformation:
+                    if(clientData.LNEConsentForReleaseOfConfidentialInformation){
+                      setClientData({
+                        ...clientData,
+                        LNEConsentForReleaseOfConfidentialInformationDate:
+                          e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEConsentForReleaseOfConfidentialInformationDate:
+                          e.target.value,
+                        LNEConsentForReleaseOfConfidentialInformation:
                         !clientData.LNEConsentForReleaseOfConfidentialInformation,
-                    });
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1392,11 +1527,19 @@ useEffect(()=>{
                   disabled={clientData.HIPPAConsentFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      HIPPAConsentFormDate: e.target.value,
-                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
-                    });
+                    if(clientData.HIPPAConsentForm){
+                      setClientData({
+                        ...clientData,
+                        HIPPAConsentFormDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        HIPPAConsentFormDate: e.target.value,
+                        HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1464,12 +1607,21 @@ useEffect(()=>{
                   disabled={clientData.NYCDOHMHNoticeOfPrivacyPracticesDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      NYCDOHMHNoticeOfPrivacyPracticesDate: e.target.value,
-                      NYCDOHMHNoticeOfPrivacyPractices:
-                        !clientData.NYCDOHMHNoticeOfPrivacyPractices,
-                    });
+                    if(clientData.NYCDOHMHNoticeOfPrivacyPractices){
+                      setClientData({
+                        ...clientData,
+                        NYCDOHMHNoticeOfPrivacyPracticesDate: e.target.value
+
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        NYCDOHMHNoticeOfPrivacyPracticesDate: e.target.value,
+                        NYCDOHMHNoticeOfPrivacyPractices:
+                          !clientData.NYCDOHMHNoticeOfPrivacyPractices,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1532,12 +1684,21 @@ useEffect(()=>{
                   disabled={clientData.LNEOutreachRetentionTrackingFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEOutreachRetentionTrackingFormDate: e.target.value,
-                      LNEOutreachRetentionTrackingForm:
-                        !clientData.LNEOutreachRetentionTrackingForm,
-                    });
+                    if(clientData.LNEOutreachRetentionTrackingForm){
+                      setClientData({
+                        ...clientData,
+                        LNEOutreachRetentionTrackingFormDate: e.target.value
+      
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEOutreachRetentionTrackingFormDate: e.target.value,
+                        LNEOutreachRetentionTrackingForm:
+                          !clientData.LNEOutreachRetentionTrackingForm,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1603,12 +1764,21 @@ useEffect(()=>{
                   disabled={clientData.LNEReferralInformationDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEReferralInformationDate: e.target.value,
-                      LNEReferralInformation:
-                        !clientData.LNEReferralInformation,
-                    });
+                    if(clientData.LNEReferralInformation){
+                      setClientData({
+                        ...clientData,
+                        LNEReferralInformationDate: e.target.value,
+              
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEReferralInformationDate: e.target.value,
+                        LNEReferralInformation:
+                          !clientData.LNEReferralInformation,
+                      });
+                    }
+                    
                   }}
                 />
               </div>
@@ -1670,11 +1840,18 @@ useEffect(()=>{
                   disabled={clientData.LNEClientReferralFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
+                    if(clientData.LNEClientReferralForm){
+                      setClientData({
+                        ...clientData,
+                        LNEClientReferralFormDate: e.target.value,
+                      });
+                    } else {
                     setClientData({
                       ...clientData,
                       LNEClientReferralFormDate: e.target.value,
                       LNEClientReferralForm: !clientData.LNEClientReferralForm,
                     });
+                  }
                   }}
                 />
               </div>
@@ -1736,11 +1913,20 @@ useEffect(()=>{
                   disabled={clientData.LNEHNSEligibilityFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    setClientData({
-                      ...clientData,
-                      LNEHNSEligibilityFormDate: e.target.value,
-                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
-                    });
+
+                    if(clientData.LNEHNSEligibilityForm){
+                      setClientData({
+                        ...clientData,
+                        LNEHNSEligibilityFormDate: e.target.value,
+                    
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        LNEHNSEligibilityFormDate: e.target.value,
+                        LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
+                      });
+                    }
                   }}
                 />
               </div>
@@ -1786,11 +1972,11 @@ export default Index;
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(ctx) {
       let { clientid } = ctx.params;
-      const res = await fetch(
+      const  response = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/clients/${clientid}`
       );
   
-      const data = await res.json();
+      const data = await  response.json();
       return { props: { data } };
     },
   });

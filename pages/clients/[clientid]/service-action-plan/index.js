@@ -631,11 +631,11 @@ const services = [
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {
     let { clientid } = ctx.params;
-    const res = await fetch(
+    const  response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/clients/${clientid}`
     );
 
-    const data = await res.json();
+    const data = await  response.json();
     return { props: { data } };
   },
 });

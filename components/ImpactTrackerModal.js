@@ -23,10 +23,10 @@ const ImpactTrackerModal = ({clientId}) => {
         viralLoadCount: "",
         CD4Count: "",
         lastHIVTest: null,
-        PrEP: "",
-        unsafeSexualBehavior: "",
+        PrEP: null,
+        unsafeSexualBehavior: null,
         substanceAbuse: "",
-        riskOfOverdose: "",
+        riskOfOverdose: null,
         legalIssues: "",
         unstableEmployment: "",
         mentalHealthIssues: "",
@@ -312,27 +312,21 @@ const ImpactTrackerModal = ({clientId}) => {
                                     </div>  
                                     <div className="flex bg-light-blue items-center py-1 pl-6 pr-3">
                                         <span>
-                                            <input type='checkbox' name="PrEP" onChange={uncheckFieldForm} checked={impactTracker.PrEP? true : false}></input>
+                                            <input type='checkbox' name="PrEP" onChange={uncheckFieldForm} checked={impactTracker.PrEP !== null? true : false}></input>
                                         </span>
-                                        <p className='font-bold text-xs ml-3 w-3/6'>Uninformed about PrEP</p>
-                                        <div className='text-xs flex items-center justify-self-end'>
-                                            <span className='mx-1'>
-                                                <button className="p-1 px-2 font-semibold bg-pink-200 rounded-md hover:contrast-125" type="button" 
-                                                style={impactTracker.PrEP == 'Worsened'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                onClick={onValueChange} name="PrEP" value="Worsened">Worsened</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-yellow-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.PrEP == 'Unchanged'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="PrEP" value="Unchanged">Unchanged</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-green-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.PrEP == 'Improved'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="PrEP" value="Improved">Improved</button>
-                                            </span>
-                                            
-                                        </div>   
+                                        <p className='font-bold text-xs ml-3 w-3/6'>Knows about PrEP and how to access it</p>
+                                            <div className='text-xs flex justify-between'>
+                                                <span className='mr-2 md:mx-2 md:mr-3 lg:mx-4 xl:ml-0'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="PrEP" value={true} />
+                                                    <label>Yes</label>
+                                                </span>
+                                                <span className='mx-7 md:mx-3 lg:mr-4 xl:mx-6'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="PrEP" value={false} />
+                                                    <label>No</label>
+                                                </span>
+                                             </div>   
                                     </div>
                                 </div>
                             </div>
@@ -346,38 +340,32 @@ const ImpactTrackerModal = ({clientId}) => {
                                 <path d="M12 17.01L12.01 16.9989" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
 
-                                    <h5 className='font-bold pl-1'>Risky Behaviors and Substance Abuse</h5>
+                                    <h5 className='font-bold pl-1'>Risky Behaviors and Substance Use</h5>
                                 </div>
                                 <div className='w-full grid grid-cols-1 gap-1'>
                                     <div className="flex bg-light-blue items-center py-1 pl-6 pr-3">
                                         <span>
-                                            <input type='checkbox' name="unsafeSexualBehavior" onChange={uncheckFieldForm} checked={impactTracker.unsafeSexualBehavior? true : false}></input>
+                                            <input type='checkbox' name="unsafeSexualBehavior" onChange={uncheckFieldForm} checked={impactTracker.unsafeSexualBehavior !== null? true : false}></input>
                                         </span>
                                         <p className='font-bold text-xs ml-3 w-3/6'>Engaging in unsafe sexual behavior</p>
-                                        <div className='text-xs flex items-center justify-self-end'>
-                                            <span className='mx-1'>
-                                                <button className="p-1 px-2 font-semibold bg-pink-200 rounded-md hover:contrast-125" type="button" 
-                                                style={impactTracker.unsafeSexualBehavior == 'Worsened'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                onClick={onValueChange} name="unsafeSexualBehavior" value="Worsened">Worsened</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-yellow-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.unsafeSexualBehavior == 'Unchanged'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="unsafeSexualBehavior" value="Unchanged">Unchanged</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-green-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.unsafeSexualBehavior == 'Improved'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="unsafeSexualBehavior" value="Improved">Improved</button>
-                                            </span>
-                                            
-                                        </div>   
+                                        <div className='text-xs flex justify-between'>
+                                                <span className='mr-2 md:mx-2 md:mr-3 lg:mx-4 xl:ml-0'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="unsafeSexualBehavior" value={true} />
+                                                    <label>Yes</label>
+                                                </span>
+                                                <span className='mx-7 md:mx-3 lg:mr-4 xl:mx-6'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="unsafeSexualBehavior" value={false} />
+                                                    <label>No</label>
+                                                </span>
+                                        </div>      
                                     </div>
                                     <div className="flex bg-light-blue items-center py-1 pl-6 pr-3">
                                         <span>
                                             <input type='checkbox' name="substanceAbuse" onChange={uncheckFieldForm} checked={impactTracker.substanceAbuse? true : false}></input>
                                         </span>
-                                        <p className='font-bold text-xs ml-3 w-3/6'>Substance abuse</p>
+                                        <p className='font-bold text-xs ml-3 w-3/6'>Problems with substance use</p>
                                         <div className='text-xs flex items-center justify-self-end'>
                                             <span className='mx-1'>
                                                 <button className="p-1 px-2 font-semibold bg-pink-200 rounded-md hover:contrast-125" type="button" 
@@ -399,26 +387,20 @@ const ImpactTrackerModal = ({clientId}) => {
                                     </div>
                                     <div className="flex bg-light-blue items-center py-1 pl-6 pr-3">
                                         <span>
-                                            <input type='checkbox' name="riskOfOverdose" onChange={uncheckFieldForm} checked={impactTracker.riskOfOverdose? true : false}></input>
+                                            <input type='checkbox' name="riskOfOverdose" onChange={uncheckFieldForm} checked={impactTracker.riskOfOverdose !== null? true : false}></input>
                                         </span>
                                         <p className='font-bold text-xs ml-3 w-3/6'>Fear of overdosing</p>
-                                        <div className='text-xs flex items-center justify-self-end'>
-                                            <span className='mx-1'>
-                                                <button className="p-1 px-2 font-semibold bg-pink-200 rounded-md hover:contrast-125" type="button" 
-                                                style={impactTracker.riskOfOverdose == 'Worsened'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                onClick={onValueChange} name="riskOfOverdose" value="Worsened">Worsened</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-yellow-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.riskOfOverdose == 'Unchanged'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="riskOfOverdose" value="Unchanged">Unchanged</button>
-                                            </span>
-                                            <span className='mx-1'>
-                                            <button className="p-1 px-2 font-semibold bg-green-200 rounded-md hover:contrast-125" type="button" 
-                                                 style={impactTracker.riskOfOverdose == 'Improved'? {border: '2px solid lightblue', filter: 'saturate(2.5)'}:null}
-                                                 onClick={onValueChange} name="riskOfOverdose" value="Improved">Improved</button>
-                                            </span>
-                                            
+                                        <div className='text-xs flex justify-between'>
+                                                <span className='mr-2 md:mx-2 md:mr-3 lg:mx-4 xl:ml-0'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="riskOfOverdose" value={true} />
+                                                    <label>Yes</label>
+                                                </span>
+                                                <span className='mx-7 md:mx-3 lg:mr-4 xl:mx-6'>
+                                                    <input className="mr-1 md:mr-2" type="radio" 
+                                                    onChange={onValueChangeInputRadio} name="riskOfOverdose" value={false} />
+                                                    <label>No</label>
+                                                </span>
                                         </div>   
                                     </div>
                                 </div>
@@ -444,7 +426,7 @@ const ImpactTrackerModal = ({clientId}) => {
                                         <span>
                                             <input type='checkbox' name="legalIssues" onChange={uncheckFieldForm} checked={impactTracker.legalIssues? true : false}></input>
                                         </span>
-                                        <p className='font-bold text-xs ml-3 w-3/6'>Legal Issues </p>
+                                        <p className='font-bold text-xs ml-3 w-3/6'>Legal issues </p>
                                         <div className='text-xs flex items-center justify-self-end'>
                                             <span className='mx-1'>
                                                 <button className="p-1 px-2 font-semibold bg-pink-200 rounded-md hover:contrast-125" type="button" 

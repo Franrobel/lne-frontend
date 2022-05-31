@@ -158,10 +158,7 @@ const fecha =  Date.parse(date)
 const newDate= new Date(fecha).toLocaleDateString()
 const separatedDate=newDate.split('/')
 const prefinalDate=separatedDate.reverse() 
-//const orderedDate=prefinalDate[0]+prefinalDate[2]+prefinalDate[1]
 const finalDate=prefinalDate.join('-')
-console.log("finalDate",finalDate)
-/* console.log(finalDate) */
 return finalDate
 }  
 
@@ -677,11 +674,11 @@ export const getServerSideProps = withPageAuthRequired({
   
   async getServerSideProps(ctx) {
     let { clientid } = ctx.params;
-    const res = await fetch(
+    const  response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/services_action_plan/${clientid}`
     );
 
-    const data = await res.json();
+    const data = await  response.json();
     return { props: { data } };
   },
 });
