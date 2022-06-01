@@ -1,40 +1,39 @@
 .formRowsContainer {
-    grid-template-columns:25px 4fr 1fr 1fr;
+    grid-template-columns: 55px 4fr 1fr 1fr;
     
 
 }
-
- /* .line{
-    background-color: var(--darkBlue);
-    position: relative;
-    left: 550px;
-    top: 1074px;
-    width: 1.5px;
-    height: 1074px;
-     
- } */
+ .line{
+    background: var(--darkBlue);
+    position: absolute;
+    left: 47.8%;
+    width: 2px;
+    height: 100%;
+ }
 .formRowsContainerDesFormEdit{
-    grid-template-columns: 25px 20% 13% 13% 16% 10% 10%;  
-    gap: 2.3%;
-} 
-
-/* .DESDropboxDataForm {
-    grid-template-columns: 13% 16% 10% 10%;
+    grid-template-columns: 25px 28% 10% 13% 12% 10% 10%;
     gap: 2%;
-} */
-.formRowsContainerDesFormEdit p {
-    font-size: 12px;
+} 
+.formRowsContainerDesFormLHCW{
+    grid-template-columns: 25px 25% 13%;  
+}
+.formRowsContainerDesFormDES{
+    grid-template-columns: 13% 16% 10% 10%;
 }
 
+.formRowsContainerDesFormEdit div p {
+    font-size: 18px;
+}
+.formRowsContainerDesFormEdit p {
+    font-size: 18px;
+}
+
+
 .inputDate{
-    font-size: 12px;
+    font-size: 18px;
     text-transform: uppercase;
     background: none;
    color: var(--darkBlue);
-}
-
-.inputDate:hover{
-    cursor: pointer;
 }
 
 .inputDate::-webkit-calendar-picker-indicator{
@@ -43,28 +42,58 @@
 
 .inputDate::-webkit-datetime-edit{
     text-align: center;
+    
 }
 
 .dropboxFolderNames{
-    margin-left: 50px;
+    margin-left: 17px;
     cursor: pointer;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (max-width:1920px) {
+    .line{
+        background-color: var(--darkBlue);
+        position: absolute;
+        left: 47.9%;
+        
+        width: 2px;
+        height: 100%;
+     }
+}
+/* @media only screen and (max-width:1280px){
+    .line{
+        background-color: var(--darkBlue);
+        position: absolute;
+        left: 40%;
+        width: 2px;
+        height: 100%;
+         
+     }
+} */
+@media only screen and (max-width: 1024px) {
     .formRowsContainerDesFormEdit {
         display:grid;
         gap: 1.5%;
         grid-template-columns: 25px 22% 15% 13% 15% 10% 10%; ;
     }
     .formRowsContainerDesFormEdit p {
-        font-size: 12px;
+        font-size: 16px;
     }
     .dropboxFolderNames {
-        margin: 0 20px;
+        margin: 0 6px 0 6px;
     }
     .dropboxFolderNames p {
         font-size: 10px;
     } 
+    .line{
+        background-color: var(--darkBlue);
+        position: absolute;
+        left: 46.4%;
+        
+        width: 2px;
+        height: 100%;
+         
+     }
   }
 
 @media only screen and (max-width: 768px) {
@@ -74,7 +103,7 @@
         grid-template-columns: 25px 22% 15% 13% 15% 10% 10%; ;
     }
     .formRowsContainerDesFormEdit p {
-        font-size: 10px;
+        font-size: 16px;
     }
     .dropboxFolderNames {
         margin-left: 11.5px;
@@ -82,5 +111,13 @@
     .dropboxFolderNames p {
         font-size: 10px;
     } 
-  
+     .line{
+        background-color: var(--darkBlue);
+        position: absolute;
+        left: 47.6%;
+        width: 2px;
+        height: 100%;
+         
+     }
+   
   }

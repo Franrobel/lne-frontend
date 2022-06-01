@@ -1,0 +1,11 @@
+<svg id="health_worker_icon" data-name="health worker icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.419" height="23.37" viewBox="0 0 21.419 23.37">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_578" data-name="Rectangle 578" width="21.419" height="23.37" fill="none" stroke="#e3d160" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_713" data-name="Group 713" clip-path="url(#clip-path)">
+    <path id="Path_880" data-name="Path 880" d="M7.442,5.16A18.272,18.272,0,0,1,9.008,1c1.039,2.588,4.318,4.131,4.662,6.66a1.517,1.517,0,0,1,1.311-.4,2.868,2.868,0,0,1,2.495,2.165,4.038,4.038,0,0,0-.659.424,4.667,4.667,0,0,0-.565,1.13c-.255.64-.519,2.008-.8,2.636a10.853,10.853,0,0,1-1.459,2.4,6.6,6.6,0,0,1-5.113,2.257,8.948,8.948,0,0,1-4.866-1.457C3.181,16.217,1,14.037,1,14.037a13.912,13.912,0,0,0,5.178.659c.61-.066,1.743-.33,1.743-.33S6.55,13.286,5.99,12.719C2.7,9.389,3.165,3.4,3.165,3.4A26.081,26.081,0,0,0,7.442,5.16Z" transform="translate(1.217 1.133)" fill="none" stroke="#e3d160" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Path_881" data-name="Path 881" d="M29.055,23.692c1.7-5-4.53-7.5-4.53-7.5" transform="translate(-15.865 -9.899)" fill="none" stroke="#e3d160" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

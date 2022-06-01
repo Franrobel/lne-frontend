@@ -77,7 +77,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
 
             <div className="information-item flex gap-x-1 justify-center items-center">
               <p className="text-xs italic" style={{ fontSize: "10px" }}>
-                Client and ID: {clientFirstName} {clientLastName.charAt(0)}{" "}
+                Client and ID: {clientFirstName} {clientLastName?.charAt(0)}{" "}
                 {clientId}
               </p>
             </div>

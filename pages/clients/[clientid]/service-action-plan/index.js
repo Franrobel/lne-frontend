@@ -129,21 +129,22 @@ const services = [
     clientData.goal1TargetDate==="" ||
     clientData.goal1ActionStep1==="" ||
     clientData.goal1ActionStep2==="" ||
-    clientData.goal1ActionStep3==="" ||
-    clientData.goal2ServiceCategory==="" ||
-    clientData.goal2Summary==="" ||
-    clientData.goal2Details ==="" ||
-    clientData.goal2TargetDate==="" ||
-    clientData.goal2ActionStep1==="" ||
-    clientData.goal2ActionStep2==="" ||
-    clientData.goal2ActionStep3==="" ||
-    clientData.goal3ServiceCategory==="" ||
-    clientData.goal3Summary==="" ||
-    clientData.goal3Details==="" ||
-    clientData.goal3TargetDate==="" ||
-    clientData.goal3ActionStep1==="" ||
-    clientData.goal3ActionStep2==="" ||
-    clientData.goal3ActionStep3==="") {
+    clientData.goal1ActionStep3==="" 
+    // clientData.goal2ServiceCategory==="" ||
+    // clientData.goal2Summary==="" ||
+    // clientData.goal2Details ==="" ||
+    // clientData.goal2TargetDate==="" ||
+    // clientData.goal2ActionStep1==="" ||
+    // clientData.goal2ActionStep2==="" ||
+    // clientData.goal2ActionStep3==="" ||
+    // clientData.goal3ServiceCategory==="" ||
+    // clientData.goal3Summary==="" ||
+    // clientData.goal3Details==="" ||
+    // clientData.goal3TargetDate==="" ||
+    // clientData.goal3ActionStep1==="" ||
+    // clientData.goal3ActionStep2==="" ||
+    // clientData.goal3ActionStep3===""
+    ) {
       setErrorCompleteAllFieldsMessage(!errorCompleteAllFieldsMessage)
     }else{
       
@@ -182,7 +183,6 @@ const services = [
         </section>
         <section className="container mx-auto">
     
-{showImpactBaselineModal && <ImpactBaselineModal setShowImpactBaselineModal={setShowImpactBaselineModal} clientId={clientData.clientId}/>}
         <button 
         onClick={()=>router.back()}
         className="bg-black hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5 flex items-center">
@@ -219,40 +219,9 @@ const services = [
               </div>
 
               <div className="service-action-plan-page-info-box md:my-0 my-5">
-                <div className="flex gap-x-2 ">
-                  <svg
-                    width="24"
-                    height="24"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="black"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="font-black"
-                  >
-                    <path
-                      d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                  <h3 className="font-black mb-5">Client</h3>
+                <div className="flex gap-x-2 mb-5 items-center">
+                  <img src="/client-icon.svg" width="24"/>
+                  <h3 className="font-black ">Client</h3>
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <label className="block">
@@ -289,40 +258,9 @@ const services = [
               </div>
 
               <div className="service-action-plan-page-info-box">
-                <div className="flex gap-x-2">
-                  <svg
-                    width="24"
-                    height="24"
-                    strokeWidth="1.5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="black"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="font-black"
-                  >
-                    <path
-                      d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                  <h3 className="font-black mb-5">Health Care Worker</h3>
+              <div className="flex gap-x-2 mb-5 items-center">
+                  <img src="/client-icon.svg" width="24"/>
+                  <h3 className="font-black ">Health Care Worker</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <label className="block">
@@ -555,20 +493,21 @@ const services = [
 
               
             </div>
-          </div>
-        </section>
-        <section id="other" className="my-5 md:px-0 px-5">
-          <div className="container mx-auto">
-            <h6 className="font-black my-5 text-dark-blue">Others</h6>
-          
-          <div  className={`border-dark-blue  rounded-xl px-5 py-5`}>
-          <label className="block">
+            <label className="block">
                     <h6 className="font-black">Additional Comments</h6>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,comments:e.target.value})}}></textarea>
                   </label>
+          </div>
+        </section>
+        <section id="other" className="my-5 md:px-0 px-5">
+          <div className="container mx-auto">
+            <h6 className="font-black my-5 text-dark-blue">Signatures</h6>
           
-          <h6 className="font-black">Signatures</h6>
+          <div  className={`border-dark-blue  rounded-xl px-5 py-5`}>
+         
+          
+          <h6 className="font-black"></h6>
           <div className="others-container grid md:grid-cols-3 grid-cols-1 justify-center">
             <div className="others-container-box flex gap-2 justify-center items-center" >
               <p>Has the client signed?</p>
