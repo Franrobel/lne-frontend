@@ -410,7 +410,7 @@ useEffect(()=>{
               className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
               <div className="form-row-item px-5">
-                <input
+                {/* <input
                   type="checkbox"
                   name=""
                   id=""
@@ -427,14 +427,14 @@ useEffect(()=>{
                     })
                   }}
                   checked={clientData.ServiceActionPlan? true : false}
-                />
+                /> */}
               </div>
               <div>
                 <p>Service Action Plan  </p>
               </div>
               <div className="text-center">
               {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
-                   {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">"MM/DD/YYYY"</p>}
+                   {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
                 {/* <input
                   type="date"
                   id="AIRSIntakeForm"

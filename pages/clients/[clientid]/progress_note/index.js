@@ -507,20 +507,20 @@ console.log("clientData",clientData)
                     <img src={'/goal01.svg'} alt=""/>
                  
                 </div>
-                {/* <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                <div className="goal-service grid grid-cols-2 my-2">
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                       {serviceActionData?.goal1servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
                     {new Date(serviceActionData?.goal1targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
                     </p>
                   </div>
-                </div> */}
+                </div>
                 <div className="goal-summary my-2">
                   <span className="text-sm">Summary</span>
                   <p className="text-sm text-dark-blue ">
@@ -539,20 +539,20 @@ console.log("clientData",clientData)
                 </div>
                 
                 </div>
-                {/* <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                <div className="goal-service grid grid-cols-2 my-2">
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                     {serviceActionData?.goal2servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
                     {new Date(serviceActionData?.goal2targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
                     </p>
                   </div>
-                </div> */}
+                </div>
                 <div className="goal-summary my-2">
                   <span className="text-sm">Summary</span>
                   <p className="text-sm text-dark-blue ">
@@ -572,20 +572,20 @@ console.log("clientData",clientData)
                  
                 </div>
                 </div>
-                {/* <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                <div className="goal-service grid grid-cols-2 my-2">
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                     {serviceActionData?.goal3servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
                     {new Date(serviceActionData?.goal3targetdate).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}
                     </p>
                   </div>
-                </div> */}
+                </div>
                 <div className="goal-summary my-2">
                   <span className="text-sm">Summary</span>
                   <p className="text-sm text-dark-blue ">
@@ -607,7 +607,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 01</p>
+                            <p className="">Goal 1</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -619,7 +619,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -633,7 +633,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 02</p>
+                            <p className="">Goal 2</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals2"onChange={(e)=>setClientData({...clientData,goal2Progress:true})} />
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -645,7 +645,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -660,7 +660,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 03</p>
+                            <p className="">Goal 3</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -672,7 +672,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -704,7 +704,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 01</p>
+                            <p className="">Goal 1</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals1" onClick={(e)=>{
                               setClientData({...clientData,goal1Completed:true})
@@ -723,7 +723,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -740,7 +740,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 02</p>
+                            <p className="">Goal 2</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals2" onClick={(e)=>{
                               setClientData({...clientData,goal2Completed:true})
@@ -758,7 +758,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -775,7 +775,7 @@ console.log("clientData",clientData)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 03</p>
+                            <p className="">Goal 3</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals3" onClick={(e)=>{
                               setClientData({...clientData,goal3Completed:true})
@@ -792,7 +792,7 @@ console.log("clientData",clientData)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"

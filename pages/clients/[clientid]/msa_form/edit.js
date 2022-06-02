@@ -455,7 +455,7 @@ const crearFecha=()=>{
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               
-                <input
+                {/* <input
                   className={`${!clientData.ServiceActionPlan && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
@@ -476,15 +476,15 @@ const crearFecha=()=>{
                   }
                   checked={clientData.ServiceActionPlan ? 'checked' : false}
                   disabled={clientData.ServiceActionPlan ? true : false}
-                />
+                /> */}
                 
               </div>
               <div>
                 <p>Service Action Plan</p>
               </div>
               <div className="text-center">
-              {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
-                    {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">"MM/DD/YYYY"</p>}
+              {clientData.ServiceActionPlanDate ? <p className="bg-white inline-block px-8 py-1 rounded-md"> 
+                    {new Date(clientData.ServiceActionPlanDate).toLocaleDateString('en-US',{year:"numeric", month:'numeric', day:'numeric'})}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
                 {/* <input
                   type="date"
                   id="AIRSIntakeForm"

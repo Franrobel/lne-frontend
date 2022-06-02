@@ -75,9 +75,10 @@ if(clientData.clientFirstName==""
 || clientData.clientLastName=="" 
 ||clientData.clientSSN==""|| 
 clientData.clientID=="") {checkEmtpyFields()}
-else if(clientData.clientFirstName.match(/[^a-zA-Z]/) 
+else if(
+/*   clientData.clientFirstName.match(/[^a-zA-Z]/) 
 || clientData.clientLastName.match(/[^a-zA-Z]/)
-|| clientData.clientSSN.length <= 3 ||clientData.clientSSN.length >4 ){checkErrorsFields()}
+||  */clientData.clientSSN.length <= 3 ||clientData.clientSSN.length >4 ){checkErrorsFields()}
  else{
   axios(`${process.env.NEXT_PUBLIC_SERVER_URL}/clients/create`,{
     method:'POST',

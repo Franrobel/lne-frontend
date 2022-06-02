@@ -150,7 +150,7 @@ const services = [
     ) {
       setLoading(true)
       setTimeout(()=> {
-        setErrorCompleteAllFieldsMessage('* Complete at least Action 01 of Goal 1')
+        setErrorCompleteAllFieldsMessage('* Complete at least Action 1 of Goal 1')
         setLoading(false)
       }, 200)
     }else{
@@ -162,8 +162,8 @@ const services = [
         if(response.status===200 || response.statusText==='Ok'){
           setErrorCompleteAllFieldsMessage('')
           setShowImpactBaselineModal(!showImpactBaselineModal)
-         /*  notifyMessage()
-           setTimeout(()=>{
+          notifyMessage()
+         /*   setTimeout(()=>{
             router.push(`/clients/${clientData.clientId}/profile`)
           },2300)  */
         } 
