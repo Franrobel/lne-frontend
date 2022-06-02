@@ -27,6 +27,7 @@ export function setLocaleDateString (date) {
 }
 
 const getDate=(date)=>{
+  if(!date) return 'MM/DD/YYYY'
   const fecha =  Date.parse(date)
   const newDate= new Date(fecha).toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})
   const separatedDate=newDate.split('/')
@@ -90,11 +91,14 @@ console.log("data",data)
     };
     return result
   }
-  let fechaInicio = new Date(`2022-03-${Math.floor(Math.random() * (30 - 1 + 1) + 1)}`);
   
-  const checkMessage3=()=>{
-    var fechaFin    = new Date().getTime();
-    var diff = fechaFin - fechaInicio.getTime();
+  const checkMessage3=()=>{ 
+    if (!data[0]?.planstartdate) {
+      return '-'
+    }
+    const dateToday = new Date().getTime();
+    const planStartDate = new Date(data[0]?.planstartdate) 
+    const diff = dateToday - planStartDate.getTime();
     return Math.floor(diff/(1000*60*60*24)) 
   }
 
@@ -129,22 +133,22 @@ console.log("data",data)
                 
                 <div className='grid grid-rows-2 md:flex md:items-center md:justify-between'>
                 <p  className="">Date Of Last Action</p>
-                <p className='justify-self-end'>{getDatex(fechaInicio)}</p>
+                <p className='justify-self-end'>{getDate(data[0]?.planstartdate)}</p>
                 </div>
                 <hr className='border-blue-600 hidden md:block'></hr>
 
             </div>
             
             <div className='py-10 pl-4 md:pl-10  grid grid-rows-3 gap-5 items-center justify-items-start'>
-                <div className='flex'>
+                <div className='flex items-center'>
                     <Image src={infoIcon} ></Image>
                     <p className='px-4 '>{checkForms()}</p>
                 </div>
-                <div className='flex'>
+                <div className='flex items-center'>
                     <Image src={infoIcon} ></Image>
                     <p className='px-4'>{checkMessage2()}</p>
                 </div>
-                <div className='flex'>
+                <div className='flex items-center'>
                     <Image src={infoIcon} ></Image>
                     <p className='px-4'>You saw this  client {checkMessage3()} days ago</p>
                 </div>

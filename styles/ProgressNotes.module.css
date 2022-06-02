@@ -1,7 +1,7 @@
 /* CHECKBOX */
 /* The container */
 .checkboxContainer {
-    display: block;
+    display: flex;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
@@ -10,6 +10,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+   
   }
   
   /* Hide the browser's default checkbox */
@@ -19,6 +20,7 @@
     cursor: pointer;
     height: 0;
     width: 0;
+   
   }
   
   /* Create a custom checkbox */
@@ -28,8 +30,9 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: #fff;
     border-radius:30%;
+    border: 1px solid rgb(139, 133, 133);
   }
   
   /* On mouse-over, add a grey background color */
@@ -107,7 +110,7 @@
   .radioBtnContainer:hover input ~ .radioBtnCheckmark {
     background-color: white;
   }
-  
+ 
   /* When the radio button is checked, add a blue background */
   .radioBtnContainer input:checked ~ .radioBtnCheckmark {
     background-color: #2196F3;

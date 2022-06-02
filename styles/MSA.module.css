@@ -21,16 +21,16 @@
     grid-template-columns: 13% 16% 10% 10%;
 }
 
-.formRowsContainerDesFormEdit div p {
-    font-size: 18px;
+/* .formRowsContainerDesFormEdit div p {
+    font-size: 14px;
 }
 .formRowsContainerDesFormEdit p {
-    font-size: 18px;
-}
+    font-size: 14px;
+} */
 
 
 .inputDate{
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
     background: none;
    color: var(--darkBlue);

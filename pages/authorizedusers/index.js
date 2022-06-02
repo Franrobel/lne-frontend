@@ -163,8 +163,8 @@ export default function AuthorizedUsersIndex({data}) {
 // This gets called on every request
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/authorizedusers`)
-    const data = await res.json()
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/authorizedusers`)
+    const data = await response.json()
     // Pass data to the page via props
     return { props: { data } }
   }

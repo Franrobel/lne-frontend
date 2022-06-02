@@ -191,14 +191,14 @@ const handleProgressNote=()=>{
 }
 
 
-console.log("clientData",dataForSAP)
+console.log("clientData",clientData)
 
   return (
     <>
       <ToastContainer autoClose={2000} />
       <Layout>
         <div className="container mx-auto">
-          <h3 className="font-black text-center my-5">Progress Notes</h3>
+          <h3 className="font-black text-center my-5">Progress Notes </h3>
         </div>
 
         <main className="container mx-auto">
@@ -246,7 +246,11 @@ console.log("clientData",dataForSAP)
                 className={`${Styles.serviceActionPlanPageInfoContainer} gap-x-5 border-dark-blue rounded-xl p-5`}
               >
                 <div className="service-action-plan-page-info-box md:my-0 my-5">
-                  <h3 className="font-black mb-5">Date</h3>
+                <div className="flex gap-x-2 mb-5 items-center">
+                    <img src="/calendar-icon.svg" width="24"/>
+                    <h3 className="font-black ">Date</h3>
+                  </div>
+                 
                   <label className="block">
                     <span className="text-xs">Today&apos;s date</span>
                     <p>{todaysDate.toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
@@ -254,10 +258,10 @@ console.log("clientData",dataForSAP)
                 </div>
 
                 <div className="service-action-plan-page-info-box md:my-0 my-5">
-                <div className="flex gap-x-2 mb-5 items-center">
-                  <img src="/client-icon.svg" width="24"/>
-                  <h3 className="font-black ">Client</h3>
-                </div>
+                  <div className="flex gap-x-2 mb-5 items-center">
+                    <img src="/client-icon.svg" width="24"/>
+                    <h3 className="font-black ">Client</h3>
+                  </div>
                   <div className="grid grid-cols-3 gap-4">
                     <label className="block">
                       <span className="text-xs">First Name</span>
@@ -478,7 +482,7 @@ console.log("clientData",dataForSAP)
                   <label
                     className={`${ProgressNotesStyles.checkboxContainer} text-sm`}
                   >
-                    Other form of Assistance
+                    Other Form of Assistance
                     <input type="checkbox" 
                     onChange={()=>setClientData({...clientData,OtherAssistance:!clientData.OtherAssistance})}
                     />
@@ -497,17 +501,19 @@ console.log("clientData",dataForSAP)
           >
             <div className="goals-container grid md:grid-cols-3 grid-cols-3 gap-5">
               <div className="goal-box">
-                <div className="goal-top flex my-2">
-                  <h3 className="font-black">Goal 01</h3>
-                  <div className="w-2/4 border-b px-5"></div>
+                <div className="goal-top flex items-center my-2">
+                  <h3 className="font-black">Goal 1</h3>
+                    <div className="bg-dark-blue w-52  mr-2 h-px"></div>
+                    <img src={'/goal01.svg'} alt=""/>
+                 
                 </div>
                 <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                       {serviceActionData?.goal1servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
@@ -524,17 +530,22 @@ console.log("clientData",dataForSAP)
               </div>
 
               <div className="goal-box">
-                <div className="goal-top flex my-2">
-                  <h3 className="font-black">Goal 02</h3>
-                  <div className="w-2/4 border-b px-5"></div>
+                <div className="goal-top flex ">
+                <div className="goal-top flex items-center my-2">
+                  <h3 className="font-black">Goal 2</h3>
+                    <div className="bg-dark-blue w-52  mr-2 h-px"></div>
+                    <img src={'/goal02.svg'} alt=""/>
+                 
+                </div>
+                
                 </div>
                 <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                     {serviceActionData?.goal2servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
@@ -553,17 +564,21 @@ console.log("clientData",dataForSAP)
 
 
               <div className="goal-box">
-                <div className="goal-top flex my-2">
-                  <h3 className="font-black">Goal 03</h3>
-                  <div className="w-2/4 border-b px-5"></div>
+                <div className="goal-top flex ">
+                <div className="goal-top flex items-center my-2">
+                  <h3 className="font-black">Goal 3</h3>
+                    <div className="bg-dark-blue w-52  mr-2 h-px"></div>
+                    <img src={'/goal03.svg'} alt=""/>
+                 
+                </div>
                 </div>
                 <div className="goal-service grid grid-cols-2 my-2">
-                  <div>
+                  {/* <div>
                     <span className="text-sm">Service Category</span>
                     <p className="text-sm text-dark-blue ">
                     {serviceActionData?.goal3servicecategory}
                     </p>
-                  </div>
+                  </div> */}
                   <div>
                     <span className="text-sm">Target Date</span>
                     <p className="text-dark-blue text-sm">
@@ -580,10 +595,10 @@ console.log("clientData",dataForSAP)
               </div>
             </div>
           </section>
-
-
-          <h6 className="font-black my-5 text-dark-blue">Which of the goals were worked on?</h6>
-
+         <div className="flex items-center ml-3 my-4">
+         <img src={"/goals-were-worked-on.svg"}/>
+          <h6 className="font-black self-end text-dark-blue">Which of the goals were worked on?</h6>
+          </div>
           <section
             className="gap-x-5 border-dark-blue rounded-xl p-5 mb-5 workedGoals"
             id="workedGoals"
@@ -592,7 +607,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 01</p>
+                            <p className="">Goal 1</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals" onChange={(e)=>setClientData({...clientData,goal1Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -604,7 +619,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -618,7 +633,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 02</p>
+                            <p className="">Goal 2</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals2"onChange={(e)=>setClientData({...clientData,goal2Progress:true})} />
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -630,7 +645,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -645,7 +660,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 03</p>
+                            <p className="">Goal 3</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="workedGoals3" onChange={(e)=>setClientData({...clientData,goal3Progress:true})}/>
                             <span className={`${ProgressNotesStyles.radioBtnCheckmark}`}></span>
@@ -657,7 +672,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -675,8 +690,11 @@ console.log("clientData",dataForSAP)
 
 
 
-
-          <h6 className="font-black my-5 text-dark-blue">Were any of the clients goals completed?</h6>
+          <div className="flex items-center ml-3 my-4">
+         <img src={"/goals-completed-icon.svg"}/>
+          <h6 className="font-black self-end text-dark-blue">Were any of the clients goals completed?</h6>
+          </div>
+          
 
           <section
             className="gap-x-5 border-dark-blue rounded-xl p-5 mb-5 workedGoals"
@@ -686,7 +704,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 01</p>
+                            <p className="">Goal 1</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals1" onClick={(e)=>{
                               setClientData({...clientData,goal1Completed:true})
@@ -705,7 +723,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -722,7 +740,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 02</p>
+                            <p className="">Goal 2</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals2" onClick={(e)=>{
                               setClientData({...clientData,goal2Completed:true})
@@ -740,7 +758,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -757,7 +775,7 @@ console.log("clientData",dataForSAP)
 
                 <div>
                         <div className="workedGoals-box flex gap-5 ">
-                            <p className="">Goal 03</p>
+                            <p className="">Goal 3</p>
                             <label className={`${ProgressNotesStyles.radioBtnContainer} text-sm`}>Yes
                             <input type="radio"  name="completedGoals3" onClick={(e)=>{
                               setClientData({...clientData,goal3Completed:true})
@@ -774,7 +792,7 @@ console.log("clientData",dataForSAP)
                             </label>
                         </div>
                         <div className="flex gap-5 items-center">
-                        <div className={`calendarIcon`}><img src="https://i.pinimg.com/474x/d4/b0/f1/d4b0f127a402c9cb262d17ec43b10fc3.jpg" width={24} alt=""/></div>
+                        <div className={`calendarIcon`}><img src="/date-calendar.svg" width={24} alt=""/></div>
                             <h3 className="text-sm">Date</h3>
                             <input
                                 type="date"
@@ -799,15 +817,19 @@ console.log("clientData",dataForSAP)
         <div className="additional-forms-box border-r-dark-blue ">
         
         <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
             >
-              <div className="form-row-item px-5">
-                <input
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSCollateralInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSCollateralInformation ? true : false}
+                  /* checked={clientData.AIRSCollateralInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSCollateralInformation ? true : false} */
                   onChange={(e) =>{
                     clientData.AIRSCollateralInformationDate==="" || clientData.AIRSCollateralInformationDate===null ? (
                     setClientData({
@@ -822,25 +844,35 @@ console.log("clientData",dataForSAP)
                     })
                     }
                   }
-                />
-              </div>
-              <div>
-                <p>AIRS Collateral Information </p>
-              </div>
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                   AIRS Collateral Information
+                   </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSFinancialInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSFinancialInformation ? true : false}
-                  onChange={() => {
-                    clientData.AIRSFinancialInformationDate ==="" || clientData.AIRSFinancialInformationDate === null ? (
+                  /* checked={clientData.AIRSFinancialInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSFinancialInformation ? true : false} */
+                  onChange={(e) =>{
+                    clientData.AIRSFinancialInformationDate==="" || clientData.AIRSFinancialInformationDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSFinancialInformation:
@@ -851,26 +883,37 @@ console.log("clientData",dataForSAP)
                       AIRSFinancialInformation:
                         !clientData.AIRSFinancialInformation,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>AIRS Financial Information </p>
-              </div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                   AIRS Financial Information
+                   </p>
+                   
+                </div>
               
             </div>
 
+
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSHIVAIDSRiskHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSHIVAIDSRiskHistory ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.AIRSHIVAIDSRiskHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSHIVAIDSRiskHistory ? true : false} */
+                  onChange={(e) =>{
                     clientData.AIRSHIVAIDSRiskHistoryDate==="" || clientData.AIRSHIVAIDSRiskHistoryDate===null ? (
                     setClientData({
                       ...clientData,
@@ -882,59 +925,78 @@ console.log("clientData",dataForSAP)
                       AIRSHIVAIDSRiskHistory:
                         !clientData.AIRSHIVAIDSRiskHistory,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>AIRS HIV AIDS Risk History </p>
-              </div>
-     
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  AIRS HIV AIDS Risk History
+                   </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSHCVHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSHCVHistory ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.AIRSHCVHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSHCVHistory ? true : false} */
+                  onChange={(e) =>{
                     clientData.AIRSHCVHistoryDate==="" || clientData.AIRSHCVHistoryDate===null ? (
                     setClientData({
                       ...clientData,
-                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
-                      AIRSHCVHistoryDate:new Date()
+                      AIRSHCVHistory:
+                        !clientData.AIRSHCVHistory,
+                        AIRSHCVHistoryDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      AIRSHCVHistory:
+                        !clientData.AIRSHCVHistory,
                     })
+                    }
                   }
-                }
-                />
-              </div>
-              <div>
-                <p>AIRS HCV History </p>
-              </div>
-          
-         
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  AIRS HCV History
+                   </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSHousingInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSHousingInformation ? true : false}
-                  onChange={() => {
-                 
-                    clientData.AIRSHousingInformationDate==="" || clientData.AIRSHousingInformationDate=== null ? (
+                  /* checked={clientData.AIRSHousingInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSHousingInformation ? true : false} */
+                  onChange={(e) =>{
+                    clientData.AIRSHousingInformationDate==="" || clientData.AIRSHousingInformationDate===null ? (
                     setClientData({
                       ...clientData,
                       AIRSHousingInformation:
@@ -945,27 +1007,36 @@ console.log("clientData",dataForSAP)
                       AIRSHousingInformation:
                         !clientData.AIRSHousingInformation,
                     })
+                    }
                   }
-                }
-                />
-              </div>
-              <div>
-                <p>AIRS Housing Information </p>
-              </div>
- 
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  AIRS Housing Information
+                </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSInsuranceInformation ? 'checked' : ''}
-                  disabled={clientData.AIRSInsuranceInformation ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.AIRSInsuranceInformation ? 'checked' : ''}
+                  disabled={clientData.AIRSInsuranceInformation ? true : false} */
+                  onChange={(e) =>{
                     clientData.AIRSInsuranceInformationDate==="" || clientData.AIRSInsuranceInformationDate===null ? (
                     setClientData({
                       ...clientData,
@@ -977,25 +1048,35 @@ console.log("clientData",dataForSAP)
                       AIRSInsuranceInformation:
                         !clientData.AIRSInsuranceInformation,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>AIRS Insurance Information </p>
-              </div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  AIRS Insurance Information
+                </p>
+                   
+                </div>
+              
             </div>
-
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-blue flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.AIRSSubstanceUseHistory ? 'checked' : ''}
-                  disabled={clientData.AIRSSubstanceUseHistory ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.AIRSSubstanceUseHistory ? 'checked' : ''}
+                  disabled={clientData.AIRSSubstanceUseHistory ? true : false} */
+                  onChange={(e) =>{
                     clientData.AIRSSubstanceUseHistoryDate==="" || clientData.AIRSSubstanceUseHistoryDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1007,54 +1088,77 @@ console.log("clientData",dataForSAP)
                       AIRSSubstanceUseHistory:
                         !clientData.AIRSSubstanceUseHistory,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>AIRS Substance Use History </p>
-              </div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  AIRS Substance Use History
+                </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEClientRights ? 'checked' : ''}
-                  disabled={clientData.LNEClientRights ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.LNEClientRights ? 'checked' : ''}
+                  disabled={clientData.LNEClientRights ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEClientRightsDate==="" || clientData.LNEClientRightsDate===null ? (
                     setClientData({
                       ...clientData,
-                      LNEClientRights: !clientData.LNEClientRights,
-                      LNEClientRightsDate:new Date()
+                      LNEClientRights:
+                        !clientData.LNEClientRights,
+                        LNEClientRightsDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      LNEClientRights: !clientData.LNEClientRights,
-                     
+                      LNEClientRights:
+                        !clientData.LNEClientRights,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>LNE Client Rights </p>
-              </div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  LNE Client Rights
+                </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : ''}
-                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : ''}
+                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEClientGrievancePolicyProcedureDate==="" || clientData.LNEClientGrievancePolicyProcedureDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1066,13 +1170,19 @@ console.log("clientData",dataForSAP)
                       LNEClientGrievancePolicyProcedure:
                         !clientData.LNEClientGrievancePolicyProcedure,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>LNE Client Grievance Policy & Procedure </p>
-              </div>
-
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  LNE Client Grievance Policy & Procedure
+                </p>
+                   
+                </div>
+              
             </div>
         
         </div>   {/* FIN DEL FORM BOX */}
@@ -1080,45 +1190,59 @@ console.log("clientData",dataForSAP)
 
         <div className="additional-form-box">
         <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+             >
+               
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                   
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEProgramRules ? 'checked' : ''}
-                  disabled={clientData.LNEProgramRules ? true : false}
-                  onChange={() => {
+                  /* checked={clientData.LNEProgramRules ? 'checked' : ''}
+                  disabled={clientData.LNEProgramRules ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEProgramRulesDate==="" || clientData.LNEProgramRulesDate===null ? (
                     setClientData({
                       ...clientData,
-                      LNEProgramRules: !clientData.LNEProgramRules,
-                      LNEProgramRulesDate:new Date()
+                      LNEProgramRules:
+                        !clientData.LNEProgramRules,
+                        LNEProgramRulesDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      LNEProgramRules: !clientData.LNEProgramRules,
+                      LNEProgramRules:
+                        !clientData.LNEProgramRules,
                     })
+                    }
                   }
-                }
-                />
-              </div>
-              <div>
-                <p>LNE Program Rules </p>
-              </div>
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                    
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  LNE Program Rules
+                </p>
+                   
+                </div>
+              
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+             >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEEmergencyContactConsent ? 'checked' : ''}
-                  disabled={clientData.LNEEmergencyContactConsent ? true : false}
-                  onChange={() =>{
+                  /* checked={clientData.LNEEmergencyContactConsent ? 'checked' : ''}
+                  disabled={clientData.LNEEmergencyContactConsent ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEEmergencyContactConsentDate==="" || clientData.LNEEmergencyContactConsentDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1130,89 +1254,106 @@ console.log("clientData",dataForSAP)
                       LNEEmergencyContactConsent:
                         !clientData.LNEEmergencyContactConsent,
                     })
-                  }}
-                />
-              </div>
-              <div>
-                <p>LNE Emergency Contact Consent </p>
-              </div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  LNE Emergency Contact Consent
+                </p>
+                </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEConsentForReleaseOfConfidentialInformation ? 'checked' : ''}
-                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformation ? true : false}
-                  onChange={() =>{
+                  /* checked={clientData.LNEConsentForReleaseOfConfidentialInformation ? 'checked' : ''}
+                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformation ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEConsentForReleaseOfConfidentialInformationDate==="" || clientData.LNEConsentForReleaseOfConfidentialInformationDate===null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEConsentForReleaseOfConfidentialInformation:
-                          !clientData.LNEConsentForReleaseOfConfidentialInformation,
-                          LNEConsentForReleaseOfConfidentialInformationDate:new Date()
-                      })
-                    ):setClientData({
+                    setClientData({
                       ...clientData,
                       LNEConsentForReleaseOfConfidentialInformation:
                         !clientData.LNEConsentForReleaseOfConfidentialInformation,
+                        LNEConsentForReleaseOfConfidentialInformationDate:new Date()
+                    })):setClientData({
+                      ...clientData,
+                      LNEConsentForReleaseOfConfidentialInformatio:
+                        !clientData.LNEConsentForReleaseOfConfidentialInformation,
                     })
+                    }
                   }
-                  }
-                />
-              </div>
-              <div>
-                <p>LNE Consent for Release of Confidential Information </p>
-              </div>
-     
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  LNE Consent for Release of Confidential Information
+                </p>
+                </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.HIPPAConsentForm ? 'checked' : ''}
-                  disabled={clientData.HIPPAConsentForm ? true : false}
-                  onChange={() =>{
+                  /* checked={clientData.HIPPAConsentForm ? 'checked' : ''}
+                  disabled={clientData.HIPPAConsentForm ? true : false} */
+                  onChange={(e) =>{
                     clientData.HIPPAConsentFormDate==="" || clientData.HIPPAConsentFormDate===null ? (
                     setClientData({
                       ...clientData,
-                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
-                      HIPPAConsentFormDate:new Date()
+                      HIPPAConsentForm:
+                        !clientData.HIPPAConsentForm,
+                        HIPPAConsentFormDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      HIPPAConsentForm:
+                        !clientData.HIPPAConsentForm,
                     })
+                    }
                   }
-                  }
-                />
-              </div>
-              <div>
-                <p>HIPAA Consent Form (OCA Form 960)</p>
-              </div>
-              
-    
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
+                  <p>
+                  HIPAA Consent Form (OCA Form 960)
+                </p>
+                </div>
             </div>
+               
+              
 
-            <div
-              className={`flex bg-light-green  py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+           
+             <div
+              className={`${MSAStyles.formRowsContainer} bg-light-green flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.NYCDOHMHNoticeOfPrivacyPractices ? 'checked' : ''}
-                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPractices ? true : false}
-                  onChange={() =>{
+                  /* checked={clientData.NYCDOHMHNoticeOfPrivacyPractices ? 'checked' : ''}
+                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPractices ? true : false} */
+                  onChange={(e) =>{
                     clientData.NYCDOHMHNoticeOfPrivacyPracticesDate==="" || clientData.NYCDOHMHNoticeOfPrivacyPracticesDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1224,30 +1365,34 @@ console.log("clientData",dataForSAP)
                       NYCDOHMHNoticeOfPrivacyPractices:
                         !clientData.NYCDOHMHNoticeOfPrivacyPractices,
                     })
+                    }
                   }
-                  }
-                />
-              </div>
-              <div>
-                <p className="text-sm">
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
+                  <p>
                   NYC DOHMH Notice of Privacy Practices - Acknowledgement of
                   Receipt{" "}
                 </p>
-              </div>
-          
+                </div>
             </div>
+          
+            
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-pink flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEOutreachRetentionTrackingForm ? 'checked' : ''}
-                  disabled={clientData.LNEOutreachRetentionTrackingForm ? true : false}
-                  onChange={() =>{
+                  /* checked={clientData.LNEOutreachRetentionTrackingForm ? 'checked' : ''}
+                  disabled={clientData.LNEOutreachRetentionTrackingForm ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEOutreachRetentionTrackingFormDate==="" || clientData.LNEOutreachRetentionTrackingFormDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1259,29 +1404,29 @@ console.log("clientData",dataForSAP)
                       LNEOutreachRetentionTrackingForm:
                         !clientData.LNEOutreachRetentionTrackingForm,
                     })
+                    }
                   }
-                  }
-                />
-              </div>
-              <div>
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
                 <p>LNE Outreach Retention/Tracking Form </p>
-              </div>
-             
-             
+                </div>
             </div>
-
-            <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+            
+           <div
+              className={`${MSAStyles.formRowsContainer} bg-light-pink flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEReferralInformation ? 'checked' : ''}
-                  disabled={clientData.LNEReferralInformation ? true : false}
-                  onChange={() => {
-                    
+                  /* checked={clientData.LNEReferralInformation ? 'checked' : ''}
+                  disabled={clientData.LNEReferralInformation ? true : false} */
+                  onChange={(e) =>{
                     clientData.LNEReferralInformationDate==="" || clientData.LNEReferralInformationDate===null ? (
                     setClientData({
                       ...clientData,
@@ -1293,75 +1438,82 @@ console.log("clientData",dataForSAP)
                       LNEReferralInformation:
                         !clientData.LNEReferralInformation,
                     })
+                    }
                   }
-                }
-                />
-              </div>
-              <div>
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
                 <p>LNE Referral Information </p>
-              </div>
-             
-            
+                </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-pink flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEClientReferralForm ? 'checked' : ''}
-                  disabled={clientData.LNEClientReferralForm ? true : false}
-                  onChange={() =>
-                    clientData.LNEClientReferralFormDate ==="" || clientData.LNEClientReferralFormDate===null ? (
+                  /* checked={clientData.LNEClientReferralForm ? 'checked' : ''}
+                  disabled={clientData.LNEClientReferralForm ? true : false} */
+                  onChange={(e) =>{
+                    clientData.LNEClientReferralFormDate==="" || clientData.LNEClientReferralFormDate===null ? (
                     setClientData({
                       ...clientData,
-                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
-                      LNEClientReferralFormDate:new Date()
+                      LNEClientReferralForm:
+                        !clientData.LNEClientReferralForm,
+                        LNEClientReferralFormDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      LNEClientReferralForm: !clientData.LNEClientReferralForm
+                      LNEClientReferralForm:
+                        !clientData.LNEClientReferralForm,
                     })
+                    }
                   }
-                />
-              </div>
-              <div>
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
                 <p>LNE Client Referral Form </p>
-              </div>
-              
-    
+                </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-purple grid gap-5 py-2  my-2`}
-            >
-              <div className="form-row-item px-5">
-                <input
+              className={`${MSAStyles.formRowsContainer} bg-light-purple flex gap-5 py-2 pl-2  my-2`}
+              >
+                 <label
+                    className={`${ProgressNotesStyles.checkboxContainer} pl-5 text-sm`}
+                  >
+                  <input
                   type="checkbox"
                   name=""
                   id=""
-                  checked={clientData.LNEHNSEligibilityForm ? 'checked' : ''}
-                  disabled={clientData.LNEHNSEligibilityForm ? true : false}
-                  onChange={() =>{
-                    clientData.LNEHNSEligibilityFormDate==="" || clientData.LNEHNSEligibilityFormDate ===null ? (
+                  /* checked={clientData.LNEHNSEligibilityForm ? 'checked' : ''}
+                  disabled={clientData.LNEHNSEligibilityForm ? true : false} */
+                  onChange={(e) =>{
+                    clientData.LNEHNSEligibilityFormDate==="" || clientData.LNEHNSEligibilityFormDate===null ? (
                     setClientData({
                       ...clientData,
-                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
-                      LNEHNSEligibilityFormDate:new Date()
+                      LNEHNSEligibilityForm:
+                        !clientData.LNEHNSEligibilityForm,
+                        LNEHNSEligibilityFormDate:new Date()
                     })):setClientData({
                       ...clientData,
-                      LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm
+                      LNEHNSEligibilityForm:
+                        !clientData.LNEHNSEligibilityForm,
                     })
-                  }}
-                />
-              </div>
-              <div>
+                    }
+                  }
+                 />
+                    <span className={`${ProgressNotesStyles.checkmark}`}></span>
+                 </label>
+                <div className="pl-2">
                 <p>LNE HNS Eligibility Form </p>
-              </div>
-             
-         
+                </div>
             </div>
         </div>
     </div>

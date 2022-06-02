@@ -181,7 +181,10 @@ useEffect(()=>{
                 className={`${Styles.serviceActionPlanPageInfoContainer} gap-x-5 border-dark-blue rounded-xl p-5`}
               >
                 <div className="service-action-plan-page-info-box md:my-0 my-5">
-                  <h3 className="font-black mb-5">Date</h3>
+                <div className="flex gap-x-2 mb-5 items-center">
+                    <img src="/calendar-icon.svg" width="24"/>
+                    <h3 className="font-black ">Date</h3>
+                  </div>
                   <label className="block">
                     <span className="text-xs">Today&apos;s date</span>
                     <p>{new Date().toLocaleDateString('en',{year:'numeric',month:'numeric',day:'numeric'})}</p>
@@ -257,7 +260,7 @@ useEffect(()=>{
             </div>
           </section>
           <h6 className="font-black my-5 text-dark-blue">
-            Forms - check if documents were added to the client&apos;s file
+          Forms - Please indicate which forms have been completed with the client
           </h6>
           <section
             id="form"
@@ -407,7 +410,7 @@ useEffect(()=>{
               className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
               <div className="form-row-item px-5">
-                <input
+                {/* <input
                   type="checkbox"
                   name=""
                   id=""
@@ -424,20 +427,22 @@ useEffect(()=>{
                     })
                   }}
                   checked={clientData.ServiceActionPlan? true : false}
-                />
+                /> */}
               </div>
               <div>
                 <p>Service Action Plan  </p>
               </div>
               <div className="text-center">
-                <input
+              {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
+                   {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
+                {/* <input
                   type="date"
                   id="AIRSIntakeForm"
                   value={
                     clientData.ServiceActionPlanDate &&
                     clientData.ServiceActionPlanDate
                   }
-                  /* disabled={clientData.ServiceActionPlanDate ? true: false} */
+                  disabled={clientData.ServiceActionPlanDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if(clientData){
@@ -454,7 +459,7 @@ useEffect(()=>{
                     }
                    
                   }}
-                />
+                /> */}
               </div>
               <div className="text-center flex justify-center">
               <a href={data[0]?.action_plans_folder_url ? data[0]?.action_plans_folder_url : ""} target="_blank" rel="noreferrer">

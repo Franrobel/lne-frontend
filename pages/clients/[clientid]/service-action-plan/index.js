@@ -21,7 +21,8 @@ export default function IndexServoceActionPlan({ data }) {
   const router = useRouter()
   const [showImpactBaselineModal,setShowImpactBaselineModal]=useState(false)
 
-  const [errorCompleteAllFieldsMessage,setErrorCompleteAllFieldsMessage]=useState(false)
+  const [errorCompleteAllFieldsMessage,setErrorCompleteAllFieldsMessage]=useState('')
+  const [loading, setLoading] = useState(false)
 
 
   const [clientData, setClientData] = useState({
@@ -71,15 +72,17 @@ export default function IndexServoceActionPlan({ data }) {
 "Start using PrEP",
 "Prevention counselling",
 "Access supportive counselling",
-"Address a problem with street drugs or substance abuse",
-"Overdose Prevention",
+"Problems with substance use",
+"Overdose prevention",
 "Assistance with employment",
 "Assistance with education",
 "Assistance with housing services",
 "Addressing a legal issue",
 "Transportation",
 "Improve food security",
-"Gain access to public assistance"
+"Gain access to public assistance",
+"Assistance with ID-related documents",
+"Other"
   ]
 
 const services = [
@@ -123,13 +126,13 @@ const services = [
   const createClientActionPlan = ()=>{
 
     if(
-    clientData.goal1ServiceCategory==="" ||
+    //clientData.goal1ServiceCategory==="" ||
     clientData.goal1Summary==="" ||
     clientData.goal1Details==="" ||
     clientData.goal1TargetDate==="" ||
-    clientData.goal1ActionStep1==="" ||
-    clientData.goal1ActionStep2==="" ||
-    clientData.goal1ActionStep3==="" 
+    clientData.goal1ActionStep1==="" 
+    //clientData.goal1ActionStep2==="" ||
+    //clientData.goal1ActionStep3==="" 
     // clientData.goal2ServiceCategory==="" ||
     // clientData.goal2Summary==="" ||
     // clientData.goal2Details ==="" ||
@@ -145,18 +148,22 @@ const services = [
     // clientData.goal3ActionStep2==="" ||
     // clientData.goal3ActionStep3===""
     ) {
-      setErrorCompleteAllFieldsMessage(!errorCompleteAllFieldsMessage)
+      setLoading(true)
+      setTimeout(()=> {
+        setErrorCompleteAllFieldsMessage('* Complete at least Action 1 of Goal 1')
+        setLoading(false)
+      }, 200)
     }else{
-      
       axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/services_action_plan`, {
         clientData
       })
       .then(function (response) {
         console.log("response",response)
         if(response.status===200 || response.statusText==='Ok'){
+          setErrorCompleteAllFieldsMessage('')
           setShowImpactBaselineModal(!showImpactBaselineModal)
-         /*  notifyMessage()
-           setTimeout(()=>{
+          notifyMessage()
+         /*   setTimeout(()=>{
             router.push(`/clients/${clientData.clientId}/profile`)
           },2300)  */
         } 
@@ -205,7 +212,10 @@ const services = [
               className={`${Styles.serviceActionPlanPageInfoContainer} gap-x-5 border-dark-blue rounded-xl p-5`}
             >
               <div className="service-action-plan-page-info-box md:my-0 my-5">
-                <h3 className="font-black mb-5">Date</h3>
+              <div className="flex gap-x-2 mb-5 items-center">
+                    <img src="/calendar-icon.svg" width="24"/>
+                    <h3 className="font-black ">Date</h3>
+                  </div>
                 <label className="block">
                   <span className="text-xs">Plan start date</span>
                   <input
@@ -299,7 +309,12 @@ const services = [
 
               <div className="service-action-plan-goal-box">
                 <div className="service-action-plan-page-goals-top grid gap-5">
-                  <h5 className="font-black mt-5">Goal 01</h5>
+
+                 <div className="flex items-center justify-between">
+                  <h5 className="font-black ">Goal 1</h5>
+                    <div className="bg-dark-blue w-56 h-px"></div>
+                    <img src={'/goal01.svg'} alt=""/>
+                    </div>
 
                   <label className="block">
                     <h6 className="font-black">Summary</h6>
@@ -316,7 +331,7 @@ const services = [
                     </select>
                   </label>
 
-                  <label className="block">
+                  {/* <label className="block">
                     <h6 className="font-black">Service Category</h6>
 
                     <select
@@ -328,7 +343,7 @@ const services = [
                       <option selected="true" disabled="disabled">Select</option>
                       {displayServices(services)}
                     </select>
-                  </label>
+                  </label> */}
                   <label className="block">
                     <h6 className="font-black">Details</h6>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
@@ -342,19 +357,28 @@ const services = [
                   </label>
                   
                   <label className="block">
-                    <h6 className="font-black">Action 01</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 1</h6>
+                    <img src={"/action01.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal1ActionStep1:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 02</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 2</h6>
+                    <img src={"/action02.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal1ActionStep2:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 03</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 3</h6>
+                    <img src={"/action03.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal1ActionStep3:e.target.value})}}></textarea>
                   </label>
@@ -364,7 +388,11 @@ const services = [
 
               <div className="service-action-plan-goal-box">
                 <div className="service-action-plan-page-goals-top grid gap-5">
-                  <h5 className="font-black mt-5">Goal 02</h5>
+                <div className="flex items-center justify-between">
+                  <h5 className="font-black ">Goal 2</h5>
+                    <div className="bg-dark-blue w-56 h-px"></div>
+                    <img src={'/goal02.svg'} alt=""/>
+                    </div>
 
                   <label className="block">
                     <h6 className="font-black">Summary</h6>
@@ -381,7 +409,7 @@ const services = [
                     </select>
                   </label>
 
-                  <label className="block">
+                  {/* <label className="block">
                     <h6 className="font-black">Service Category</h6>
 
                     <select
@@ -393,7 +421,7 @@ const services = [
                       <option selected="true" disabled="disabled">Select</option>
                       {displayServices(services)}
                     </select>
-                  </label>
+                  </label> */}
                   <label className="block">
                     <h6 className="font-black">Details</h6>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
@@ -407,19 +435,28 @@ const services = [
                   </label>
                   
                   <label className="block">
-                    <h6 className="font-black">Action 01</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 1</h6>
+                    <img src={"/action01.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal2ActionStep1:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 02</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 2</h6>
+                    <img src={"/action02.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal2ActionStep2:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 03</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 3</h6>
+                    <img src={"/action03.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal2ActionStep3:e.target.value})}}></textarea>
                   </label>
@@ -428,7 +465,11 @@ const services = [
 
               <div className="service-action-plan-goal-box">
                 <div className="service-action-plan-page-goals-top grid gap-5">
-                  <h5 className="font-black mt-5">Goal 03</h5>
+                <div className="flex items-center justify-between">
+                  <h5 className="font-black ">Goal 3</h5>
+                    <div className="bg-dark-blue w-56 h-px"></div>
+                    <img src={'/goal03.svg'} alt=""/>
+                    </div>
 
                   <label className="block">
                     <h6 className="font-black">Summary</h6>
@@ -445,7 +486,7 @@ const services = [
                     </select>
                   </label>
 
-                  <label className="block">
+                  {/* <label className="block">
                     <h6 className="font-black">Service Category</h6>
 
                     <select
@@ -457,7 +498,7 @@ const services = [
                       <option selected="true" disabled="disabled">Select</option>
                       {displayServices(services)}
                     </select>
-                  </label>
+                  </label> */}
                   <label className="block">
                     <h6 className="font-black">Details</h6>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
@@ -471,19 +512,28 @@ const services = [
                   </label>
                   
                   <label className="block">
-                    <h6 className="font-black">Action 01</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 1</h6>
+                    <img src={"/action01.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal3ActionStep1:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 02</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 2</h6>
+                    <img src={"/action01.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal3ActionStep2:e.target.value})}}></textarea>
                   </label>
 
                   <label className="block">
-                    <h6 className="font-black">Action 03</h6>
+                  <div className="flex items-center">
+                    <h6 className="font-black mr-2">Action 3</h6>
+                    <img src={"/action03.svg"} alt="" width="50" height="10"/>
+                    </div>
                     <textarea name="" id="" cols="30" rows="4" className="border-black w-full rounded p-1" 
                     onChange={(e)=>{setClientData({...clientData,goal3ActionStep3:e.target.value})}}></textarea>
                   </label>
@@ -529,33 +579,26 @@ const services = [
           </div>
         </section>
         </main>
-
-        {errorCompleteAllFieldsMessage && <p className="text-xs text-red-500 my-3 text-center">* Please Complete all the fields</p>  }
+        {loading &&  <p className="text-xs my-3 text-center">Loading...</p>}
+        {errorCompleteAllFieldsMessage && <p className="text-xs text-red-500 my-3 text-center"><a href="#validation-req">{errorCompleteAllFieldsMessage}</a></p>  }
         <section id="save" className="my-5">
           <div className="container mx-auto flex justify-center">
  {/*          <button className="bg-blue-500 hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5">
             Save Progress</button> */}
 
- 
-            <button className="bg-blue-500 hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5"
-            onClick={(e)=>{createClientActionPlan()}}>Save</button>
-             <ReactToPrint
-                trigger={() => <button className="bg-yellow-500 hover:bg-yellow-300 px-5 py-1 rounded text-white inline-block text-xs">Print</button>}
-                content={() => componentRef.current}
-              
-              />
+              <button className="bg-blue-500 hover:bg-blue-300 px-5 py-1 rounded text-white inline-block text-xs mr-5"
+                onClick={(e)=>{createClientActionPlan()}}>Save
+              </button>
+              <ReactToPrint
+                  trigger={() => <button className="bg-yellow-500 hover:bg-yellow-300 px-5 py-1 rounded text-white inline-block text-xs">Print</button>}
+                  content={() => componentRef.current} />
           
-          <div style={{display:'none'}}>
-      <ComponentToPrint ref={componentRef} name="alexei" clientData={clientData}/>
-      </div>
+              <div style={{display:'none'}}>
+                <ComponentToPrint ref={componentRef} name="alexei" clientData={clientData}/>
+              </div>
           </div>
         </section>
 
-
-
-
-
-  
       </Layout>
       {
       showImpactBaselineModal && (
