@@ -53,7 +53,7 @@ const EditMsaFormPage = ({ data }) => {
     ServiceActionPlanScan :  data[0].serviceactionplanscan=== "0" || data[0].serviceactionplanscan=== null ? false : true,
     ServiceActionPlanUploadDate: data[0].serviceactionplanuploaddate || null,
 
-    ProgressNote: data[0].progressnote ==="0" || data[0].progressnote ===null? false:true,
+    ProgressNote: data[0].progressnoteid ==="" || data[0].progressnoteid ===null? false:true,
     ProgressNoteDate: data[0].progressnotedate , 
     ProgressNoteUploadDate: data[0].progressnoteuploaddate || null, 
     ProgressNoteScan: data[0].progressnotescan || data[0].progressnotescan ===null? false:true, 
@@ -65,10 +65,10 @@ const EditMsaFormPage = ({ data }) => {
     StatusChangesFormScan:data[0].statuschangesformscan ==="0" || data[0].statuschangesformscan ===null? false : true, 
     StatusChangesFormPDF:data[0].statuschangesformpdf ==="0" || data[0].statuschangesformpdf ===null? false : true,
 
-    ComprehensiveRiskBehaviorAssessmentUpdates: data[0].comprehensiveriskbehaviorassessment ==="0"|| data[0].comprehensiveriskbehaviorassessmentscan===null? false:true,
+    ComprehensiveRiskBehaviorAssessmentUpdates: data[0].comprehensiveriskbehaviorassessmentupdates ==="0"|| data[0].comprehensiveriskbehaviorassessmentupdates===null? false:true,
     ComprehensiveRiskBehaviorAssessmentUpdatesDate: data[0].comprehensiveriskbehaviorassessmentdate, 
     ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate: data[0].comprehensiveriskbehaviorassessmentuploaddate, 
-    ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: data[0].comprehensiveriskbehaviorassessmentscan==="0"|| data[0].comprehensiveriskbehaviorassessmentscan===null? false:true,  
+    ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: data[0].comprehensiveriskbehaviorassessmentupdatesformscan==="0"|| data[0].comprehensiveriskbehaviorassessmentupdatesformscan===null? false:true,  
     ComprehensiveRiskBehaviorAssessmentUpdatesPDF: data[0].comprehensiveriskbehaviorassessmentpdf === "0"|| data[0].comprehensiveriskbehaviorassessmentpdf ===null? false:true,
     
     M11QForm:data[0].m11qform ==="0" || data[0].m11qform ===null? false : true, 
@@ -96,10 +96,16 @@ const EditMsaFormPage = ({ data }) => {
     TreatmentAdherenceUpdatesPDF:data[0].treatmentadherenceupdatespdf ==="0" || data[0].treatmentadherenceupdatespdf ===null? false : true,
 
     AIRSCollateralInformation: data[0].airscollateralinformation ==="0" || data[0].airscollateralinformation ===null? false : true,
-    AIRSCollateralInformationDate:data[0].serviceactionplandate,
+    AIRSCollateralInformationDate:data[0].airscollateralinformationdate,
     AIRSCollateralInformationPDF: data[0].airscollateralinformationpdf=== "0" || data[0].airscollateralinformationpdf=== null ? false : true,
     AIRSCollateralInformationScan: data[0].airscollateralinformationscan=== "0" || data[0].airscollateralinformationscan=== null ? false : true,
-    AIRSCollateralInformationUploadDate: data[0].airsCollateralInformationuploaddate || null,
+    AIRSCollateralInformationUploadDate: data[0].airscollateralinformationuploaddate || null,
+
+    AIRSDrugRegimen: data[0].airsdrugregimen ==="0" || data[0].airsdrugregimen ===null? false : true,
+    AIRSDrugRegimenDate: data[0].airsdrugregimendate,
+    AIRSDrugRegimenPDF: data[0].airsdrugregimenpdf ==="0" || data[0].airsdrugregimenpdf ===null ? false : true,
+    AIRSDrugRegimenScan: data[0].airsdrugregimenscan ==="0" || data[0].airsdrugregimenscan ===null ? false : true,
+    AIRSDrugRegimenUploadDate: data[0].airsdrugregimenuploaddate || null, 
 
     AIRSDrugRegimen: data[0].airsdrugregimen ==="0" || data[0].airsdrugregimen ===null? false : true,
     AIRSDrugRegimenDate: data[0].airsdrugregimendate,
@@ -111,7 +117,7 @@ const EditMsaFormPage = ({ data }) => {
     AIRSFinancialInformationDate: data[0].airsfinancialinformationdate,
     AIRSFinancialInformationPDF: data[0].airsfinancialinformationpdf=== "0" || data[0].airsfinancialinformationpdf=== null ? false : true,
     AIRSFinancialInformationScan: data[0].airsfinancialinformationscan=== "0" || data[0].airsfinancialinformationscan===null ? false : true,
-    AIRSFinancialInformationUploadDate: data[0].airsFinancialInformationuploaddate || null,
+    AIRSFinancialInformationUploadDate: data[0].airsfinancialinformationuploaddate || null,
 
     AIRSHIVAIDSRiskHistory: data[0].airshivaidsriskhistory === "0" || data[0].airshivaidsriskhistory === null ? false : true,
     AIRSHIVAIDSRiskHistoryDate: data[0].airshivaidsriskhistorydate,
@@ -198,35 +204,35 @@ const EditMsaFormPage = ({ data }) => {
     NYCDOHMHNoticeOfPrivacyPracticesScan : data[0].nycdohmhnoticeofprivacypracticesscan=== "0" || data[0].nycdohmhnoticeofprivacypracticesscan=== null ? false : true,
     NYCDOHMHNoticeOfPrivacyPracticesUploadDate: data[0].nycdohmhnoticeofprivacypracticesuploaddate || null,
 
-    LinkageRetentionAdherenceForms: data[0].lneoutreachretentiontrackingform === "0" || data[0].lneoutreachretentiontrackingform === null ? false : true,
-    LinkageRetentionAdherenceFormsDate: data[0].lneoutreachretentiontrackingformdate,
-    LinkageRetentionAdherenceFormsPDF: data[0].lneoutreachretentiontrackingformpdf=== "0" || data[0].lneoutreachretentiontrackingformpdf=== null ? false : true,
-    LinkageRetentionAdherenceFormsScan: data[0].lneoutreachretentiontrackingformscan=== "0" || data[0].lneoutreachretentiontrackingformscan=== null ? false : true,
-    LinkageRetentionAdherenceFormsUploadDate: data[0].lneoutreachretentiontrackingformuploaddate || null,
+    LinkageRetentionAdherenceForms: data[0].linkageretentionadherenceforms === "0" || data[0].linkageretentionadherenceforms === null ? false : true,
+    LinkageRetentionAdherenceFormsDate: data[0].linkageretentionadherenceformsdate,
+    LinkageRetentionAdherenceFormsPDF: data[0].linkageretentionadherenceformspdf=== "0" || data[0].linkageretentionadherenceformspdf=== null ? false : true,
+    LinkageRetentionAdherenceFormsScan: data[0].linkageretentionadherenceformsscan=== "0" || data[0].linkageretentionadherenceformsscan=== null ? false : true,
+    LinkageRetentionAdherenceFormsUploadDate: data[0].linkageretentionadherenceformsuploaddate || null,
 
-    InternalReferralInformation: data[0].lnereferralinformation === "0" || data[0].lnereferralinformation === null ? false : true,
-    InternalReferralInformationDate: data[0].lnereferralinformationdate,
-    InternalReferralInformationPDF:  data[0].lnereferralinformationpdf=== "0" || data[0].lnereferralinformationpdf=== null ? false : true,
-    InternalReferralInformationScan:  data[0].lnereferralinformationscan=== "0" || data[0].lnereferralinformationscan=== null ? false : true,
-    InternalReferralInformationUploadDate: data[0].lnereferralinformationuploaddate || null,
+    InternalReferralInformation: data[0].internalreferralinformation === "0" || data[0].internalreferralinformation === null ? false : true,
+    InternalReferralInformationDate: data[0].internalreferralinformationdate,
+    InternalReferralInformationPDF:  data[0].internalreferralinformationpdf=== "0" || data[0].internalreferralinformationpdf=== null ? false : true,
+    InternalReferralInformationScan:  data[0].internalreferralinformationscan=== "0" || data[0].internalreferralinformationscan=== null ? false : true,
+    InternalReferralInformationUploadDate: data[0].internalreferralinformationuploaddate || null,
 
     LNEClientReferralForm: data[0].lneclientreferralform === "0" || data[0].lneclientreferralform === null ? false : true,
     LNEClientReferralFormDate: data[0].lneclientreferralformdate,
     LNEClientReferralFormPDF: data[0].lneclientreferralformpdf=== "0" || data[0].lneclientreferralformpdf=== null ? false : true,
     LNEClientReferralFormScan: data[0].lneclientreferralformscan=== "0" || data[0].lneclientreferralformscan=== null ? false : true,
-    LNEClientReferralFormUploadDate: data[0].lnereferralinformationuploaddate || null,
+    LNEClientReferralFormUploadDate: data[0].lneclientreferralformuploaddate || null,
 
-    LNEHNSEligibilityForm: data[0].lnehnseligibilityform === "0" || data[0].lnehnseligibilityform === null ? false : true,
-    LNEHNSEligibilityFormDate: data[0].lnehnseligibilityformdate,
-    LNEHNSEligibilityFormPDF: data[0].lnehnseligibilityformpdf=== "0" || data[0].lnehnseligibilityformpdf=== null ? false : true,
-    LNEHNSEligibilityFormScan: data[0].lnehnseligibilityformscan=== "0" || data[0].lnehnseligibilityformscan=== null ? false : true,
-    LNEHNSEligibilityFormUploadDate: data[0].lnehnseligibilityformuploaddate || null,
+    LNEHNSEligibilityForm: data[0].hnseligibilityform === "0" || data[0].hnseligibilityform === null ? false : true,
+    LNEHNSEligibilityFormDate: data[0].hnseligibilityformdate,
+    LNEHNSEligibilityFormPDF: data[0].hnseligibilityformpdf=== "0" || data[0].hnseligibilityformpdf=== null ? false : true,
+    LNEHNSEligibilityFormScan: data[0].hnseligibilityformscan=== "0" || data[0].hnseligibilityformscan=== null ? false : true,
+    LNEHNSEligibilityFormUploadDate: data[0].hnseligibilityformuploaddate || null,
 
-    HNSEligibilityForm: data[0].lnehnseligibilityform === "0" || data[0].lnehnseligibilityform === null ? false : true,
-    HNSEligibilityFormDate: data[0].lnehnseligibilityformdate,
-    HNSEligibilityFormPDF: data[0].lnehnseligibilityformpdf=== "0" || data[0].lnehnseligibilityformpdf=== null ? false : true,
-    HNSEligibilityFormScan: data[0].lnehnseligibilityformscan=== "0" || data[0].lnehnseligibilityformscan=== null ? false : true,
-    HNSEligibilityFormUploadDate: data[0].lnehnseligibilityformuploaddate || null,
+    HNSEligibilityForm: data[0].hnseligibilityform === "0" || data[0].hnseligibilityform === null ? false : true,
+    HNSEligibilityFormDate: data[0].hnseligibilityformdate,
+    HNSEligibilityFormPDF: data[0].hnseligibilityformpdf=== "0" || data[0].hnseligibilityformpdf=== null ? false : true,
+    HNSEligibilityFormScan: data[0].hnseligibilityformscan=== "0" || data[0].hnseligibilityformscan=== null ? false : true,
+    HNSEligibilityFormUploadDate: data[0].hnseligibilityformuploaddate || null,
     
     HNSReadinessForm:data[0].hnsreadinessform ==="0" || data[0].hnsreadinessform === null? false : true,
     HNSReadinessFormDate: data[0].hnsreadinessformdate,
@@ -273,9 +279,9 @@ console.log("clientData",clientData);
         console.log(response)
         if (response.status === 200 || response.statusText === 'Ok') {
           notifyMessage()
-          setTimeout(() => {
+          /* setTimeout(() => {
             router.push(`/dashboard`)
-          }, 2300)
+          }, 2300) */
         
         } 
       })
@@ -1594,23 +1600,23 @@ console.log("clientData",clientData);
                   checked={clientData.ComprehensiveRiskBehaviorAssessmentUpdatesPDF ? 'checked' : false}
                 />
               </div>
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan? 'pointer-events-none' :""}`}
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan? 'pointer-events-none' :""}`}
 
                 onClick={() => {
-                  clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan ?
+                  clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan ?
                     setClientData(formState => ({
                       ...formState,
-                      ComprehensiveRiskBehaviorAssessmentUpdatesScan: !formState.ComprehensiveRiskBehaviorAssessmentUpdatesScan,
+                      ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: !formState.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan,
                       ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate: ""
                     })) :
                     setClientData(formState => ({
                       ...formState,
-                      ComprehensiveRiskBehaviorAssessmentUpdatesScan: !formState.ComprehensiveRiskBehaviorAssessmentUpdatesScan,
+                      ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: !formState.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan,
                       ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate: crearFecha()
                     }))}}>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan ? "3" : "0"}>
+                  strokeWidth={clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -1622,15 +1628,15 @@ console.log("clientData",clientData);
                     clientData.ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate === "" || clientData.ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate === null ? (
                       setClientData({
                         ...clientData,
-                        ComprehensiveRiskBehaviorAssessmentUpdatesScan: !clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan,
+                        ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: !clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan,
                         ComprehensiveRiskBehaviorAssessmentUpdatesUploadDate: crearFecha()
                       })) : setClientData({
                         ...clientData,
-                        ComprehensiveRiskBehaviorAssessmentUpdatesScan: !clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan,
+                        ComprehensiveRiskBehaviorAssessmentUpdatesFormScan: !clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan,
                       })
                   }
                   }
-                  checked={clientData.ComprehensiveRiskBehaviorAssessmentUpdatesScan ? 'checked' : false}
+                  checked={clientData.ComprehensiveRiskBehaviorAssessmentUpdatesFormScan ? 'checked' : false}
                 />
               </div>
             </div>
@@ -2165,7 +2171,7 @@ console.log("clientData",clientData);
             <div
               className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.TreatmentAdherenceUpdates? '' :'pointer-events-none'}`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.TreatmentAdherenceUpdates? 'pointer-events-none' :""}`}
+              <div className={`ml-1 text-center flex justify-center items-center ${clientData.InitialTreatmentAdherenceIntake? 'pointer-events-none' :""}`}
                onClick={() => {
                 clientData.TreatmentAdherenceUpdates ?
                   setClientData(formState => ({
@@ -2697,7 +2703,7 @@ console.log("clientData",clientData);
                 }>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSDrugRegimen ? "3" : "0"}>
+                  strokeWidth={clientData.AIRSDrugRegimenScan ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -2720,6 +2726,7 @@ console.log("clientData",clientData);
                   checked={clientData.AIRSDrugRegimenScan ? 'checked' : false}
                 />
               </div>
+              {console.log("clientData.AIRSDrugRegimenScan",clientData.AIRSDrugRegimenScan)}
             </div>
             <div
               className={`${MSAStyles.formRowsContainerDesFormEdit} justify-center items-center bg-light-blue grid gap-5 py-2 rounded-lg my-2 ${clientData.AIRSFinancialInformation? '' :'pointer-events-none'}`}
@@ -3197,7 +3204,7 @@ console.log("clientData",clientData);
               }>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHIVMedicalProvider ? "3" : "0"}>
+                  strokeWidth={clientData.AIRSHIVMedicalProviderPDF ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -3244,7 +3251,7 @@ console.log("clientData",clientData);
               }>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHIVMedicalProvider ? "3" : "0"}>
+                  strokeWidth={clientData.AIRSHIVMedicalProviderScan ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -3379,7 +3386,7 @@ console.log("clientData",clientData);
               }>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHIVStatusHistory ? "3" : "0"}>
+                  strokeWidth={clientData.AIRSHIVStatusHistoryPDF ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -3426,7 +3433,7 @@ console.log("clientData",clientData);
               }>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHIVStatusHistory ? "3" : "0"}>
+                  strokeWidth={clientData.AIRSHIVStatusHistoryScan ? "3" : "0"}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
                 <input
@@ -5758,6 +5765,7 @@ console.log("clientData",clientData);
                   }}
                 />
               </div>
+             
               <div className={`${MSAStyles.dropboxFolderNames} text-center flex justify-center items-center border-l-dark-blue`}>
               <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
               <img src={'/dropbox-folder.png'} alt="" width="34"/>
