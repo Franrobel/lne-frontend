@@ -43,7 +43,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
     AIRSCollateralInformation: data[0].airscollateralinformation ==="0" ? false: true,
     AIRSCollateralInformationDate:data[0].airscollateralinformationdate,
     AIRSFinancialInformation: data[0].airsfinancialinformation ==="0" ? false: true,
-    AIRSFinancialInformationDate: data[0].airsfinancialinformationdate ,
+    AIRSFinancialInformationDate: data[0].airsfinancialinformationdate,
     AIRSHIVAIDSRiskHistory: data[0].airshivaidsriskhistory ==="0" ? false: true,
     AIRSHIVAIDSRiskHistoryDate: data[0].airshivaidsriskhistorydate,
     AIRSHCVHistory: data[0].airshcvhistory ==="0" ? false: true,
@@ -68,15 +68,42 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
     HIPPAConsentFormDate: data[0].hippaconsentformdate,
     NYCDOHMHNoticeOfPrivacyPractices: data[0].nycdohmhnoticeofprivacypractices ==="0" ? false: true,
     NYCDOHMHNoticeOfPrivacyPracticesDate: data[0].nycdohmhnoticeofprivacypracticesdate,
-    LNEOutreachRetentionTrackingForm: data[0].lneoutreachretentiontrackingform ==="0" ? false: true,
-    LNEOutreachRetentionTrackingFormDate: data[0].lneoutreachretentiontrackingformdate,
-    LNEReferralInformation: data[0].lnereferralinformation ==="0" ? false: true,
-    LNEReferralInformationDate: data[0].lnereferralinformationdate,
-    LNEClientReferralForm: data[0].lneclientreferralform ==="0" ? false: true,
+    LinkageRetentionAdherenceForms: data[0].linkageretentionadherenceforms ==="0" || data[0].linkageretentionadherenceforms ===null ? false: true,
+    LinkageRetentionAdherenceFormsDate: data[0].linkageretentionadherenceformsdate,
+    InternalReferralInformation: data[0].internalreferralinformation ==="0" || data[0].internalreferralinformation ===null ? false: true,
+    InternalReferralInformationDate: data[0].internalreferralinformationdate,
+    LNEClientReferralForm: data[0].lneclientreferralform ==="0" || data[0].lneclientreferralform ===null ? false: true,
     LNEClientReferralFormDate: data[0].lneclientreferralformdate,
-    LNEHNSEligibilityForm: data[0].lnehnseligibilityform ==="0" ? false: true,
-    LNEHNSEligibilityFormDate: data[0].lnehnseligibilityformdate,
+    HNSEligibilityForm: data[0].hnseligibilityform ==="0" || data[0].hnseligibilityform ===null? false : true,
+    HNSEligibilityFormDate: data[0].hnseligibilityformdate,
+    HNSReadinessForm: data[0].hnsreadinessform ==="0" || data[0].hnsreadinessform ===null? false : true,
+    HNSReadinessFormDate: data[0].hnsreadinessformdate,
+    SupportGroups: data[0].supportgroups ==="0" || data[0].supportgroups ===null ? false : true,
+    SupportGroupsDate: data[0].supportgroupsdate,
+    IDGForm: data[0].idgform ==="0"|| data[0].idgform ===null? false : true,
+    IDGFormDate: data[0].idgformdate,
 
+    progressNote:data[0].progressnoteid ==""|| data[0].progressnoteid ===null? false : true,
+    progressNoteDate:data[0].progressnotedate,
+
+    StatusChangesForm:data[0].statuschangesform ==="0"|| data[0].statuschangesform ===null? false : true,
+    StatusChangesFormDate:data[0].statuschangesformdate,
+    ComprehensiveRiskBehaviorAssessmentUpdates:data[0].comprehensiveriskbehaviorassessmentupdates ==="0"|| data[0].idgform ===null? false : true,
+    ComprehensiveRiskBehaviorAssessmentUpdatesDate:data[0].comprehensiveriskbehaviorassessmentupdatesdate,
+    M11QForm :data[0].m11qform ==="0"|| data[0].m11qform ===null? false : true,
+    M11QFormDate:data[0].m11qformdate,
+    CD4VLReports:data[0].cd4vlreports ==="0"|| data[0].cd4vlreports ===null? false : true,
+    CD4VLReportsDate:data[0].cd4vlreportsdate,
+    InitialTreatmentAdherenceIntake:data[0].initialtreatmentadherenceintake ==="0"|| data[0].initialtreatmentadherenceintake ===null? false : true,
+    InitialTreatmentAdherenceIntakeDate :data[0].initialtreatmentadherenceintakedate,
+    TreatmentAdherenceUpdates:data[0].treatmentadherenceupdates ==="0"|| data[0].treatmentadherenceupdates ===null? false : true,
+    TreatmentAdherenceUpdatesDate:data[0].treatmentadherenceupdatesdate,
+    AirsDrugRegimen:data[0].airsdrugregimen ==="0"|| data[0].airsdrugregimen ===null? false : true,
+    AirsDrugRegimenDate:data[0].airsdrugregimendate,
+    AirsHIVMedicalProvider:data[0].airshivmedicalprovider ==="0"|| data[0].airshivmedicalprovider ===null? false : true,
+    AirsHIVMedicalProviderDate:data[0].airshivmedicalproviderdate,
+    AIRSHIVStatusHistory:data[0].airshivstatushistory ==="0"|| data[0].airshivstatushistory ===null? false : true,
+    AIRSHIVStatusHistoryDate:data[0].airshivstatushistorydate
   });
 
 const todaysDate = new Date();
@@ -91,7 +118,7 @@ const handleMsaform = ()=> {
         clientData
       })
       .then(function (response) {
-   
+        console.log(response)
         if(response.status===200 || response.statusText==='Ok'){
           notifyMessage()
             setTimeout(()=>{
@@ -100,7 +127,7 @@ const handleMsaform = ()=> {
           } 
       })
       .catch(function (error) {
-       res.send(error)
+       console(error)
       });
 }
 
@@ -253,59 +280,33 @@ const crearFecha=()=>{
             {/* {TABLE HEAD} */}
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSIntakeForm? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSIntakeForm ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSIntakeForm: !formState.AIRSIntakeForm,
-                            AIRSIntakeFormDate: "",
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSIntakeForm: !formState.AIRSIntakeForm,
-                            AIRSIntakeFormDate: crearFecha(),
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSIntakeForm ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSIntakeForm && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.AIRSIntakeFormDate === "" || clientData.AIRSIntakeFormDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        AIRSIntakeForm: !clientData.AIRSIntakeForm,
-                        AIRSIntakeFormDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        AIRSIntakeForm: !clientData.AIRSIntakeForm,
-                        AIRSIntakeFormDate: ""
-                      })
+                  onChange={(e) => {
+                    clientData.AIRSIntakeFormDate ==="" || clientData.AIRSIntakeFormDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSIntakeForm: !clientData.AIRSIntakeForm,
+                      AIRSIntakeFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSIntakeForm: !clientData.AIRSIntakeForm,
+                      AIRSIntakeFormDate: '',
+                    })
                   }
-                  }
-                  checked={clientData.AIRSIntakeForm ? 'checked' : false}
-                  disabled={clientData.AIRSIntakeForm ? true : false}
+                }
+                checked={clientData.AIRSIntakeFormDate ? true : false} 
+              /*   disabled={clientData.AIRSIntakeFormDate ? true : false}  */
                 />
-                
               </div>
               <div>
                 <p>AIRS Intake Form <span className="text-red-500">*</span></p>
               </div>
-          
               <div className="text-center">
                  
                 <input
@@ -336,61 +337,37 @@ const crearFecha=()=>{
                 />
               </div>
               <div className="text-center flex justify-center">
-              <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
-              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
+                <img src={'/dropbox-folder.png'} alt="" width="34"/>
                 </a>
               </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ComprehensiveRiskBehaviorAssessment? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.ComprehensiveRiskBehaviorAssessment ?
-                          setClientData(formState => ({
-                            ...formState,
-                            ComprehensiveRiskBehaviorAssessment: !formState.ComprehensiveRiskBehaviorAssessment,
-                            ComprehensiveRiskBehaviorAssessmentDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            ComprehensiveRiskBehaviorAssessment: !formState.ComprehensiveRiskBehaviorAssessment,
-                            ComprehensiveRiskBehaviorAssessmentDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.ComprehensiveRiskBehaviorAssessment ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.ComprehensiveRiskBehaviorAssessment && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.ComprehensiveRiskBehaviorAssessmentDate === "" || clientData.ComprehensiveRiskBehaviorAssessmentDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        ComprehensiveRiskBehaviorAssessment: !clientData.ComprehensiveRiskBehaviorAssessment,
-                        ComprehensiveRiskBehaviorAssessmentDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        ComprehensiveRiskBehaviorAssessment: !clientData.ComprehensiveRiskBehaviorAssessment,
-                        ComprehensiveRiskBehaviorAssessmentDate: ""
-                      })
+                    clientData.ComprehensiveRiskBehaviorAssessmentDate==="" || clientData.ComprehensiveRiskBehaviorAssessmentDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      ComprehensiveRiskBehaviorAssessment:
+                        !clientData.ComprehensiveRiskBehaviorAssessment,
+                        ComprehensiveRiskBehaviorAssessmentDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      ComprehensiveRiskBehaviorAssessment:
+                        !clientData.ComprehensiveRiskBehaviorAssessment,
+                      ComprehensiveRiskBehaviorAssessmentDate:'',
+                    })
                   }
-                  }
-                  checked={clientData.ComprehensiveRiskBehaviorAssessment ? 'checked' : false}
-                  disabled={clientData.ComprehensiveRiskBehaviorAssessment ? true : false}
+                }
+                checked={clientData.ComprehensiveRiskBehaviorAssessment? true : false}
                 />
-                
               </div>
               <div>
                 <p>Comprehensive Risk Behavior Assessment <span className="text-red-500">*</span> </p>
@@ -430,67 +407,40 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.ServiceActionPlan? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.ServiceActionPlan ?
-                          setClientData(formState => ({
-                            ...formState,
-                            ServiceActionPlan: !formState.ServiceActionPlan,
-                            ServiceActionPlanDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            ServiceActionPlan: !formState.ServiceActionPlan,
-                            ServiceActionPlanDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.ServiceActionPlan ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 {/* <input
-                  className={`${!clientData.ServiceActionPlan && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.ServiceActionPlanDate === "" || clientData.ServiceActionPlanDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        ServiceActionPlan: !clientData.ServiceActionPlan,
-                        ServiceActionPlanDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        ServiceActionPlan: !clientData.ServiceActionPlan,
-                        ServiceActionPlanDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.ServiceActionPlan ? 'checked' : false}
-                  disabled={clientData.ServiceActionPlan ? true : false}
+                    clientData.ServiceActionPlanDate==="" || clientData.ServiceActionPlanDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate: ''
+                    })
+                  }}
+                  checked={clientData.ServiceActionPlan? true : false}
                 /> */}
-                
               </div>
               <div>
-                <p>Service Action Plan</p>
+                <p>Service Action Plan  </p>
               </div>
               <div className="text-center">
-              {clientData.ServiceActionPlanDate ? <p className="bg-white inline-block px-8 py-1 rounded-md"> 
-                    {new Date(clientData.ServiceActionPlanDate).toLocaleDateString('en-US',{year:"numeric", month:'numeric', day:'numeric'})}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
+              {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
+                   {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
                 {/* <input
                   type="date"
                   id="AIRSIntakeForm"
                   value={
                     clientData.ServiceActionPlanDate &&
-                    clientData.ServiceActionPlanDate.split('T')[0]
+                    clientData.ServiceActionPlanDate
                   }
                   disabled={clientData.ServiceActionPlanDate ? true: false}
                   className="rounded-lg text-sm p-1"
@@ -519,54 +469,505 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSCollateralInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSCollateralInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSCollateralInformation: !formState.AIRSCollateralInformation,
-                            AIRSCollateralInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSCollateralInformation: !formState.AIRSCollateralInformation,
-                            AIRSCollateralInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSCollateralInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
-                <input
-                  className={`${!clientData.AIRSCollateralInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
+              <div className="form-row-item px-5">
+                {/* <input
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.AIRSCollateralInformationDate === "" || clientData.AIRSCollateralInformationDate === null ? (
+                    clientData.ServiceActionPlanDate==="" || clientData.ServiceActionPlanDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      ServiceActionPlan: !clientData.ServiceActionPlan,
+                      ServiceActionPlanDate: ''
+                    })
+                  }}
+                  checked={clientData.progressNote ? 'checked' : false}
+                /> */}
+              </div>
+              <div>
+                <p>Progress Note </p>
+                {clientData.progressnotedateid}
+              </div>
+              <div className="text-center">
+              {clientData.progressNote ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
+                   {clientData.progressNoteDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
+                {/* <input
+                  type="date"
+                  id="AIRSIntakeForm"
+                  value={
+                    clientData.ServiceActionPlanDate &&
+                    clientData.ServiceActionPlanDate
+                  }
+                  disabled={clientData.ServiceActionPlanDate ? true: false}
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData){
                       setClientData({
                         ...clientData,
-                        AIRSCollateralInformation: !clientData.AIRSCollateralInformation,
-                        AIRSCollateralInformationDate: crearFecha()
-                      })) : setClientData({
+                        ServiceActionPlanDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
                         ...clientData,
-                        AIRSCollateralInformation: !clientData.AIRSCollateralInformation,
-                        AIRSCollateralInformationDate: ""
-                      })
+                        ServiceActionPlanDate: e.target.value,
+                        ServiceActionPlan: !clientData.ServiceActionPlan,
+                      });
+                    }
+                   
+                  }}
+                /> */}
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.action_plans_folder_url ? data[0]?.action_plans_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.StatusChangesFormDate==="" || clientData.StatusChangesFormDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      StatusChangesForm:
+                        !clientData.StatusChangesForm,
+                        StatusChangesFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      StatusChangesForm :
+                        !clientData.StatusChangesForm ,
+                        StatusChangesFormDate: '',
+                    })
+                    }
                   }
-                  }
-                  checked={clientData.AIRSCollateralInformation ? 'checked' : false}
-                  disabled={clientData.AIRSCollateralInformation ? true : false}
+                  checked={clientData.StatusChangesForm ? true : false}
                 />
-                
+              </div>
+              <div>
+                <p>Status Changes/ClosureForms</p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="AIRSCollateralInformation"
+                  value={
+                    clientData.StatusChangesFormDate &&
+                    clientData.StatusChangesFormDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.StatusChangesForm ){
+                      setClientData({
+                        ...clientData,
+                        StatusChangesFormDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        StatusChangesFormDate: e.target.value,
+                        StatusChangesForm :
+                          !clientData.StatusChangesForm ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.ComprehensiveRiskBehaviorAssessmentUpdatesDate==="" || clientData.ComprehensiveRiskBehaviorAssessmentUpdatesDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      ComprehensiveRiskBehaviorAssessmentUpdates:
+                        !clientData.ComprehensiveRiskBehaviorAssessmentUpdates,
+                        ComprehensiveRiskBehaviorAssessmentUpdatesDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      ComprehensiveRiskBehaviorAssessmentUpdates :
+                        !clientData.ComprehensiveRiskBehaviorAssessmentUpdates ,
+                        ComprehensiveRiskBehaviorAssessmentUpdatesDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.ComprehensiveRiskBehaviorAssessmentUpdates ? true : false}
+                />
+              </div>
+              <div>
+                <p>Comprehensive Behavioral Risk Assessment Updates </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.ComprehensiveRiskBehaviorAssessmentUpdatesDate &&
+                    clientData.ComprehensiveRiskBehaviorAssessmentUpdatesDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.StatusChangesForm ){
+                      setClientData({
+                        ...clientData,
+                        StatusChangesFormDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        StatusChangesFormDate: e.target.value,
+                        StatusChangesForm :
+                          !clientData.StatusChangesForm ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.M11QFormDate==="" || clientData.M11QFormDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      M11QForm:
+                        !clientData.M11QForm,
+                        M11QFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      M11QForm :
+                        !clientData.M11QForm ,
+                        M11QFormDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.M11QForm ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                M11Q
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.M11QFormDate &&
+                    clientData.M11QFormDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.M11QForm ){
+                      setClientData({
+                        ...clientData,
+                        M11QFormDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        M11QFormDate: e.target.value,
+                        M11QForm :
+                          !clientData.M11QForm ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.CD4VLReportsDate==="" || clientData.CD4VLReportsDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      CD4VLReports:
+                        !clientData.CD4VLReports,
+                        CD4VLReportsDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      CD4VLReports :
+                        !clientData.CD4VLReports ,
+                        CD4VLReportsDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.CD4VLReports ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                CD4/VL Check Reports
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.CD4VLReportsDate &&
+                    clientData.CD4VLReportsDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.CD4VLReports ){
+                      setClientData({
+                        ...clientData,
+                        CD4VLReportsDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        CD4VLReportsDate: e.target.value,
+                        CD4VLReports :
+                          !clientData.CD4VLReports ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.InitialTreatmentAdherenceIntakeDate==="" || clientData.InitialTreatmentAdherenceIntakeDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      InitialTreatmentAdherenceIntake:
+                        !clientData.InitialTreatmentAdherenceIntake,
+                        InitialTreatmentAdherenceIntakeDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      InitialTreatmentAdherenceIntake :
+                        !clientData.InitialTreatmentAdherenceIntake ,
+                        InitialTreatmentAdherenceIntakeDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.InitialTreatmentAdherenceIntake ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                Initial Treatment Adherence Intake 
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.InitialTreatmentAdherenceIntakeDate &&
+                    clientData.InitialTreatmentAdherenceIntakeDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.InitialTreatmentAdherenceIntake ){
+                      setClientData({
+                        ...clientData,
+                        InitialTreatmentAdherenceIntakeDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        InitialTreatmentAdherenceIntakeDate: e.target.value,
+                        InitialTreatmentAdherenceIntake :
+                          !clientData.InitialTreatmentAdherenceIntake ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.TreatmentAdherenceUpdatesDate==="" || clientData.TreatmentAdherenceUpdatesDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      TreatmentAdherenceUpdates:
+                        !clientData.TreatmentAdherenceUpdates,
+                        TreatmentAdherenceUpdatesDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      TreatmentAdherenceUpdates :
+                        !clientData.TreatmentAdherenceUpdates ,
+                        TreatmentAdherenceUpdatesDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.TreatmentAdherenceUpdates ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                Treatment Adherence Updates
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.TreatmentAdherenceUpdatesDate &&
+                    clientData.TreatmentAdherenceUpdatesDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.TreatmentAdherenceUpdates ){
+                      setClientData({
+                        ...clientData,
+                        TreatmentAdherenceUpdatesDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        TreatmentAdherenceUpdatesDate: e.target.value,
+                        TreatmentAdherenceUpdates :
+                          !clientData.TreatmentAdherenceUpdates ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.AIRSCollateralInformationDate==="" || clientData.AIRSCollateralInformationDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSCollateralInformation:
+                        !clientData.AIRSCollateralInformation,
+                        AIRSCollateralInformationDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSCollateralInformation:
+                        !clientData.AIRSCollateralInformation,
+                      AIRSCollateralInformationDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.AIRSCollateralInformation? true : false}
+                />
               </div>
               <div>
                 <p>AIRS Collateral Information </p>
@@ -606,55 +1007,99 @@ const crearFecha=()=>{
               </div>
             </div>
 
+
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSFinancialInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSFinancialInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSFinancialInformation: !formState.AIRSFinancialInformation,
-                            AIRSFinancialInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSFinancialInformation: !formState.AIRSFinancialInformation,
-                            AIRSFinancialInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSFinancialInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSFinancialInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.AIRSFinancialInformationDate === "" || clientData.AIRSFinancialInformationDate === null ? (
+                  onChange={(e) =>{
+                    clientData.AirsDrugRegimenDate==="" || clientData.AirsDrugRegimenDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      AirsDrugRegimen:
+                        !clientData.AirsDrugRegimen,
+                        AirsDrugRegimenDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AirsDrugRegimen :
+                        !clientData.AirsDrugRegimen ,
+                        AirsDrugRegimenDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.AirsDrugRegimen ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                AIRS Drug Regimen History 
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="AirsDrugRegimen"
+                  value={
+                    clientData.AirsDrugRegimenDate &&
+                    clientData.AirsDrugRegimenDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.AirsDrugRegimen ){
                       setClientData({
                         ...clientData,
-                        AIRSFinancialInformation: !clientData.AIRSFinancialInformation,
-                        AIRSFinancialInformationDate: crearFecha()
-                      })) : setClientData({
+                        AirsDrugRegimenDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
                         ...clientData,
-                        AIRSFinancialInformation: !clientData.AIRSFinancialInformation,
-                        AIRSFinancialInformationDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.AIRSFinancialInformation ? 'checked' : false}
-                  disabled={clientData.AIRSFinancialInformation ? true : false}
+                        AirsDrugRegimenDate : e.target.value,
+                        AirsDrugRegimen  :
+                          !clientData.AirsDrugRegimen  ,
+                      });
+                    }
+                    
+                  }}
                 />
-                
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() => {
+                    clientData.AIRSFinancialInformationDate ==="" || clientData.AIRSFinancialInformationDate === null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSFinancialInformation:
+                        !clientData.AIRSFinancialInformation,
+                        AIRSFinancialInformationDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSFinancialInformation:
+                        !clientData.AIRSFinancialInformation,
+                      AIRSFinancialInformationDate: '',
+                    })
+                  }}
+                  checked={clientData.AIRSFinancialInformation? true : false}
+                />
               </div>
               <div>
                 <p>AIRS Financial Information </p>
@@ -667,7 +1112,7 @@ const crearFecha=()=>{
                     clientData.AIRSFinancialInformationDate &&
                     clientData.AIRSFinancialInformationDate.split('T')[0]
                   }
-                  /* disabled={clientData.AIRSFinancialInformationDate ? true: false} */
+                 /*  disabled={clientData.AIRSFinancialInformation ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if (clientData.AIRSFinancialInformation){
@@ -696,52 +1141,27 @@ const crearFecha=()=>{
             <div
               className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-             <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHIVAIDSRiskHistory? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSHIVAIDSRiskHistory ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHIVAIDSRiskHistory: !formState.AIRSHIVAIDSRiskHistory,
-                            AIRSHIVAIDSRiskHistoryDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHIVAIDSRiskHistory: !formState.AIRSHIVAIDSRiskHistory,
-                            AIRSHIVAIDSRiskHistoryDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHIVAIDSRiskHistory ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSHIVAIDSRiskHistory && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.AIRSHIVAIDSRiskHistoryDate === "" || clientData.AIRSHIVAIDSRiskHistoryDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        AIRSHIVAIDSRiskHistory: !clientData.AIRSHIVAIDSRiskHistory,
-                        AIRSHIVAIDSRiskHistoryDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        AIRSHIVAIDSRiskHistory: !clientData.AIRSHIVAIDSRiskHistory,
-                        AIRSHIVAIDSRiskHistoryDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.AIRSHIVAIDSRiskHistory ? 'checked' : false}
-                  disabled={clientData.AIRSHIVAIDSRiskHistory ? true : false}
+                    clientData.AIRSHIVAIDSRiskHistoryDate==="" || clientData.AIRSHIVAIDSRiskHistoryDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSHIVAIDSRiskHistory:
+                        !clientData.AIRSHIVAIDSRiskHistory,
+                        AIRSHIVAIDSRiskHistoryDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSHIVAIDSRiskHistory:
+                        !clientData.AIRSHIVAIDSRiskHistory,
+                      AIRSHIVAIDSRiskHistoryDate: ''
+                    })
+                  }}
+                  checked={clientData.AIRSHIVAIDSRiskHistory? true : false}
                 />
-                
               </div>
               <div>
                 <p>AIRS HIV AIDS Risk History </p>
@@ -782,55 +1202,167 @@ const crearFecha=()=>{
               </div>
             </div>
 
+
+
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-               <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHCVHistory? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSHCVHistory ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHCVHistory: !formState.AIRSHCVHistory,
-                            AIRSHCVHistoryDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHCVHistory: !formState.AIRSHCVHistory,
-                            AIRSHCVHistoryDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHCVHistory ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSHCVHistory && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.AIRSHCVHistoryDate === "" || clientData.AIRSHCVHistoryDate === null ? (
+                  onChange={(e) =>{
+                    clientData.AirsHIVMedicalProviderDate==="" || clientData.AirsHIVMedicalProviderDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      AirsHIVMedicalProvider:
+                        !clientData.AirsHIVMedicalProvider,
+                        AirsHIVMedicalProviderDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AirsHIVMedicalProvider :
+                        !clientData.AirsHIVMedicalProvider ,
+                        AirsHIVMedicalProviderDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.AirsHIVMedicalProvider ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                AIRS HIV Medical Provider History 
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.AirsHIVMedicalProviderDate &&
+                    clientData.AirsHIVMedicalProviderDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.AirsHIVMedicalProvider ){
                       setClientData({
                         ...clientData,
-                        AIRSHCVHistory: !clientData.AIRSHCVHistory,
-                        AIRSHCVHistoryDate: crearFecha()
-                      })) : setClientData({
+                        AirsHIVMedicalProviderDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
                         ...clientData,
-                        AIRSHCVHistory: !clientData.AIRSHCVHistory,
-                        AIRSHCVHistoryDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.AIRSHCVHistory ? 'checked' : false}
-                  disabled={clientData.AIRSHCVHistory ? true : false}
+                        AirsHIVMedicalProviderDate: e.target.value,
+                        AirsHIVMedicalProvider :
+                          !clientData.AirsHIVMedicalProvider ,
+                      });
+                    }
+                    
+                  }}
                 />
-                
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={(e) =>{
+                    clientData.AIRSHIVStatusHistoryDate ==="" || clientData.AIRSHIVStatusHistoryDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSHIVStatusHistory:
+                        !clientData.AIRSHIVStatusHistory,
+                        AIRSHIVStatusHistoryDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSHIVStatusHistory :
+                        !clientData.AIRSHIVStatusHistory ,
+                        AIRSHIVStatusHistoryDate: '',
+                    })
+                    }
+                  }
+                  checked={clientData.AIRSHIVStatusHistory ? true : false}
+                />
+              </div>
+              <div>
+                <p>
+                AIRS HIV Status History 
+                </p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="ComprehensiveRiskBehaviorAssessmentUpdates"
+                  value={
+                    clientData.AIRSHIVStatusHistoryDate &&
+                    clientData.AIRSHIVStatusHistoryDate.split('T')[0]
+                  }
+                  /* disabled={clientData.AIRSCollateralInformationDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+                    if(clientData.AIRSHIVStatusHistory ){
+                      setClientData({
+                        ...clientData,
+                        AIRSHIVStatusHistoryDate: e.target.value,
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        AIRSHIVStatusHistoryDate: e.target.value,
+                        AIRSHIVStatusHistory :
+                          !clientData.AIRSHIVStatusHistory ,
+                      });
+                    }
+                    
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+
+
+
+
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() => {
+                    clientData.AIRSHCVHistoryDate==="" || clientData.AIRSHCVHistoryDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      AIRSHCVHistoryDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSHCVHistory: !clientData.AIRSHCVHistory,
+                      AIRSHCVHistoryDate: ''
+                    })
+                  }
+                }
+                checked={clientData.AIRSHCVHistory? true : false}
+                />
               </div>
               <div>
                 <p>AIRS HCV History </p>
@@ -864,60 +1396,38 @@ const crearFecha=()=>{
               </div>
               <div className="text-center flex justify-center">
               <a href={data[0]?.tickler_updates_folder_url ? data[0]?.tickler_updates_folder_url : ""} target="_blank" rel="noreferrer">
-              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+              
+                <img src={'/dropbox-folder.png'} alt="" width="34"/>
                 </a>
               </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSHousingInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSHousingInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHousingInformation: !formState.AIRSHousingInformation,
-                            AIRSHousingInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSHousingInformation: !formState.AIRSHousingInformation,
-                            AIRSHousingInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSHousingInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSHousingInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.AIRSHousingInformationDate === "" || clientData.AIRSHousingInformationDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        AIRSHousingInformation: !clientData.AIRSHousingInformation,
-                        AIRSHousingInformationDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        AIRSHousingInformation: !clientData.AIRSHousingInformation,
-                        AIRSHousingInformationDate: ""
-                      })
+                 
+                    clientData.AIRSHousingInformationDate==="" || clientData.AIRSHousingInformationDate=== null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSHousingInformation:
+                        !clientData.AIRSHousingInformation,
+                        AIRSHousingInformationDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSHousingInformation:
+                        !clientData.AIRSHousingInformation,
+                      AIRSHousingInformationDate: '',
+                    })
                   }
-                  }
-                  checked={clientData.AIRSHousingInformation ? 'checked' : false}
-                  disabled={clientData.AIRSHousingInformation ? true : false}
+                }
+                checked={clientData.AIRSHousingInformation? true : false}
                 />
-                
               </div>
               <div>
                 <p>AIRS Housing Information </p>
@@ -959,54 +1469,29 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSInsuranceInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSInsuranceInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSInsuranceInformation: !formState.AIRSInsuranceInformation,
-                            AIRSInsuranceInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSInsuranceInformation: !formState.AIRSInsuranceInformation,
-                            AIRSInsuranceInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSInsuranceInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSInsuranceInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.AIRSInsuranceInformationDate === "" || clientData.AIRSInsuranceInformationDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        AIRSInsuranceInformation: !clientData.AIRSInsuranceInformation,
-                        AIRSInsuranceInformationDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        AIRSInsuranceInformation: !clientData.AIRSInsuranceInformation,
-                        AIRSInsuranceInformationDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.AIRSInsuranceInformation ? 'checked' : false}
-                  disabled={clientData.AIRSInsuranceInformation ? true : false}
+                    clientData.AIRSInsuranceInformationDate==="" || clientData.AIRSInsuranceInformationDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSInsuranceInformation:
+                        !clientData.AIRSInsuranceInformation,
+                        AIRSInsuranceInformationDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSInsuranceInformation:
+                        !clientData.AIRSInsuranceInformation,
+                      AIRSInsuranceInformationDate: '',
+                    })
+                  }}
+                  checked={clientData.AIRSInsuranceInformation? true : false}
                 />
-                
               </div>
               <div>
                 <p>AIRS Insurance Information </p>
@@ -1047,54 +1532,29 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-blue grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.AIRSSubstanceUseHistory? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.AIRSSubstanceUseHistory ?
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSSubstanceUseHistory: !formState.AIRSSubstanceUseHistory,
-                            AIRSSubstanceUseHistoryDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            AIRSSubstanceUseHistory: !formState.AIRSSubstanceUseHistory,
-                            AIRSSubstanceUseHistoryDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.AIRSSubstanceUseHistory ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.AIRSSubstanceUseHistory && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.AIRSSubstanceUseHistoryDate === "" || clientData.AIRSSubstanceUseHistoryDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        AIRSSubstanceUseHistory: !clientData.AIRSSubstanceUseHistory,
-                        AIRSSubstanceUseHistoryDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        AIRSSubstanceUseHistory: !clientData.AIRSSubstanceUseHistory,
-                        AIRSSubstanceUseHistoryDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.AIRSSubstanceUseHistory ? 'checked' : false}
-                  disabled={clientData.AIRSSubstanceUseHistory ? true : false}
+                    clientData.AIRSSubstanceUseHistoryDate==="" || clientData.AIRSSubstanceUseHistoryDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      AIRSSubstanceUseHistory:
+                        !clientData.AIRSSubstanceUseHistory,
+                        AIRSSubstanceUseHistoryDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      AIRSSubstanceUseHistory:
+                        !clientData.AIRSSubstanceUseHistory,
+                      AIRSSubstanceUseHistoryDate: ''
+                    })
+                  }}
+                  checked={clientData.AIRSSubstanceUseHistory? true : false}
                 />
-                
               </div>
               <div>
                 <p>AIRS Substance Use History </p>
@@ -1134,54 +1594,27 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientRights? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEClientRights ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientRights: !formState.LNEClientRights,
-                            LNEClientRightsDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientRights: !formState.LNEClientRights,
-                            LNEClientRightsDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEClientRights ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEClientRights && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.LNEClientRightsDate === "" || clientData.LNEClientRightsDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEClientRights: !clientData.LNEClientRights,
-                        LNEClientRightsDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEClientRights: !clientData.LNEClientRights,
-                        LNEClientRightsDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.LNEClientRights ? 'checked' : false}
-                  disabled={clientData.LNEClientRights ? true : false}
+                    clientData.LNEClientRightsDate==="" || clientData.LNEClientRightsDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LNEClientRights: !clientData.LNEClientRights,
+                      LNEClientRightsDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LNEClientRights: !clientData.LNEClientRights,
+                      LNEClientRightsDate: '',
+                    })
+                  }}
+                  checked={clientData.LNEClientRights? true : false}
                 />
-                
               </div>
               <div>
                 <p>LNE Client Rights </p>
@@ -1221,54 +1654,29 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientGrievancePolicyProcedure? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEClientGrievancePolicyProcedure ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientRights: !formState.LNEClientGrievancePolicyProcedure,
-                            LNEClientGrievancePolicyProcedureDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientGrievancePolicyProcedure: !formState.LNEClientGrievancePolicyProcedure,
-                            LNEClientGrievancePolicyProcedureDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEClientGrievancePolicyProcedure ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEClientGrievancePolicyProcedure && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.LNEClientGrievancePolicyProcedureDate === "" || clientData.LNEClientGrievancePolicyProcedureDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEClientGrievancePolicyProcedure: !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEClientGrievancePolicyProcedure: !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : false}
-                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false}
+                    clientData.LNEClientGrievancePolicyProcedureDate==="" || clientData.LNEClientGrievancePolicyProcedureDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LNEClientGrievancePolicyProcedure:
+                        !clientData.LNEClientGrievancePolicyProcedure,
+                        LNEClientGrievancePolicyProcedureDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LNEClientGrievancePolicyProcedure:
+                        !clientData.LNEClientGrievancePolicyProcedure,
+                      LNEClientGrievancePolicyProcedureDate: '',
+                    })
+                  }}
+                  checked={clientData.LNEClientGrievancePolicyProcedure? true : false}
                 />
-                
               </div>
               <div>
                 <p>LNE Client Grievance Policy & Procedure </p>
@@ -1309,54 +1717,28 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientGrievancePolicyProcedure? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEClientGrievancePolicyProcedure ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientRights: !formState.LNEClientGrievancePolicyProcedure,
-                            LNEClientGrievancePolicyProcedureDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientGrievancePolicyProcedure: !formState.LNEClientGrievancePolicyProcedure,
-                            LNEClientGrievancePolicyProcedureDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEClientGrievancePolicyProcedure ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEClientGrievancePolicyProcedure && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.LNEClientGrievancePolicyProcedureDate === "" || clientData.LNEClientGrievancePolicyProcedureDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEClientGrievancePolicyProcedure: !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEClientGrievancePolicyProcedure: !clientData.LNEClientGrievancePolicyProcedure,
-                        LNEClientGrievancePolicyProcedureDate: ""
-                      })
+                    clientData.LNEProgramRulesDate==="" || clientData.LNEProgramRulesDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LNEProgramRules: !clientData.LNEProgramRules,
+                      LNEProgramRulesDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LNEProgramRules: !clientData.LNEProgramRules,
+                      LNEProgramRulesDate: ''
+                    })
                   }
-                  }
-                  checked={clientData.LNEClientGrievancePolicyProcedure ? 'checked' : false}
-                  disabled={clientData.LNEClientGrievancePolicyProcedure ? true : false}
+                }
+                checked={clientData.LNEProgramRules? true : false}
                 />
-                
               </div>
               <div>
                 <p>LNE Program Rules </p>
@@ -1396,54 +1778,29 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEEmergencyContactConsent? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEEmergencyContactConsent ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEEmergencyContactConsent: !formState.LNEEmergencyContactConsent,
-                            LNEEmergencyContactConsentDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEEmergencyContactConsent: !formState.LNEEmergencyContactConsent,
-                            LNEEmergencyContactConsentDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEEmergencyContactConsent ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEEmergencyContactConsent && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.LNEEmergencyContactConsentDate === "" || clientData.LNEEmergencyContactConsentDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEEmergencyContactConsent: !clientData.LNEEmergencyContactConsent,
-                        LNEEmergencyContactConsentDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEEmergencyContactConsent: !clientData.LNEEmergencyContactConsent,
-                        LNEEmergencyContactConsentDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.LNEEmergencyContactConsent ? 'checked' : false}
-                  disabled={clientData.LNEEmergencyContactConsent ? true : false}
+                  onChange={() =>{
+                    clientData.LNEEmergencyContactConsentDate==="" || clientData.LNEEmergencyContactConsentDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LNEEmergencyContactConsent:
+                        !clientData.LNEEmergencyContactConsent,
+                        LNEEmergencyContactConsentDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LNEEmergencyContactConsent:
+                        !clientData.LNEEmergencyContactConsent,
+                      LNEEmergencyContactConsentDate: ''
+                    })
+                  }}
+                  checked={clientData.LNEEmergencyContactConsent? true : false}
                 />
-                
               </div>
               <div>
                 <p>LNE Emergency Contact Consent </p>
@@ -1484,54 +1841,31 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEConsentForReleaseOfConfidentialInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEConsentForReleaseOfConfidentialInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEConsentForReleaseOfConfidentialInformation: !formState.LNEConsentForReleaseOfConfidentialInformation,
-                            LNEConsentForReleaseOfConfidentialInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEConsentForReleaseOfConfidentialInformation: !formState.LNEConsentForReleaseOfConfidentialInformation,
-                            LNEConsentForReleaseOfConfidentialInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEConsentForReleaseOfConfidentialInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEConsentForReleaseOfConfidentialInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.LNEConsentForReleaseOfConfidentialInformationDate === "" || clientData.LNEConsentForReleaseOfConfidentialInformationDate === null ? (
+                  onChange={() =>{
+                    clientData.LNEConsentForReleaseOfConfidentialInformationDate==="" || clientData.LNEConsentForReleaseOfConfidentialInformationDate===null ? (
                       setClientData({
                         ...clientData,
-                        LNEConsentForReleaseOfConfidentialInformation: !clientData.LNEConsentForReleaseOfConfidentialInformation,
-                        LNEConsentForReleaseOfConfidentialInformationDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEConsentForReleaseOfConfidentialInformation: !clientData.LNEConsentForReleaseOfConfidentialInformation,
-                        LNEConsentForReleaseOfConfidentialInformationDate: ""
+                        LNEConsentForReleaseOfConfidentialInformation:
+                          !clientData.LNEConsentForReleaseOfConfidentialInformation,
+                          LNEConsentForReleaseOfConfidentialInformationDate:crearFecha()
                       })
+                    ):setClientData({
+                      ...clientData,
+                      LNEConsentForReleaseOfConfidentialInformation:
+                        !clientData.LNEConsentForReleaseOfConfidentialInformation,
+                      LNEConsentForReleaseOfConfidentialInformationDate: '',
+                    })
                   }
                   }
-                  checked={clientData.LNEConsentForReleaseOfConfidentialInformation ? 'checked' : false}
-                  disabled={clientData.LNEConsentForReleaseOfConfidentialInformation ? true : false}
+                  checked={clientData.LNEConsentForReleaseOfConfidentialInformation? true : false}
                 />
-                
               </div>
               <div>
                 <p>LNE Consent for Release of Confidential Information </p>
@@ -1574,54 +1908,28 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.HIPPAConsentForm? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.HIPPAConsentForm ?
-                          setClientData(formState => ({
-                            ...formState,
-                            HIPPAConsentForm: !formState.HIPPAConsentForm,
-                            HIPPAConsentFormDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            HIPPAConsentForm: !formState.HIPPAConsentForm,
-                            HIPPAConsentFormDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.HIPPAConsentForm ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.HIPPAConsentForm && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.HIPPAConsentFormDate === "" || clientData.HIPPAConsentFormDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        HIPPAConsentForm: !clientData.HIPPAConsentForm,
-                        HIPPAConsentFormDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        HIPPAConsentForm: !clientData.HIPPAConsentForm,
-                        HIPPAConsentFormDate: ""
-                      })
+                  onChange={() =>{
+                    clientData.HIPPAConsentFormDate==="" || clientData.HIPPAConsentFormDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      HIPPAConsentFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      HIPPAConsentForm: !clientData.HIPPAConsentForm,
+                      HIPPAConsentFormDate: ''
+                    })
                   }
                   }
-                  checked={clientData.HIPPAConsentForm ? 'checked' : false}
-                  disabled={clientData.HIPPAConsentForm ? true : false}
+                  checked={clientData.HIPPAConsentForm? true : false}
                 />
-                
               </div>
               <div>
                 <p>HIPAA Consent Form (OCA Form 960)</p>
@@ -1634,7 +1942,7 @@ const crearFecha=()=>{
                     clientData.HIPPAConsentFormDate &&
                     clientData.HIPPAConsentFormDate.split('T')[0]
                   }
-                  /* disabled={clientData.HIPPAConsentFormDate ? true: false} */
+                 /*  disabled={clientData.HIPPAConsentFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if(clientData.HIPPAConsentForm){
@@ -1661,54 +1969,30 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-green grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-               <div className={`ml-1 text-center flex justify-center items-center ${clientData.NYCDOHMHNoticeOfPrivacyPractices? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.NYCDOHMHNoticeOfPrivacyPractices ?
-                          setClientData(formState => ({
-                            ...formState,
-                            NYCDOHMHNoticeOfPrivacyPractices: !formState.NYCDOHMHNoticeOfPrivacyPractices,
-                            NYCDOHMHNoticeOfPrivacyPracticesDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            NYCDOHMHNoticeOfPrivacyPractices: !formState.NYCDOHMHNoticeOfPrivacyPractices,
-                            NYCDOHMHNoticeOfPrivacyPracticesDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.NYCDOHMHNoticeOfPrivacyPractices ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.NYCDOHMHNoticeOfPrivacyPractices && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.NYCDOHMHNoticeOfPrivacyPracticesDate === "" || clientData.NYCDOHMHNoticeOfPrivacyPracticesDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        NYCDOHMHNoticeOfPrivacyPractices: !clientData.NYCDOHMHNoticeOfPrivacyPractices,
-                        NYCDOHMHNoticeOfPrivacyPracticesDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        NYCDOHMHNoticeOfPrivacyPractices: !clientData.NYCDOHMHNoticeOfPrivacyPractices,
-                        NYCDOHMHNoticeOfPrivacyPracticesDate: ""
-                      })
+                  onChange={() =>{
+                    clientData.NYCDOHMHNoticeOfPrivacyPracticesDate==="" || clientData.NYCDOHMHNoticeOfPrivacyPracticesDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      NYCDOHMHNoticeOfPrivacyPractices:
+                        !clientData.NYCDOHMHNoticeOfPrivacyPractices,
+                        NYCDOHMHNoticeOfPrivacyPracticesDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      NYCDOHMHNoticeOfPrivacyPractices:
+                        !clientData.NYCDOHMHNoticeOfPrivacyPractices,
+                      NYCDOHMHNoticeOfPrivacyPracticesDate: ''
+                    })
                   }
                   }
-                  checked={clientData.NYCDOHMHNoticeOfPrivacyPractices ? 'checked' : false}
-                  disabled={clientData.NYCDOHMHNoticeOfPrivacyPractices ? true : false}
+                  checked={clientData.NYCDOHMHNoticeOfPrivacyPractices? true : false}
                 />
-                
               </div>
               <div>
                 <p>
@@ -1752,82 +2036,56 @@ const crearFecha=()=>{
               </div>
             </div>
 
-            <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2 rounded-lg my-2`}
-            >
-             <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEOutreachRetentionTrackingForm? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEOutreachRetentionTrackingForm ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEOutreachRetentionTrackingForm: !formState.LNEOutreachRetentionTrackingForm,
-                            LNEOutreachRetentionTrackingFormDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEOutreachRetentionTrackingForm: !formState.LNEOutreachRetentionTrackingForm,
-                            LNEOutreachRetentionTrackingFormDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEOutreachRetentionTrackingForm ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+            <div className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2 rounded-lg my-2`}>
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEOutreachRetentionTrackingForm && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.LNEOutreachRetentionTrackingFormDate === "" || clientData.LNEOutreachRetentionTrackingFormDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEOutreachRetentionTrackingForm: !clientData.LNEOutreachRetentionTrackingForm,
-                        LNEOutreachRetentionTrackingFormDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEOutreachRetentionTrackingForm: !clientData.LNEOutreachRetentionTrackingForm,
-                        LNEOutreachRetentionTrackingFormDate: ""
-                      })
+                  onChange={() =>{
+                    clientData.LinkageRetentionAdherenceFormsDate==="" || clientData.LinkageRetentionAdherenceFormsDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LinkageRetentionAdherenceForms:
+                        !clientData.LinkageRetentionAdherenceForms,
+                        LinkageRetentionAdherenceFormsDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LinkageRetentionAdherenceForms:
+                        !clientData.LinkageRetentionAdherenceForms,
+                      LinkageRetentionAdherenceFormsDate: ''
+                    })
                   }
                   }
-                  checked={clientData.LNEOutreachRetentionTrackingForm ? 'checked' : false}
-                  disabled={clientData.LNEOutreachRetentionTrackingForm ? true : false}
+                  checked={clientData.LinkageRetentionAdherenceForms? true: false}
                 />
-                
               </div>
               <div>
-                <p>LNE Outreach Retention/Tracking Form </p>
+                <p>Linkage, Retention, & Adherence Forms</p>
               </div>
               <div className="text-center">
                 <input
                   type="date"
-                  id="LNEOutreachRetentionTrackingForm"
+                  id="LinkageRetentionAdherenceForms"
                   value={
-                    clientData.LNEOutreachRetentionTrackingFormDate &&
-                    clientData.LNEOutreachRetentionTrackingFormDate.split('T')[0]
+                    clientData.LinkageRetentionAdherenceFormsDate &&
+                    clientData.LinkageRetentionAdherenceFormsDate.split('T')[0]
                   }
-                  /* disabled={clientData.LNEOutreachRetentionTrackingFormDate ? true: false} */
+                  /* disabled={clientData.LinkageRetentionAdherenceFormsDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    if(clientData.LNEOutreachRetentionTrackingForm){
+                    if(clientData.LinkageRetentionAdherenceForms){
                       setClientData({
                         ...clientData,
-                        LNEOutreachRetentionTrackingFormDate: e.target.value
+                        LinkageRetentionAdherenceFormsDate: e.target.value
       
                       });
                     } else {
                       setClientData({
                         ...clientData,
-                        LNEOutreachRetentionTrackingFormDate: e.target.value,
-                        LNEOutreachRetentionTrackingForm:
-                          !clientData.LNEOutreachRetentionTrackingForm,
+                        LinkageRetentionAdherenceFormsDate: e.target.value,
+                        LinkageRetentionAdherenceForms:
+                          !clientData.LinkageRetentionAdherenceForms,
                       });
                     }
                     
@@ -1842,81 +2100,58 @@ const crearFecha=()=>{
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEReferralInformation? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEReferralInformation ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEReferralInformation: !formState.LNEReferralInformation,
-                            LNEReferralInformationDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEReferralInformation: !formState.LNEReferralInformation,
-                            LNEReferralInformationDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEReferralInformation ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEReferralInformation && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
                   onChange={() => {
-                    clientData.LNEReferralInformationDate === "" || clientData.LNEReferralInformationDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEReferralInformation: !clientData.LNEReferralInformation,
-                        LNEReferralInformationDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEReferralInformation: !clientData.LNEReferralInformation,
-                        LNEReferralInformationDate: ""
-                      })
+                    
+                    clientData.InternalReferralInformationDate==="" || clientData.InternalReferralInformationDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      InternalReferralInformation:
+                        !clientData.InternalReferralInformation,
+                        InternalReferralInformationDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      InternalReferralInformation:
+                        !clientData.InternalReferralInformation,
+                      InternalReferralInformationDate: ''
+                    })
                   }
-                  }
-                  checked={clientData.LNEReferralInformation ? 'checked' : false}
-                  disabled={clientData.LNEReferralInformation ? true : false}
+                }
+                checked={clientData.InternalReferralInformation? true: false}
                 />
-                
               </div>
               <div>
-                <p>LNE Referral Information </p>
+                <p>Internal Referral Information</p>
               </div>
               <div className="text-center">
                 <input
                   type="date"
                   id="LNEOutreachRetentionTrackingForm"
                   value={
-                    clientData.LNEReferralInformationDate &&
-                    clientData.LNEReferralInformationDate.split('T')[0]
+                    clientData.InternalReferralInformationDate &&
+                    clientData.InternalReferralInformationDate.split('T')[0]
                   }
-                  /* disabled={clientData.LNEReferralInformationDate ? true: false} */
+                 /*  disabled={clientData.InternalReferralInformationDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
-                    if(clientData.LNEReferralInformation){
+                    if(clientData.InternalReferralInformation){
                       setClientData({
                         ...clientData,
-                        LNEReferralInformationDate: e.target.value,
+                        InternalReferralInformationDate: e.target.value,
               
                       });
                     } else {
                       setClientData({
                         ...clientData,
-                        LNEReferralInformationDate: e.target.value,
-                        LNEReferralInformation:
-                          !clientData.LNEReferralInformation,
+                        InternalReferralInformationDate: e.target.value,
+                        InternalReferralInformation:
+                          !clientData.InternalReferralInformation,
                       });
                     }
                     
@@ -1924,64 +2159,37 @@ const crearFecha=()=>{
                 />
               </div>
               <div className="text-center flex justify-center">
-              <a href={data[0]?.linkage_navigation_folder_url ? data[0]?.linkage_navigation_folder_url : ""} target="_blank" rel="noreferrer">
+              <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
               <img src={'/dropbox-folder.png'} alt="" width="34"/>
                 </a>
               </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-pink grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-pink grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEClientReferralForm? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEClientReferralForm ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientReferralForm: !formState.LNEClientReferralForm,
-                            LNEClientReferralFormDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEClientReferralForm: !formState.LNEClientReferralForm,
-                            LNEClientReferralFormDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEClientReferralForm ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEClientReferralForm && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.LNEClientReferralFormDate === "" || clientData.LNEClientReferralFormDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEClientReferralForm: !clientData.LNEClientReferralForm,
-                        LNEClientReferralFormDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEClientReferralForm: !clientData.LNEClientReferralForm,
-                        LNEClientReferralFormDate: ""
-                      })
+                  onChange={() =>
+                    clientData.LNEClientReferralFormDate ==="" || clientData.LNEClientReferralFormDate===null ? (
+                    setClientData({
+                      ...clientData,
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
+                      LNEClientReferralFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      LNEClientReferralForm: !clientData.LNEClientReferralForm,
+                      LNEClientReferralFormDate: ''
+                    })
                   }
-                  }
-                  checked={clientData.LNEClientReferralForm ? 'checked' : false}
-                  disabled={clientData.LNEClientReferralForm ? true : false}
+                  checked={clientData.LNEClientReferralForm?  true : false}
                 />
-                
               </div>
               <div>
-                <p>LNE Client Referral Form </p>
+                <p>Identification</p>
               </div>
               <div className="text-center">
                 <input
@@ -2010,95 +2218,248 @@ const crearFecha=()=>{
                 />
               </div>
               <div className="text-center flex justify-center">
-              <a href={data[0]?.linkage_navigation_folder_url ? data[0]?.linkage_navigation_folder_url : ""} target="_blank" rel="noreferrer">
+              <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
               <img src={'/dropbox-folder.png'} alt="" width="34"/>
                 </a>
               </div>
             </div>
 
             <div
-              className={`${MSAStyles.formRowsContainer} bg-light-purple grid items-center gap-5 py-2 rounded-lg my-2`}
+              className={`${MSAStyles.formRowsContainer} bg-light-purple grid gap-5 py-2 rounded-lg my-2`}
             >
-             <div className={`ml-1 text-center flex justify-center items-center ${clientData.LNEHNSEligibilityForm? 'pointer-events-none' :""}`}
-                       onClick={() => {
-                        clientData.LNEHNSEligibilityForm ?
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEHNSEligibilityForm: !formState.LNEHNSEligibilityForm,
-                            LNEHNSEligibilityFormDate: ""
-                          })) :
-                          setClientData(formState => ({
-                            ...formState,
-                            LNEHNSEligibilityForm: !formState.LNEHNSEligibilityForm,
-                            LNEHNSEligibilityFormDate: crearFecha()
-                          }))
-                        }
-                      } >
-               
-                <svg xmlns="http://www.w3.org/2000/svg"
-               
-                  className="absolute z-10 text-dark-blue h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                  strokeWidth={clientData.LNEHNSEligibilityForm ? "3" : "0"}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              
+              <div className="form-row-item px-5">
                 <input
-                  className={`${!clientData.LNEHNSEligibilityForm && "bg-slate-300"} appearance-none relative bg-white  border-2 border-dark-blue rounded-md  h-6 w-6 `}
                   type="checkbox"
                   name=""
                   id=""
-                  
-                  onChange={() => {
-                    clientData.LNEHNSEligibilityFormDate === "" || clientData.LNEHNSEligibilityFormDate === null ? (
-                      setClientData({
-                        ...clientData,
-                        LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
-                        LNEHNSEligibilityFormDate: crearFecha()
-                      })) : setClientData({
-                        ...clientData,
-                        LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
-                        LNEHNSEligibilityFormDate: ""
-                      })
-                  }
-                  }
-                  checked={clientData.LNEHNSEligibilityForm ? 'checked' : false}
-                  disabled={clientData.LNEHNSEligibilityForm ? true : false}
+                  onChange={() =>{
+                    clientData.HNSEligibilityFormDate==="" || clientData.HNSEligibilityFormDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      HNSEligibilityForm: !clientData.HNSEligibilityForm,
+                      HNSEligibilityFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      HNSEligibilityForm: !clientData.HNSEligibilityForm,
+                      HNSEligibilityFormDate: ''
+                    })
+                  }}
+                  checked={clientData.HNSEligibilityForm? true : false}
                 />
-                
               </div>
               <div>
-                <p>LNE HNS Eligibility Form </p>
+                <p>HNS Eligibility Assessment</p>
               </div>
               <div className="text-center">
                 <input
                   type="date"
-                  id="LNEHNSEligibilityForm"
+                  id="HNSEligibilityForm"
                   value={
-                    clientData.LNEHNSEligibilityFormDate &&
-                    clientData.LNEHNSEligibilityFormDate.split('T')[0] 
+                    clientData.HNSEligibilityFormDate &&
+                    clientData.HNSEligibilityFormDate.split('T')[0]
                   }
-                  /* disabled={clientData.LNEHNSEligibilityFormDate ? true: false} */
+                  /* disabled={clientData.HNSEligibilityFormDate ? true: false} */
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
 
-                    if(clientData.LNEHNSEligibilityForm){
+                    if(clientData.HNSEligibilityForm){
                       setClientData({
                         ...clientData,
-                        LNEHNSEligibilityFormDate: e.target.value,
+                        HNSEligibilityFormDate: e.target.value,
                     
                       });
                     } else {
                       setClientData({
                         ...clientData,
-                        LNEHNSEligibilityFormDate: e.target.value,
-                        LNEHNSEligibilityForm: !clientData.LNEHNSEligibilityForm,
+                        HNSEligibilityFormDate: e.target.value,
+                        HNSEligibilityForm: !clientData.HNSEligibilityForm,
                       });
                     }
                   }}
                 />
               </div>
               <div className="text-center flex justify-center">
-              <a href={data[0]?.miscellaneous_folder_url ? data[0]?.miscellaneous_folder_url : ""} target="_blank" rel="noreferrer">
+              <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-purple grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() =>{
+                    clientData.HNSReadinessFormDate==="" || clientData.HNSReadinessFormDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      HNSReadinessForm: !clientData.HNSReadinessForm,
+                      HNSReadinessFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      HNSReadinessForm: !clientData.HNSReadinessForm,
+                      HNSReadinessFormDate: ''
+                    })
+                  }}
+                  checked={clientData.HNSReadinessForm? true : false}
+                />
+              </div>
+              <div>
+                <p>HNS Readiness Assessment</p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="HNSReadinessForm"
+                  value={
+                    clientData.HNSReadinessFormDate &&
+                    clientData.HNSReadinessFormDate.split('T')[0]
+                  }
+                  /* disabled={clientData.HNSReadinessFormDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+
+                    if(clientData.HNSReadinessForm){
+                      setClientData({
+                        ...clientData,
+                        HNSReadinessFormDate: e.target.value,
+                    
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        HNSReadinessFormDate: e.target.value,
+                        HNSReadinessForm: !clientData.HNSReadinessForm,
+                      });
+                    }
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-purple grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() =>{
+                    clientData.SupportGroupsDate==="" || clientData.SupportGroupsDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      SupportGroups: !clientData.SupportGroups,
+                      SupportGroupsDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      SupportGroups: !clientData.SupportGroups,
+                      SupportGroupsDate: ''
+                    })
+                  }}
+                  checked={clientData.SupportGroups? true : false}
+                />
+              </div>
+              <div>
+                <p>Support Groups</p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="SupportGroups"
+                  value={
+                    clientData.SupportGroupsDate &&
+                    clientData.SupportGroupsDate.split('T')[0]
+                  }
+                  /* disabled={clientData.SupportGroupsDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+
+                    if(clientData.SupportGroups){
+                      setClientData({
+                        ...clientData,
+                        SupportGroupsDate: e.target.value,
+                    
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        SupportGroupsDate: e.target.value,
+                        SupportGroups: !clientData.SupportGroups,
+                      });
+                    }
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
+              <img src={'/dropbox-folder.png'} alt="" width="34"/>
+                </a>
+              </div>
+            </div>
+            <div
+              className={`${MSAStyles.formRowsContainer} bg-light-purple grid gap-5 py-2 rounded-lg my-2`}
+            >
+              <div className="form-row-item px-5">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  onChange={() =>{
+                    clientData.IDGFormDate==="" || clientData.IDGFormDate ===null ? (
+                    setClientData({
+                      ...clientData,
+                      IDGForm: !clientData.IDGForm,
+                      IDGFormDate:crearFecha()
+                    })):setClientData({
+                      ...clientData,
+                      IDGForm: !clientData.IDGForm,
+                      IDGFormDate: ''
+                    })
+                  }}
+                  checked={clientData.IDGForm? true : false}
+                />
+              </div>
+              <div>
+                <p>IDG</p>
+              </div>
+              <div className="text-center">
+                <input
+                  type="date"
+                  id="IDGForm"
+                  value={
+                    clientData.IDGFormDate &&
+                    clientData.IDGFormDate.split('T')[0]
+                  }
+                  /* disabled={clientData.IDGFormDate ? true: false} */
+                  className="rounded-lg text-sm p-1"
+                  onChange={(e) => {
+
+                    if(clientData.IDGForm){
+                      setClientData({
+                        ...clientData,
+                        IDGFormDate: e.target.value,
+                    
+                      });
+                    } else {
+                      setClientData({
+                        ...clientData,
+                        IDGFormDate: e.target.value,
+                        IDGForm: !clientData.IDGForm,
+                      });
+                    }
+                  }}
+                />
+              </div>
+              <div className="text-center flex justify-center">
+              <a href={data[0]?.intake_folder_url ? data[0]?.intake_folder_url : ""} target="_blank" rel="noreferrer">
               <img src={'/dropbox-folder.png'} alt="" width="34"/>
                 </a>
               </div>
