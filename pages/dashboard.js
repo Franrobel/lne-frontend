@@ -123,7 +123,7 @@ console.log("loggedUserRole",loggedUserRole)
             <h3 className="font-black my-2">What you want to do today? </h3>
             <div className="flex mb-2">
               {loggedUserRole === "Supervisor" && (
-                <Link href="/authorizedusers">
+                <Link href="/users">
                   <div className="text-center mr-5">
                     <div className="rounded btn-darkYellow p-5 text-center shadow-xl   mb-2 rounded-xl">
                       <button id="myBtn">

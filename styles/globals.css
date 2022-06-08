@@ -288,3 +288,13 @@ border-left:2px solid var(--darkBlue);
 }
 
 
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1); /* IE */
+  -moz-transform: scale(1); /* FF */
+  -webkit-transform: scale(1); /* Safari and Chrome */
+  -o-transform: scale(1); /* Opera */
+  transform: scale(1.3);
+  padding: 10px;
+}

@@ -6,6 +6,7 @@ import UserListRow from "../../components/UserListRow";
 import AuthUsersListRow from "../../components/AuthUsersComponent";
 import AddUserModal from "../../components/AddUserModal";
 import EditUserModal from "../../components/EditUserModal";
+import Layout from '../../components/Layout';
 
 
 export default function UsersIndex({data}) {
@@ -18,30 +19,8 @@ export default function UsersIndex({data}) {
 
   return (
     <>
-    <header className="border-b">
-        <div className="container mx-auto py-5  grid space-between grid-cols-2">
-          <img
-            src="./logo.png"
-            alt=""
-            width={125}
-          />
-          <div id="head-user" className="grid place-items-end">
-            <h3 className="font-black">
-              {user && user["https://lanuevatest.herokuapp.com/name"]}
-            </h3>
-            <h6 className="">
-              {user && user["https://lanuevatest.herokuapp.com/roles"]}
-            </h6>
-            <Link
-              href="/api/auth/logout"
-              
-            >
-          <a className={`${styles.btnIndexPage} inline-block btn-index-page text-black px-3 py-0 rounded-md`}>Logout</a>
-
-            </Link>
-          </div>
-        </div>
-      </header>
+    <Layout>
+    
       <main>
           <section>
            <div className="container mx-auto"> 
@@ -145,6 +124,7 @@ export default function UsersIndex({data}) {
       </main>
       {showModal &&<AddUserModal setShowModal={setShowModal} showModal={showModal}/>}
       {showEditUserModal &&<EditUserModal setShowEditUserModal={setShowEditUserModal} showEditUserModal={showEditUserModal} selectedUser={selectedUser} setSelectedUser={setSelectedUser}/>}
+      </Layout>
     </>
   )
 }
@@ -153,7 +133,7 @@ export default function UsersIndex({data}) {
 // This gets called on every request
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`http://lanuevatest.herokuapp.com/users`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`)
     const data = await res.json()
     // Pass data to the page via props
     return { props: { data } }

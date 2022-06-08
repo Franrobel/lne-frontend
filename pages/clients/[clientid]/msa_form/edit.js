@@ -83,7 +83,7 @@ const disableUserIfNotSupervisor = ()=> loggedUserRole ==='HCW' ? true : false
     IDGForm: data[0].idgform ==="0"|| data[0].idgform ===null? false : true,
     IDGFormDate: data[0].idgformdate,
 
-    progressNote:data[0].progressnoteid ==""|| data[0].progressnoteid ===null? false : true,
+    progressNote:data[0].progressnoteid ===""|| data[0].progressnoteid ===null? false : true,
     progressNoteDate:data[0].progressnotedate,
 
     StatusChangesForm:data[0].statuschangesform ==="0"|| data[0].statuschangesform ===null? false : true,
@@ -149,6 +149,20 @@ const crearFecha=()=>{
     :fixedDate=`${newDate[2]}-${newDate[1].length===1? `0${newDate[1]}`:`${newDate[1]}`}-${newDate[0].length===1 ? `0${newDate[0]}`: `${newDate[0]}`}`
   }
   return fixedDate
+}
+
+const formatDate=(date)=>{
+console.log("date",date)
+  const initialDate= date
+  const newDate=initialDate.split('-')
+  console.log(newDate)
+  let fixedDate;
+/*   if(typeof window !== 'undefined'){
+    const userLocale=window.navigator.language
+    userLocale==='en-US' ? fixedDate=`${newDate[2]}-${newDate[0].length===1? `0${newDate[0]}`:`${newDate[0]}`}-${newDate[1].length===1 ? `0${newDate[1]}`: `${newDate[1]}`}`
+    :fixedDate=`${newDate[2]}-${newDate[1].length===1? `0${newDate[1]}`:`${newDate[1]}`}-${newDate[0].length===1 ? `0${newDate[0]}`: `${newDate[0]}`}`
+  }
+  return fixedDate */
 }
 
   return (
@@ -301,7 +315,7 @@ const crearFecha=()=>{
                   }
                 }
                 checked={clientData.AIRSIntakeFormDate ? true : false} 
-              /*   disabled={clientData.AIRSIntakeFormDate ? true : false}  */
+                disabled={clientData.AIRSIntakeFormDate ? true : false} 
                 />
               </div>
               <div>
@@ -316,7 +330,7 @@ const crearFecha=()=>{
                     clientData.AIRSIntakeFormDate &&
                     clientData.AIRSIntakeFormDate.split('T')[0]
                   }
-                  /* disabled={clientData.AIRSIntakeFormDate ? true: false} */
+                  disabled={clientData.AIRSIntakeFormDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if(clientData.AIRSIntakeForm){
@@ -367,6 +381,7 @@ const crearFecha=()=>{
                   }
                 }
                 checked={clientData.ComprehensiveRiskBehaviorAssessment? true : false}
+                disabled={clientData.ComprehensiveRiskBehaviorAssessment? true : false}
                 />
               </div>
               <div>
@@ -380,7 +395,7 @@ const crearFecha=()=>{
                     clientData.ComprehensiveRiskBehaviorAssessmentDate &&
                     clientData.ComprehensiveRiskBehaviorAssessmentDate.split('T')[0]
                   }
-                  /* disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false} */
+                  disabled={clientData.ComprehensiveRiskBehaviorAssessmentDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if(clientData){
@@ -409,8 +424,8 @@ const crearFecha=()=>{
             <div
               className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className="form-row-item px-5">
-                {/* <input
+              <div className="form-row-item px-5 pointer-events-none">
+                <input
                   type="checkbox"
                   name=""
                   id=""
@@ -427,13 +442,13 @@ const crearFecha=()=>{
                     })
                   }}
                   checked={clientData.ServiceActionPlan? true : false}
-                /> */}
+                />
               </div>
               <div>
                 <p>Service Action Plan  </p>
               </div>
               <div className="text-center">
-              {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
+              {clientData.ServiceActionPlanDate ?  <p className="bg-white inline-block px-8 py-1 rounded-lg"> 
                    {clientData.ServiceActionPlanDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
                 {/* <input
                   type="date"
@@ -471,53 +486,54 @@ const crearFecha=()=>{
             <div
               className={`${MSAStyles.formRowsContainer} bg-light-green grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className="form-row-item px-5">
-                {/* <input
+              <div className="form-row-item px-5 pointer-events-none">
+                <input
                   type="checkbox"
                   name=""
                   id=""
                   onChange={() => {
-                    clientData.ServiceActionPlanDate==="" || clientData.ServiceActionPlanDate===null ? (
+                    clientData.progressNoteDate==="" || clientData.progressNoteDate===null ? (
                     setClientData({
                       ...clientData,
-                      ServiceActionPlan: !clientData.ServiceActionPlan,
-                      ServiceActionPlanDate:crearFecha()
+                      progressNote: !clientData.progressNote,
+                      progressNoteDate:crearFecha()
                     })):setClientData({
                       ...clientData,
-                      ServiceActionPlan: !clientData.ServiceActionPlan,
-                      ServiceActionPlanDate: ''
+                      progressNote: !clientData.progressNote,
+                      progressNoteDate: ''
                     })
                   }}
                   checked={clientData.progressNote ? 'checked' : false}
-                /> */}
+                />
               </div>
               <div>
                 <p>Progress Note </p>
                 {clientData.progressnotedateid}
               </div>
               <div className="text-center">
-              {clientData.progressNote ?  <p className="bg-white inline-block px-5 py-1 rounded-lg"> 
-                   {clientData.progressNoteDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>}
-                {/* <input
+              {clientData.progressNote ?  <p className="bg-white inline-block  px-8 py-1 rounded-lg text-left"> 
+                   {clientData.progressNoteDate.split('T')[0]}</p>: <p className="bg-white inline-block px-5 py-1 rounded-lg">MM/DD/YYYY</p>
+              }
+               {/*  <input
                   type="date"
                   id="AIRSIntakeForm"
                   value={
-                    clientData.ServiceActionPlanDate &&
-                    clientData.ServiceActionPlanDate
+                    clientData.progressNoteDate &&
+                    formatDate(clientData.progressNoteDate)
                   }
-                  disabled={clientData.ServiceActionPlanDate ? true: false}
+                  disabled={clientData.progressNoteDate ? true: false}
                   className="rounded-lg text-sm p-1"
                   onChange={(e) => {
                     if(clientData){
                       setClientData({
                         ...clientData,
-                        ServiceActionPlanDate: e.target.value,
+                        progressNoteDate: e.target.value,
                       });
                     } else {
                       setClientData({
                         ...clientData,
-                        ServiceActionPlanDate: e.target.value,
-                        ServiceActionPlan: !clientData.ServiceActionPlan,
+                        progressNoteDate: e.target.value,
+                        progressNote: !clientData.progressNote,
                       });
                     }
                    
@@ -733,7 +749,7 @@ const crearFecha=()=>{
             <div
               className={`${MSAStyles.formRowsContainer} bg-light-blue grid gap-5 py-2 rounded-lg my-2`}
             >
-              <div className="form-row-item px-5">
+              <div className="form-row-item px-5 ">
                 <input
                   type="checkbox"
                   name=""
