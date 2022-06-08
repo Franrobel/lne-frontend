@@ -49,7 +49,7 @@ export default function UserListRow({authorizeduser,setShowEditUserModal,showEdi
                   <p className="text-center">{useremail}</p>
                 </div>
                 <div className="head-row">
-                  <p className="text-center">{datelastlogin.split('T')[0]}</p>
+                  <p className="text-center">{new Date(datelastlogin).toLocaleDateString()}</p>
                 </div>
                 <div className="head-row flex justify-center">
                   <p className="text-center flex cursor-pointer" 

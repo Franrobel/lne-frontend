@@ -16,6 +16,8 @@ export default function AuthorizedUsersIndex({data}) {
 
     const [showEditAuthUserModal,setShowEditAuthUserModal] = useState(false)
     const [selectedUser,setSelectedUser]=useState({})
+
+    console.log("user",user)
     
  const notifyMessage= ()=>{
   toast.success("A new user has been saved!", {
