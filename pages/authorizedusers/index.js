@@ -8,7 +8,7 @@ import EditAuthUserModal from "../../components/EditAuthUserModal";
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function AuthorizedUsersIndex({data}) {
+export default function AuthorizedUsersIndex({data,users}) {
     const { user, error, isLoading } = useUser();
     const [showModal,setShowModal] = useState(false)
 
@@ -18,7 +18,9 @@ export default function AuthorizedUsersIndex({data}) {
     const [selectedUser,setSelectedUser]=useState({})
 
     console.log("user",user)
-    
+
+    console.log("data",data)
+  console.log("users",users)    
  const notifyMessage= ()=>{
   toast.success("A new user has been saved!", {
     position: toast.POSITION.TOP_CENTER,
@@ -53,10 +55,10 @@ export default function AuthorizedUsersIndex({data}) {
       </header>
       <main>
       <ToastContainer autoClose={2000}/>
-          <section>
-           <div className="container mx-auto"> 
+          <section >
+           <div className="container mx-auto "> 
 
-           <div className="flex my-5">
+           <div className="flex my-5 ">
               <Link href="/dashboard">
               <button className="rounded btn-darkYellow px-5 py-2 flex shadow-xl inline-block mr-1" id="myBtn">
                 Home
@@ -106,7 +108,7 @@ export default function AuthorizedUsersIndex({data}) {
 
 
 
-          <div className="dashboard-client-list">
+          <div className="dashboard-client-list ">
             <h3 className="font-black text-center my-5">Authorized Users</h3>
               <div className={`${styles.dashboardClientListHeadRow} py-3 px-5`}>
                 <div className="head-row font-black">
@@ -133,7 +135,7 @@ export default function AuthorizedUsersIndex({data}) {
                 </div>
               </div>
             </div>
-            <div className="dashboard-client-list mt-5">
+            <div className="dashboard-client-list mt-5 ">
      
                 {data?data.map((authuser,index)=>{
                    return <AuthUserListRow 
@@ -163,10 +165,29 @@ export default function AuthorizedUsersIndex({data}) {
 
 
 // This gets called on every request
-export async function getServerSideProps() {
+/* export async function getServerSideProps() {
     // Fetch data from external API
     const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/authorizedusers`)
     const data = await response.json()
     // Pass data to the page via props
     return { props: { data } }
   }
+ */
+
+  export const getServerSideProps = withPageAuthRequired({
+    async getServerSideProps(ctx) {
+      const [data, users] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/authorizedusers`).then((r) =>
+          r.json()
+        ),
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`).then((r) =>
+          r.json()
+        ),
+      ]);
+      return { props: { data: data, users: users } };
+  
+      /*  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/clients`);
+      const data = await res.json();
+      return { props: { data } }; */
+    },
+  });
