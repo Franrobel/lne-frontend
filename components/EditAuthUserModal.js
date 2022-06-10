@@ -13,7 +13,7 @@ export default function EditAuthUserModal({ selectedUser, setShowEditAuthUserMod
     userRole: "",
     isactive: false
   })
-  console.log("userData after editing", userData );
+ 
   const [saving, setSaving] = useState(false)
   console.log("selectedUser", selectedUser)
 

@@ -1,0 +1,18 @@
+<svg id="BACKicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.093" height="25.093" viewBox="0 0 25.093 25.093">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_789" data-name="Rectangle 789" width="17.783" height="13.617"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_790" data-name="Rectangle 790" width="25.093" height="25.093" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_970" data-name="Group 970" transform="translate(4.494 5.738)">
+    <g id="Group_969" data-name="Group 969" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <path id="Path_1116" data-name="Path 1116" d="M4.025,4.078h.407c2.729,0,5.459,0,8.188.006a1.905,1.905,0,0,1,.666.131.839.839,0,0,1,.556.832A2.465,2.465,0,0,1,13.8,5.7a.99.99,0,0,1-.968.693c-.1.007-.207,0-.311,0H3.939c.122.143.185.227.259.3.577.58,1.158,1.155,1.733,1.736a1.175,1.175,0,0,1,.211,1.48,1.123,1.123,0,0,1-1.728.266,1.562,1.562,0,0,1-.124-.12C2.971,8.736,1.668,7.4.324,6.107A1.336,1.336,0,0,1,.317,4.37C1.668,3.067,2.979,1.723,4.308.4A1.127,1.127,0,0,1,5.722.15a1.169,1.169,0,0,1,.239,1.856C5.4,2.586,4.823,3.149,4.253,3.72c-.087.087-.172.178-.258.267l.029.091" transform="translate(1.575 1.575)"/>
+    </g>
+  </g>
+  <g id="Group_971" data-name="Group 971" clip-path="url(#clip-path-2)">
+    <path id="Path_1118" data-name="Path 1118" d="M11.207,0A11.207,11.207,0,1,1,0,11.207,11.207,11.207,0,0,1,11.207,0Z" transform="translate(1.34 1.34)" fill="none" stroke="#000" stroke-width="2"/>
+  </g>
+</svg>
