@@ -23,6 +23,12 @@ export default function AuthUserListRow({authorizeduser,setShowEditAuthUserModal
     .catch(error=>console.log(error))
 
   } 
+  //date to shown in list
+const date = dateaccountactivated.split("T")[0].split("-") 
+console.log(date);
+const year= date[0]
+const month = date[1]
+const day= date[2]
 
   return (
     <> 
@@ -45,7 +51,7 @@ export default function AuthUserListRow({authorizeduser,setShowEditAuthUserModal
                 </div>
               
                 <div className="head-row f">
-                  <p className="text-center">{dateaccountactivated ? dateaccountactivated.split("T")[0] : "-"}</p>
+                  <p className="text-center">{dateaccountactivated ? `${month}/${day}/${year}` : "-"}</p>
                 </div>
                 
                 <div className="head-row flex justify-center">
