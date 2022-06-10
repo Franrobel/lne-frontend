@@ -101,14 +101,16 @@ const getNoActiveUser = (array1) => {
                 <img src="/add-new-user-icon.svg" className="mr-3" alt="" width="40" />
                 Add a new user
               </button>
-          
+              <Link href="/users">
             <div className="flex justify-center mr-auto">
               <button className="rounded bg-yellow-300 px-5 py-2 flex items-center shadow-xl inline-block" id="myBtn" >
                 <img src="/authorized-users-icon.svg" className="mr-3" alt="" width="40" />
                 {" "}
                 View active users
               </button>
+              
             </div>
+            </Link>
             <div className="flex justify-center">
               <Link href="/dashboard">
               <button className="px-5 py-2 flex items-center inline-block self-end" id="myBtn" onClick={() => router.back()}>
