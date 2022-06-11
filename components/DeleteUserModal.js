@@ -5,13 +5,15 @@ import Image from 'next/image';
 
 import deleteUserIcon from '../public/delete-user-icon.svg'
 
-const deleteUserModal = ({urlEntity,selectedUser, showDeleteUserModal, setShowDeleteUserModal}) => {
+const deleteUserModal = ({urlEntity, selectedUser, showDeleteUserModal, setShowDeleteUserModal}) => {
     const router = useRouter()
     const {id, name, lastname} = selectedUser
-
+console.log("selectedUser in delete", selectedUser);
     const handleAuthUserDelete = ({})=>{
-        axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/${urlEntity}/`,{data:{id}})
+        
+        axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/${urlEntity}`,{data: {id}})
         .then(response=>{
+            setShowDeleteUserModal(!showDeleteUserModal)
           router.reload()
         })
         .catch(error=>console.log(error))
@@ -28,6 +30,7 @@ const deleteUserModal = ({urlEntity,selectedUser, showDeleteUserModal, setShowDe
                     </div>
                     <label id="name" className="block text-sm font-semibold">Name
                         <input id="name" value={name +' '+ lastname} className="text-lg rounded-lg bg-yellow-100 block p-2 px-3"></input>
+                        
                     </label>
                      <p className='self-center text-center text-lg font-semibold '>Are you sure you want <br/>to delete this user?</p>
                     <div className='w-full flex justify-between self-center'>

@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
-export default function AuthUserListRow({authorizeduser,setShowEditAuthUserModal,showEditAuthUserModal,index,setSelectedUser}) {
+export default function AuthUserListRow({showDeleteUserModal,setShowDeleteUserModal,authorizeduser,setShowEditAuthUserModal,showEditAuthUserModal,index,setSelectedUser}) {
   const {email,name,lastname,role,isactive,datelastlogin,id,dateaccountactivated} = authorizeduser
   const router = useRouter()
 
@@ -16,16 +16,13 @@ export default function AuthUserListRow({authorizeduser,setShowEditAuthUserModal
   }
 
   const handleAuthUserDelete = (id)=>{
-    axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/authorizedusers/`,{data:{id}})
-    .then(response=>{
-      router.reload()
-    })
-    .catch(error=>console.log(error))
+    setSelectedUser(authorizeduser)
+    setShowDeleteUserModal(!showDeleteUserModal)
+   
 
   } 
   //date to shown in list
 const date = dateaccountactivated.split("T")[0].split("-") 
-console.log(date);
 const year= date[0]
 const month = date[1]
 const day= date[2]
@@ -61,7 +58,7 @@ const day= date[2]
                   </p>
                 </div>
                 <div className="head-row flex justify-center ">
-                  <p className="text-center flex cursor-pointer" onClick={()=>handleAuthUserDelete(id)}>
+                  <p className="text-center flex cursor-pointer" onClick={()=>handleAuthUserDelete(authorizeduser)}>
                   <img src='/delete-icon.svg' alt=''/>
                   </p>
                 </div>
