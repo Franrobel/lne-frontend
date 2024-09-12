@@ -7,17 +7,16 @@ import AuthUsersListRow from "../../components/AuthUsersComponent";
 import AddUserModal from "../../components/AddUserModal";
 import EditUserModal from "../../components/EditUserModal";
 import Layout from '../../components/Layout';
+import DeleteUserModal from '../../components/DeleteUserModal';
 
 
 export default function UsersIndex({data}) {
     const { user, error, isLoading } = useUser();
     const [showModal,setShowModal] = useState(false)
-
     const [showEditUserModal,setShowEditUserModal] = useState(false)
+    const [showDeleteUserModal,setShowDeleteUserModal] = useState(false)
     const [selectedUser,setSelectedUser]=useState({})
-
-
-  return (
+    return (
     <>
     <Layout>
     
@@ -115,6 +114,8 @@ export default function UsersIndex({data}) {
                    setShowEditUserModal={setShowEditUserModal} 
                    showEditUserModal={showEditUserModal}
                    setSelectedUser={setSelectedUser}
+                   showDeleteUserModal={showDeleteUserModal}
+                   setShowDeleteUserModal={setShowDeleteUserModal}
                    />
                 }):"No hay data"}
               

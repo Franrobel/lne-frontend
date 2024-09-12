@@ -5,6 +5,7 @@ import axios from 'axios'
 
 export default function AuhtUsersListRow({authorizeduser,index}) {
   const {email,name,lastname,role,isactive,dateaccountactivated,id} = authorizeduser
+  console.log("dateaccountactivated", dateaccountactivated);
   const router = useRouter()
 
   const handleAuthUserDelete = (id)=>{
@@ -33,7 +34,7 @@ export default function AuhtUsersListRow({authorizeduser,index}) {
                   <p className="text-center">{lastname}</p>
                 </div>
                 <div className="head-row f">
-                  <p className="text-center">{dateaccountactivated.toLocaleString()}</p>
+                  <p className="text-center">{dateaccountactivated.toLocaleString().split("T")}</p>
                 </div>
                 <div className="head-row ">
                   <p className="text-center">{"" ? "" : "-"}</p>

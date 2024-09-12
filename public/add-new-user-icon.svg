@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46.079" height="48.111" viewBox="0 0 46.079 48.111">
+  <g id="add_new_user_icon" data-name="add new user icon" transform="translate(0 0.15)">
+    <path id="Path_1101" data-name="Path 1101" d="M103.836,83.013a21.013,21.013,0,1,1-21.064,20.962,21.047,21.047,0,0,1,21.064-20.962m13.589,34.148a18.965,18.965,0,1,0-27.258,0,14.068,14.068,0,0,1,9.31-10.535,9.139,9.139,0,0,1-4.216-10.857,9.007,9.007,0,0,1,17.115.158,9.111,9.111,0,0,1-4.28,10.7,14.109,14.109,0,0,1,9.329,10.535M103.758,123c.4,0,.8.011,1.2,0,.274-.011.545-.064.818-.09a18.172,18.172,0,0,0,8.6-3.121c1.438-.978,1.215-.567.9-2.178a11.713,11.713,0,0,0-23.14.939.742.742,0,0,0,.374.774A18.749,18.749,0,0,0,103.758,123m.008-17.483a6.825,6.825,0,0,0,6.89-6.8,6.863,6.863,0,1,0-6.89,6.8" transform="translate(-78.885 -83.012)" stroke="#000" stroke-width="0.3"/>
+    <g id="Group_957" data-name="Group 957" transform="translate(0 23.573)">
+      <ellipse id="Ellipse_384" data-name="Ellipse 384" cx="10.683" cy="10.683" rx="10.683" ry="10.683" transform="translate(0 0)" fill="#020202"/>
+    </g>
+    <text id="_" data-name="+" transform="translate(10.683 41.96)" fill="#ffde0b" stroke="#ffde0b" stroke-width="1" font-size="22" font-family="Lato-Heavy, Lato" font-weight="800"><tspan x="-6" y="0">+</tspan></text>
+  </g>
+</svg>

@@ -107,6 +107,12 @@ const EditMsaFormPage = ({ data }) => {
     AIRSDrugRegimenScan: data[0].airsdrugregimenscan ==="0" || data[0].airsdrugregimenscan ===null ? false : true,
     AIRSDrugRegimenUploadDate: data[0].airsdrugregimenuploaddate || null, 
 
+    AIRSDrugRegimen: data[0].airsdrugregimen ==="0" || data[0].airsdrugregimen ===null? false : true,
+    AIRSDrugRegimenDate: data[0].airsdrugregimendate,
+    AIRSDrugRegimenPDF: data[0].AirsDrugRegimenpdf ==="0" || data[0].AirsDrugRegimenpdf ===null? false : true,
+    AIRSDrugRegimenScan: data[0].AirsDrugRegimenscan ==="0" || data[0].airsdrugregimenscan ===null? false : true,
+    AIRSDrugRegimenUploadDate: data[0].airsdrugregimenuploaddate || null, 
+
     AIRSFinancialInformation: data[0].airsfinancialinformation === "0" || data[0].airsfinancialinformation === null ? false : true,
     AIRSFinancialInformationDate: data[0].airsfinancialinformationdate,
     AIRSFinancialInformationPDF: data[0].airsfinancialinformationpdf=== "0" || data[0].airsfinancialinformationpdf=== null ? false : true,
